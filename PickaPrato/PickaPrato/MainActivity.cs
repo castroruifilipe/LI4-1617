@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace PickaPrato
 {
-    [Activity(Label = "Pick'a Prato", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Pick'a Prato", MainLauncher = true)]
     public class MainActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
