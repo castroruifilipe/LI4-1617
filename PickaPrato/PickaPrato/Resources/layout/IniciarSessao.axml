@@ -9,10 +9,11 @@
     p1:background="@drawable/background">
     <ImageView
         p1:src="@drawable/logo"
-        p1:layout_width="match_parent"
+        p1:layout_width="299.0dp"
         p1:layout_height="208.0dp"
         p1:id="@+id/imageView1"
-        p1:layout_marginBottom="0.0dp" />
+        p1:layout_marginBottom="0.0dp"
+        p1:layout_gravity="center" />
     <EditText
         p1:id="@+id/username"
         p1:layout_width="299.0dp"
@@ -29,7 +30,7 @@
         p1:layout_gravity="center" />
     <Space
         p1:layout_width="match_parent"
-        p1:layout_height="88.0dp"
+        p1:layout_height="43.5dp"
         p1:id="@+id/space1"
         p1:layout_marginBottom="0.0dp" />
     <Button
@@ -40,7 +41,7 @@
         p1:layout_gravity="center" />
     <Space
         p1:layout_width="match_parent"
-        p1:layout_height="57.5dp"
+        p1:layout_height="121.0dp"
         p1:id="@+id/space2" />
     <Button
         p1:text="REGISTAR"

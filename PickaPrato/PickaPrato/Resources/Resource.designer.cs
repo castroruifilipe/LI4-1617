@@ -100,6 +100,9 @@ namespace PickaPrato
 			// aapt resource value: 0x7f040000
 			public const int IniciarSessao = 2130968576;
 			
+			// aapt resource value: 0x7f040001
+			public const int PaginaInicialCliente = 2130968577;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

@@ -64,6 +64,7 @@
     <AndroidResource Include="Resources\drawable\logo2.png" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\layout\IniciarSessao.axml" />
+    <AndroidResource Include="Resources\layout\PaginaInicialCliente.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
