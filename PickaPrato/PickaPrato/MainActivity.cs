@@ -14,7 +14,7 @@ namespace PickaPrato {
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            var registarButtom = FindViewById<Button>(Resource.Id.registar);
+            var registarButtom = FindViewById<Button>(Resource.Id.registarcliente);
             registarButtom.Click += (sender, e) => {
                 StartActivity(typeof(Registar));
 			};
