@@ -2059,9 +2059,6 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07000c
 			public const int normal = 2131165196;
 			
-			// aapt resource value: 0x7f070088
-			public const int pager = 2131165320;
-			
 			// aapt resource value: 0x7f070028
 			public const int parallax = 2131165224;
 			
@@ -2191,9 +2188,6 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07000d
 			public const int tabMode = 2131165197;
 			
-			// aapt resource value: 0x7f070087
-			public const int tabs = 2131165319;
-			
 			// aapt resource value: 0x7f070083
 			public const int text = 2131165315;
 			
@@ -2203,8 +2197,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07004d
 			public const int textSpacerNoButtons = 2131165261;
 			
-			// aapt resource value: 0x7f070089
-			public const int textView = 2131165321;
+			// aapt resource value: 0x7f070087
+			public const int textView = 2131165319;
 			
 			// aapt resource value: 0x7f07007f
 			public const int time = 2131165311;

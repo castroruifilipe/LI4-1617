@@ -27,10 +27,6 @@ namespace PickaPrato
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetActionBar(toolbar);
             ActionBar.Title = "Registar";
-
-            var tablayout = FindViewById<TabLayout>(Resource.Id.tabs);
-			tablayout.AddTab(tablayout.NewTab().SetText("Cliente"));
-            tablayout.AddTab(tablayout.NewTab().SetText("Proprietário"));
         }
     }
 }
