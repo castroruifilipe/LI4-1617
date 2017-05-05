@@ -20,7 +20,8 @@ namespace PickaPrato
     public class Registar : Activity {
 
 		public static readonly int PickImageId = 1000;
-		private ImageView _imageView;
+		private ImageView imageView;
+        private Android.Support.V7.Widget.CardView cardv;
         
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
@@ -31,7 +32,10 @@ namespace PickaPrato
             SetActionBar(toolbar);
             ActionBar.Title = "Registar novo cliente";
 
-            _imageView = FindViewById<ImageView>(Resource.Id.imgview);
+            cardv = FindViewById<Android.Support.V7.Widget.CardView>(Resource.Id.cardview);
+            cardv.Visibility = ViewStates.Invisible;
+
+            imageView = FindViewById<ImageView>(Resource.Id.imageview);
             Button button = FindViewById<Button>(Resource.Id.escolherimg);
 			button.Click += ButtonOnClick;
 
@@ -48,7 +52,8 @@ namespace PickaPrato
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
 			if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {
 				Android.Net.Uri uri = data.Data;
-				_imageView.SetImageURI(uri);
+				imageView.SetImageURI(uri);
+                cardv.Visibility = ViewStates.Visible;
 			}
 		}
     }
