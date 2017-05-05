@@ -1,2 +1,0 @@
-android.app.Application
-com.uminhomieili4.pick_a_prato

@@ -1,8 +1,0 @@
-PickaPrato.MainActivity, PickaPrato;md5b90b4c92aa684f99cfbf863c2bf99a1d.MainActivity
-PickaPrato.MainActivity, PickaPrato, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5b90b4c92aa684f99cfbf863c2bf99a1d.MainActivity
-PickaPrato.MainActivity;md5b90b4c92aa684f99cfbf863c2bf99a1d.MainActivity
-pickaprato.MainActivity;md5b90b4c92aa684f99cfbf863c2bf99a1d.MainActivity
-PickaPrato.Registar, PickaPrato;md5b90b4c92aa684f99cfbf863c2bf99a1d.Registar
-PickaPrato.Registar, PickaPrato, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5b90b4c92aa684f99cfbf863c2bf99a1d.Registar
-PickaPrato.Registar;md5b90b4c92aa684f99cfbf863c2bf99a1d.Registar
-pickaprato.Registar;md5b90b4c92aa684f99cfbf863c2bf99a1d.Registar

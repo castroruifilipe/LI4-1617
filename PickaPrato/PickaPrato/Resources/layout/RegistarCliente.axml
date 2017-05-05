@@ -57,17 +57,9 @@
         p1:layout_marginRight="0.0dp"
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />
-    <Space
-        p1:layout_width="match_parent"
-        p1:layout_height="30.0dp"
-        p1:id="@+id/space3" />
     <ImageView
         p1:src="@android:drawable/ic_menu_gallery"
-        p1:layout_width="147.5dp"
-        p1:layout_height="140.5dp"
-        p1:id="@+id/imgview"
-        p1:layout_marginLeft="0.0dp"
-        p1:layout_marginRight="0.0dp"
-        p1:layout_marginTop="0.0dp"
-        p1:layout_gravity="center" />
+        p1:layout_width="fill_parent"
+        p1:layout_height="159.0dp"
+        p1:id="@+id/imgview" />
 </LinearLayout>

@@ -2011,8 +2011,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070073
 			public const int imageView1 = 2131165299;
 			
-			// aapt resource value: 0x7f07008a
-			public const int imgview = 2131165322;
+			// aapt resource value: 0x7f070089
+			public const int imgview = 2131165321;
 			
 			// aapt resource value: 0x7f070085
 			public const int info = 2131165317;
@@ -2169,9 +2169,6 @@ namespace PickaPrato
 			
 			// aapt resource value: 0x7f070077
 			public const int space2 = 2131165303;
-			
-			// aapt resource value: 0x7f070089
-			public const int space3 = 2131165321;
 			
 			// aapt resource value: 0x7f070045
 			public const int spacer = 2131165253;
