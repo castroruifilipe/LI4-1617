@@ -1,0 +1,7 @@
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/PickaPrato.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/Java.Interop.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/Mono.Android.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/System.Core.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/System.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/mscorlib.dll
+/Users/ruileite/OneDrive/Documentos/MiEI/3.º ano/2.º semestre/Laboratórios de Informática IV/Trabalho prático/Implementação/LI4-1617/PickaPrato/PickaPrato/obj/Release/android/assets/System.Runtime.Serialization.dll
