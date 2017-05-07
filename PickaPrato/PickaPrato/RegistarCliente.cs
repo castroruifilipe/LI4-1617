@@ -7,10 +7,10 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Support.Design.Widget;
+using Android.Support.V7.Widget;
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace PickaPrato
 {
@@ -21,18 +21,19 @@ namespace PickaPrato
 
 		public static readonly int PickImageId = 1000;
 		private ImageView imageView;
-        private Android.Support.V7.Widget.CardView cardv;
+        private CardView cardv;
+        private SupportToolbar toolbar;
         
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.RegistarCliente);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
-            ActionBar.Title = "Registar novo cliente";
+            toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
+            mTitle.SetText("Registar cliente",TextView.BufferType.Normal);
 
-            cardv = FindViewById<Android.Support.V7.Widget.CardView>(Resource.Id.cardview);
+            cardv = FindViewById<CardView>(Resource.Id.cardview);
             cardv.Visibility = ViewStates.Invisible;
 
             imageView = FindViewById<ImageView>(Resource.Id.imageview);

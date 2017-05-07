@@ -10,24 +10,33 @@
     <ImageView
         p1:src="@drawable/logo"
         p1:layout_width="299.0dp"
-        p1:layout_height="208.0dp"
+        p1:layout_height="193.5dp"
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
-    <EditText
-        p1:id="@+id/username"
-        p1:layout_width="299.0dp"
-        p1:layout_height="wrap_content"
-        p1:hint="Username"
-        p1:layout_marginRight="0.0dp"
-        p1:layout_gravity="center" />
-    <EditText
-        p1:inputType="textPassword"
-        p1:layout_width="299.0dp"
-        p1:layout_height="wrap_content"
-        p1:hint="Password"
-        p1:layout_marginRight="0.0dp"
-        p1:layout_gravity="center" />
+    <android.support.design.widget.TextInputLayout
+        p1:id="@+id/username_layout"
+        p1:layout_gravity="center"
+        p1:layout_width="280.0dp"
+        p1:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            p1:layout_width="match_parent"
+            p1:hint="Username"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/username_edittext" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        p1:id="@+id/password_layout"
+        p1:layout_gravity="center"
+        p1:layout_width="280.0dp"
+        p1:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            p1:layout_width="match_parent"
+            p1:inputType="textPassword"
+            p1:hint="Palavra-passe"
+            p1:layout_height="wrap_content"
+            p1:id="@+id/password_edittext" />
+    </android.support.design.widget.TextInputLayout>
     <Space
         p1:layout_width="match_parent"
         p1:layout_height="43.5dp"
