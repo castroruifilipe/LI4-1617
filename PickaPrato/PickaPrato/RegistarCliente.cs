@@ -17,7 +17,7 @@ namespace PickaPrato
 
     [Activity(Label = "RegistarCliente")]
 
-    public class Registar : Activity {
+    public class RegistarCliente : Activity {
 
 		public static readonly int PickImageId = 1000;
 		private ImageView imageView;
@@ -39,8 +39,6 @@ namespace PickaPrato
             imageView = FindViewById<ImageView>(Resource.Id.imageview);
             Button button = FindViewById<Button>(Resource.Id.escolherimg);
 			button.Click += ButtonOnClick;
-
-
         }
 
 		private void ButtonOnClick(object sender, EventArgs eventArgs) {

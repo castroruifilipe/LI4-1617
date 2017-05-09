@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    p1:orientation="vertical"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/linearLayout1"
+    p1:background="@drawable/background">
+    <ImageView
+        p1:src="@drawable/logo"
+        p1:layout_width="377.0dp"
+        p1:layout_height="170.0dp"
+        p1:id="@+id/imageView1"
+        p1:layout_marginBottom="0.0dp"
+        p1:layout_gravity="center" />
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="27.5dp"
+        p1:id="@+id/space1" />
+    <AutoCompleteTextView
+        p1:id="@+id/autocomplete_prato"
+        p1:layout_width="320.5dp"
+        p1:layout_height="wrap_content"
+        p1:layout_marginLeft="5dp"
+        p1:layout_gravity="center_horizontal" />
+    <Button
+        p1:text="REC"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/rec" />
+</LinearLayout>
