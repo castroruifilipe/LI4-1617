@@ -15,19 +15,16 @@
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
-    <Space
+    <ImageView
+        p1:src="@drawable/micro"
         p1:layout_width="match_parent"
-        p1:layout_height="27.5dp"
-        p1:id="@+id/space1" />
+        p1:layout_height="162.0dp"
+        p1:id="@+id/rec"
+        p1:layout_marginBottom="0.0dp" />
     <AutoCompleteTextView
         p1:id="@+id/autocomplete_prato"
         p1:layout_width="320.5dp"
         p1:layout_height="wrap_content"
         p1:layout_marginLeft="5dp"
         p1:layout_gravity="center_horizontal" />
-    <Button
-        p1:text="REC"
-        p1:layout_width="match_parent"
-        p1:layout_height="wrap_content"
-        p1:id="@+id/rec" />
 </LinearLayout>

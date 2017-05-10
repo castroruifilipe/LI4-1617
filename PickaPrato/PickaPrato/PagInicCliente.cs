@@ -14,8 +14,7 @@ namespace PickaPrato {
         string[] historico;
 
         private AutoCompleteTextView textView;
-		private Button recButton;
-		private bool isRecording;
+        private ImageView recButton;
 		private readonly int VOICE = 10;
 		private string resultado;
 
@@ -33,36 +32,19 @@ namespace PickaPrato {
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
 			textView.Adapter = adapter;
 
-            recButton = FindViewById<Button>(Resource.Id.rec);
+            recButton = FindViewById<ImageView>(Resource.Id.rec);
 
-			isRecording = false;
-
-			string rec = Android.Content.PM.PackageManager.FeatureMicrophone;
-			if (rec != "android.hardware.microphone") {
-				var alert = new AlertDialog.Builder(recButton.Context);
-				alert.SetTitle("Não é possível fazer o reconhecimento de voz no seu dispositivo.");
-				alert.SetPositiveButton("OK", (sender, e) => {
-					textView.Text = "Não foi encontrado nenhum microfone.";
-					recButton.Enabled = false;
-					return;
-				});
-				alert.Show();
-            } else {
-                recButton.Click += delegate {
-					recButton.Text = "End Recording";
-					isRecording = !isRecording;
-					if (isRecording == true) {
-						var voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
-						voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, "pr-BR");
-						voiceIntent.PutExtra(RecognizerIntent.ExtraPrompt, "Fale agora");
-						voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputCompleteSilenceLengthMillis, 1500);
-						voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputPossiblyCompleteSilenceLengthMillis, 1500);
-						voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputMinimumLengthMillis, 15000);
-						voiceIntent.PutExtra(RecognizerIntent.ExtraMaxResults, 1);
-						StartActivityForResult(voiceIntent, VOICE);
-					}
-				};
-			}
+			
+            recButton.Click += delegate {
+				var voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
+				voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, "pr-BR");
+				voiceIntent.PutExtra(RecognizerIntent.ExtraPrompt, "Fale agora");
+				voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputCompleteSilenceLengthMillis, 1500);
+				voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputPossiblyCompleteSilenceLengthMillis, 1500);
+				voiceIntent.PutExtra(RecognizerIntent.ExtraSpeechInputMinimumLengthMillis, 15000);
+				voiceIntent.PutExtra(RecognizerIntent.ExtraMaxResults, 1);
+				StartActivityForResult(voiceIntent, VOICE);
+			};
         }
 
 		protected override void OnActivityResult(int requestCode, Result resultVal, Intent data) {
@@ -87,7 +69,6 @@ namespace PickaPrato {
 						});
 						alert.Show();
 					}
-					recButton.Text = "Falar";
 				}
 			}
 			base.OnActivityResult(requestCode, resultVal, data);

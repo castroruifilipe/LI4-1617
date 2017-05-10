@@ -1875,7 +1875,10 @@ namespace PickaPrato
 			public const int logo2 = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int notification_template_icon_bg = 2130837585;
+			public const int micro = 2130837585;
+			
+			// aapt resource value: 0x7f020052
+			public const int notification_template_icon_bg = 2130837586;
 			
 			static Drawable()
 			{
@@ -1944,8 +1947,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07001e
 			public const int always = 2131165214;
 			
-			// aapt resource value: 0x7f07008e
-			public const int autocomplete_prato = 2131165326;
+			// aapt resource value: 0x7f07008f
+			public const int autocomplete_prato = 2131165327;
 			
 			// aapt resource value: 0x7f07001b
 			public const int beginning = 2131165211;
@@ -2157,8 +2160,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070054
 			public const int radio = 2131165268;
 			
-			// aapt resource value: 0x7f07008f
-			public const int rec = 2131165327;
+			// aapt resource value: 0x7f07008e
+			public const int rec = 2131165326;
 			
 			// aapt resource value: 0x7f070077
 			public const int recycler_view = 2131165303;

@@ -104,6 +104,7 @@
     <AndroidResource Include="Resources\drawable\Francesinha1.png" />
     <AndroidResource Include="Resources\layout\PagInicCliente.axml" />
     <AndroidResource Include="Resources\layout\ListItem.xml" />
+    <AndroidResource Include="Resources\drawable\micro.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
