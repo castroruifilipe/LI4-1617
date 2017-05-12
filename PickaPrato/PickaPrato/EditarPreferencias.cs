@@ -25,7 +25,15 @@ namespace PickaPrato {
             SetContentView(Resource.Layout.Preferencias);
 
             listaIngr = new List<string>();
-			listaIngr.Add("Pepino");
+			listaIngr.Add("Tomate2");
+			listaIngr.Add("Tomate");
+			listaIngr.Add("Tomate2");
+			listaIngr.Add("Tomate");
+			listaIngr.Add("Tomate2");
+			listaIngr.Add("Tomate");
+			listaIngr.Add("Tomate2");
+			listaIngr.Add("Tomate");
+			listaIngr.Add("Tomate2");
 			listaIngr.Add("Tomate");
 
             ListView listview = FindViewById<ListView>(Resource.Id.listview);

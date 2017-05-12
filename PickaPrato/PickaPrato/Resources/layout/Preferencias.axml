@@ -29,19 +29,18 @@
         p1:layout_width="match_parent"
         p1:layout_height="34.3dp"
         p1:id="@+id/space1" />
-    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         p1:layout_width="match_parent"
         p1:layout_height="279.3dp"
         tools:context="recyclerview.com.icoderslab.recyclerviewtutorial.MainActivity"
         p1:minWidth="25px"
         p1:minHeight="25px">
         <ListView
-            p1:minWidth="25px"
-            p1:minHeight="25px"
-            p1:layout_width="wrap_content"
-            p1:layout_height="wrap_content"
-            p1:id="@+id/listview" />
-    </RelativeLayout>
+            p1:id="@+id/listview"
+            p1:layout_width="fill_parent"
+            p1:layout_height="fill_parent"
+            p1:cacheColorHint="#FFDAFF7F" />
+    </LinearLayout>
     <Space
         p1:layout_width="match_parent"
         p1:layout_height="11.3dp"
