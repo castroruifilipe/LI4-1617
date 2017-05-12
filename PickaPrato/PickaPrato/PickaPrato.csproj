@@ -105,6 +105,7 @@
     <AndroidResource Include="Resources\layout\PagInicCliente.axml" />
     <AndroidResource Include="Resources\layout\ListItem.xml" />
     <AndroidResource Include="Resources\drawable\micro.png" />
+    <AndroidResource Include="Resources\layout\PagInicProp.axml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
