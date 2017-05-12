@@ -78,6 +78,7 @@
     <Compile Include="Prato.cs" />
     <Compile Include="ListaPratos.cs" />
     <Compile Include="PagInicCliente.cs" />
+    <Compile Include="EditarPreferencias.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -106,6 +107,8 @@
     <AndroidResource Include="Resources\layout\ListItem.xml" />
     <AndroidResource Include="Resources\drawable\micro.png" />
     <AndroidResource Include="Resources\layout\PagInicProp.axml" />
+    <AndroidResource Include="Resources\layout\Preferencias.axml" />
+    <AndroidResource Include="Resources\layout\ListItemChekbox.xml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

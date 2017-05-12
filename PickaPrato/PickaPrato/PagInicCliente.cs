@@ -25,6 +25,11 @@ namespace PickaPrato {
 
             SetContentView(Resource.Layout.PagInicCliente);
 
+            var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
+			preferenciasButtom.Click += (sender, e) => {
+                StartActivity(typeof(EditarPreferencias));
+			};
+
             historico = new string[] {
                 "Francesinha", "Arroz de pato"
             };

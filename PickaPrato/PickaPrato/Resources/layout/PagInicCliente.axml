@@ -40,7 +40,7 @@
         p1:id="@+id/space1"
         p1:layout_marginBottom="19.0dp" />
     <Button
-        p1:id="@+id/escolherimg"
+        p1:id="@+id/selecoes"
         p1:layout_width="155.0dp"
         p1:layout_height="wrap_content"
         p1:text="Seleções"
@@ -48,7 +48,7 @@
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />
     <Button
-        p1:id="@+id/escolherimg"
+        p1:id="@+id/pref"
         p1:layout_width="155.0dp"
         p1:layout_height="wrap_content"
         p1:text="Preferências"
@@ -56,7 +56,7 @@
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />
     <Button
-        p1:id="@+id/escolherimg"
+        p1:id="@+id/termsessao"
         p1:layout_width="155.0dp"
         p1:layout_height="wrap_content"
         p1:text="Terminar sessão"

@@ -15,7 +15,7 @@ namespace PickaPrato {
 
             var registarButtom = FindViewById<Button>(Resource.Id.registarcliente);
             registarButtom.Click += (sender, e) => {
-                StartActivity(typeof(ListaPratos));
+                StartActivity(typeof(RegistarCliente));
 			};
 
             var iniciarSessaoButtom = FindViewById<Button>(Resource.Id.iniciarsessao);
