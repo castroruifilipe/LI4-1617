@@ -4,6 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Android.Speech;
+using Android.Views.InputMethods;
 
 namespace PickaPrato {
     
@@ -32,9 +33,16 @@ namespace PickaPrato {
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
 			textView.Adapter = adapter;
 
+            textView.EditorAction += (sender, e) => {
+                if (e.ActionId == ImeAction.Done) {
+                    //search.PerformClick();
+				} else {
+					e.Handled = false;
+				}
+            };
+
             recButton = FindViewById<ImageView>(Resource.Id.rec);
 
-			
             recButton.Click += delegate {
 				var voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
 				voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, "pr-BR");
@@ -52,12 +60,12 @@ namespace PickaPrato {
 				if (resultVal == Result.Ok) {
 					var matches = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
 					if (matches.Count != 0) {
-						string textInput = resultado + matches[0];
+						resultado = matches[0];
 
-						if (textInput.Length > 500) {
-							textInput = textInput.Substring(0, 500);
+						if (resultado.Length > 500) {
+							resultado = resultado.Substring(0, 500);
 						}
-						resultado = textInput;
+
 						this.textView.Text = resultado;
 					} else {
 						var alert = new AlertDialog.Builder(recButton.Context);

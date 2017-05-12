@@ -10,8 +10,8 @@
     p1:background="@drawable/background">
     <ImageView
         p1:src="@drawable/logo"
-        p1:layout_width="377.0dp"
-        p1:layout_height="170.0dp"
+        p1:layout_width="283.7dp"
+        p1:layout_height="150.7dp"
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
@@ -21,10 +21,46 @@
         p1:layout_height="162.0dp"
         p1:id="@+id/rec"
         p1:layout_marginBottom="0.0dp" />
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="15.7dp"
+        p1:id="@+id/space1"
+        p1:layout_marginBottom="19.0dp" />
     <AutoCompleteTextView
+        p1:layout_gravity="center"
         p1:id="@+id/autocomplete_prato"
-        p1:layout_width="320.5dp"
+        p1:layout_width="253.7dp"
         p1:layout_height="wrap_content"
-        p1:layout_marginLeft="5dp"
-        p1:layout_gravity="center_horizontal" />
+        p1:text="Pesquise por um prato..."
+        p1:textColor="#ffbdbdbd"
+        p1:layout_centerInParent="true" />
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="15.7dp"
+        p1:id="@+id/space1"
+        p1:layout_marginBottom="19.0dp" />
+    <Button
+        p1:id="@+id/escolherimg"
+        p1:layout_width="155.0dp"
+        p1:layout_height="wrap_content"
+        p1:text="Seleções"
+        p1:layout_marginRight="0.0dp"
+        p1:layout_marginLeft="0.0dp"
+        p1:layout_gravity="center" />
+    <Button
+        p1:id="@+id/escolherimg"
+        p1:layout_width="155.0dp"
+        p1:layout_height="wrap_content"
+        p1:text="Preferências"
+        p1:layout_marginRight="0.0dp"
+        p1:layout_marginLeft="0.0dp"
+        p1:layout_gravity="center" />
+    <Button
+        p1:id="@+id/escolherimg"
+        p1:layout_width="155.0dp"
+        p1:layout_height="wrap_content"
+        p1:text="Terminar sessão"
+        p1:layout_marginRight="0.0dp"
+        p1:layout_marginLeft="0.0dp"
+        p1:layout_gravity="center" />
 </LinearLayout>
