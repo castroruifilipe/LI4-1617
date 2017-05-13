@@ -7,8 +7,9 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V7.Widget;
 using System.Collections.Generic;
+using PickaPrato.Business;
 
-namespace PickaPrato {
+namespace PickaPrato.Presentation {
 
     [Activity(Label = "ListaPratos")]
     

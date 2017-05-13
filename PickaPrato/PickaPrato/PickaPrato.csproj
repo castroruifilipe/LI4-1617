@@ -69,16 +69,18 @@
     <Reference Include="Plugin.TextToSpeech">
       <HintPath>..\packages\Xam.Plugins.TextToSpeech.2.0.0\lib\MonoAndroid10\Plugin.TextToSpeech.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistarCliente.cs" />
-    <Compile Include="Prato.cs" />
-    <Compile Include="ListaPratos.cs" />
-    <Compile Include="PagInicCliente.cs" />
-    <Compile Include="EditarPreferencias.cs" />
+    <Compile Include="Presentation\RegistarCliente.cs" />
+    <Compile Include="Presentation\EditarPreferencias.cs" />
+    <Compile Include="Presentation\ListaPratos.cs" />
+    <Compile Include="Presentation\PagInicCliente.cs" />
+    <Compile Include="Business\Prato.cs" />
+    <Compile Include="Data\PratoDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -111,6 +113,11 @@
     <AndroidResource Include="Resources\layout\ListItemChekbox.xml" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Presentation\" />
+    <Folder Include="Business\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
 </Project>

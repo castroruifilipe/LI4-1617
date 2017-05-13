@@ -1,8 +1,9 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using PickaPrato.Presentation;
 
-namespace PickaPrato {
+namespace PickaPrato.Business {
     
     [Activity(Label = "Pick'a Prato", MainLauncher = true, Icon = "@mipmap/icon")]
 

@@ -12,8 +12,7 @@ using Android.Widget;
 using Android.Support.V7.Widget;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
-namespace PickaPrato
-{
+namespace PickaPrato.Presentation {
 
     [Activity(Label = "RegistarCliente")]
 

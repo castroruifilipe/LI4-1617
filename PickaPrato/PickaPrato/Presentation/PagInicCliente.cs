@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -6,7 +6,7 @@ using Android.Widget;
 using Android.Speech;
 using Android.Views.InputMethods;
 
-namespace PickaPrato {
+namespace PickaPrato.Presentation {
     
     [Activity(Label = "PagInicCliente")]
 

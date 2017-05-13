@@ -1,6 +1,6 @@
-﻿using System;
+﻿﻿using System;
 
-namespace PickaPrato {
+namespace PickaPrato.Business {
     
     public class Prato {
 
