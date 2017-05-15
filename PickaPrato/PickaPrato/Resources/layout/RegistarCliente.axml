@@ -11,10 +11,6 @@
     <include
         p1:id="@+id/toolbar"
         layout="@layout/toolbar" />
-    <Space
-        p1:layout_width="match_parent"
-        p1:layout_height="27.5dp"
-        p1:id="@+id/space1" />
     <ImageView
         p1:src="@drawable/logo"
         p1:layout_width="299.0dp"
@@ -22,10 +18,6 @@
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
-    <Space
-        p1:layout_width="match_parent"
-        p1:layout_height="20.0dp"
-        p1:id="@+id/space1" />
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/username_layout"
         p1:layout_gravity="center"
@@ -61,10 +53,6 @@
         p1:layout_marginRight="0.0dp"
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />
-    <Space
-        p1:layout_width="match_parent"
-        p1:layout_height="19.0dp"
-        p1:id="@+id/space2" />
     <android.support.v7.widget.CardView
         p1:layout_width="170dp"
         p1:layout_height="170dp"
@@ -86,4 +74,9 @@
             p1:scaleType="centerCrop"
             p1:layout_height="match_parent" />
     </android.support.v7.widget.CardView>
+    <Button
+        p1:text="Registar"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/bregistar" />
 </LinearLayout>
