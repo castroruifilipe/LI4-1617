@@ -22,12 +22,6 @@ namespace PickaPrato.Data {
             var response = client.GetAsync("api/Cliente/2").Result;
             if (response.IsSuccessStatusCode) {
                 var stream = await response.Content.ReadAsStringAsync();
-                //var sr = new StreamReader(stream);
-                //var jsonReader = new JsonTextReader(sr);
-                //var serializer = new JsonSerializer();
-                //String[] p = serializer.Deserialize<String[]>(jsonReader);
-                //Console.Out.Write("\n\n\n" + p[1] + p[2] + "\n\n\n");
-                //return p;
                 Cliente c = JsonConvert.DeserializeObject<Cliente>(stream);
                 return c;
             } else {

@@ -22,15 +22,7 @@ namespace PickaPratoServer.Controllers {
             Cliente c = new Cliente();
             c.Username = "Alves";
             c.Password = "Joao";
-
-            //MemoryStream stream = new MemoryStream();
-            //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Cliente));
-
-            //ser.WriteObject(stream, c);
-            //byte[] json = stream.ToArray();
-            //stream.Close();
             return c;
-            //return Encoding.UTF8.GetString(json, 0, json.Length);
         }
 
         // POST: api/Cliente
