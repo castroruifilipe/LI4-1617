@@ -89,6 +89,7 @@
     <Compile Include="Presentation\PagInicCliente.cs" />
     <Compile Include="Business\Prato.cs" />
     <Compile Include="Data\PratoDAO.cs" />
+    <Compile Include="Data\ServiceEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
