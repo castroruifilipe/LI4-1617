@@ -29,7 +29,7 @@ namespace PickaPrato.Presentation {
 		private ImageView imageView;
         private CardView cardv;
         private SupportToolbar toolbar;
-        private ServiceEngine se = new ServiceEngine("http://10.0.2.2:5001/");
+        private ServiceEngine se = new ServiceEngine();
         
         
         protected override void OnCreate(Bundle savedInstanceState) {
@@ -53,12 +53,11 @@ namespace PickaPrato.Presentation {
            
             EditText user = FindViewById<EditText>(Resource.Id.username_edittext);
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
-            Console.Out.WriteLine("\n\n\n\n\n\nOlá\n\n\n\n\n\n");
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
-            botaoRegistar.Click += (sender, e) =>
+            botaoRegistar.Click += async (sender, e) =>
             {
-                Cliente c = se.GetCliente().Result;
-                user.Text = c.Username;
+                Cliente c = new Cliente(user.Text, pass.Text);
+                await se.PostCliente(c);
             };
 
         }

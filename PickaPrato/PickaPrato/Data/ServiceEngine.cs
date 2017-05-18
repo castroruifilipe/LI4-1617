@@ -11,15 +11,15 @@ namespace PickaPrato.Data {
     public class ServiceEngine {
 
         private HttpClient client;
+        private String urlBase = "http://10.0.2.2:5001/";
         
-        public ServiceEngine(string url) {
-
+        public ServiceEngine() {
             client = new HttpClient();
-            client.BaseAddress = new Uri(url);
+            client.BaseAddress = new Uri(urlBase);
         }
 
-        public async Task<Cliente> GetCliente() {
-            var response = client.GetAsync("api/Cliente/2").Result;
+        public async Task<Cliente> GetCliente(string username) {
+            var response = client.GetAsync("api/Cliente/" + username).Result;
             if (response.IsSuccessStatusCode) {
                 var stream = await response.Content.ReadAsStringAsync();
                 Cliente c = JsonConvert.DeserializeObject<Cliente>(stream);
@@ -27,6 +27,17 @@ namespace PickaPrato.Data {
             } else {
                 return null;
             }
+        }
+
+        public async Task PostCliente(Cliente c) {
+
+            var uri = new Uri(urlBase + "api/Cliente");
+
+            var json = JsonConvert.SerializeObject(c);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PostAsync(uri, content);
+
         }
     }
 }
