@@ -57,8 +57,8 @@ namespace PickaPrato.Presentation {
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
             botaoRegistar.Click += (sender, e) =>
             {
-                Person p = se.GetCliente().Result;
-                Console.Out.Write(p.Username);
+                Cliente c = se.GetCliente().Result;
+                user.Text = c.Username;
             };
 
         }

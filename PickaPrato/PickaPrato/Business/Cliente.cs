@@ -10,11 +10,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace PickaPrato.Business
-{
-    public class Person
-    {
-        public String Username {set;get;}
+namespace PickaPrato.Business {
+    
+    public class Cliente {
+        
+        public String Username { set; get; }
         public String Password { set; get; }
 
     }
