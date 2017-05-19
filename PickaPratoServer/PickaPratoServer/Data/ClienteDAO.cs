@@ -13,10 +13,10 @@ namespace PickaPratoServer.Data
     class ClienteDAO
     {
 
+        SqlConnection connection = new SqlConnection("Server=DIOGO-PC\\SQLEXPRESS; Database=PickPrato; Trusted_Connection=True;");
 
-        public Cliente getCliente()
+        public Cliente GetCliente()
         {
-            SqlConnection connection = new SqlConnection("Server=DIOGO-PC\\SQLEXPRESS; Database=PickPrato; Trusted_Connection=True;");
 
             connection.Open();
 
@@ -38,6 +38,27 @@ namespace PickaPratoServer.Data
                 c.Password = (String)result["password"];
             }
             return c;
+        }
+
+        public void Put(Cliente c)
+        {
+
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+                INSERT INTO Cliente
+                    ([username],[password])
+                VALUES (@username,@password)
+            ";
+            command.Parameters.Add(new SqlParameter("@username", c.Username));
+            command.Parameters.Add(new SqlParameter("@password", c.Password));
+            //command.Parameters.Add(new SqlParameter("@fotografia", "NULL"));
+            //command.Parameters.Add(new SqlParameter("@cidade", "NULL"));
+
+            var result = command.ExecuteNonQuery();
         }
     }
 }
