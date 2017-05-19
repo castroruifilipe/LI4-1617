@@ -5,13 +5,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PickaPrato.Business;
+using System.Net;
 
 namespace PickaPrato.Data {
     
     public class ServiceEngine {
 
         private HttpClient client;
-        private String urlBase = "http://10.0.2.2:65402/";
+        private String urlBase = "http://192.168.1.101/PickaPratoServer/";
         
         public ServiceEngine() {
             client = new HttpClient();
@@ -20,7 +21,7 @@ namespace PickaPrato.Data {
 
         public async Task<Cliente> GetCliente(string username) {
             var response = client.GetAsync("api/Cliente/" + username).Result;
-            if (response.IsSuccessStatusCode) {
+            if (response.IsSuccessStatusCode == true) {
                 var stream = await response.Content.ReadAsStringAsync();
                 Cliente c = JsonConvert.DeserializeObject<Cliente>(stream);
                 return c;
@@ -30,14 +31,13 @@ namespace PickaPrato.Data {
         }
 
         public async Task PostCliente(Cliente c) {
-
             var uri = new Uri(urlBase + "api/Cliente");
-
             var json = JsonConvert.SerializeObject(c);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await client.PostAsync(uri, content);
-
+            var response = await client.PostAsync(uri, content);
+            if (response.StatusCode == HttpStatusCode.PreconditionFailed) {
+                
+            }
         }
     }
 }
