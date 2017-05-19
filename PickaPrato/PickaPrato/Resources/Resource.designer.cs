@@ -1959,8 +1959,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07002a
 			public const int bottom = 2131165226;
 			
-			// aapt resource value: 0x7f07009d
-			public const int bregistar = 2131165341;
+			// aapt resource value: 0x7f07009f
+			public const int bregistar = 2131165343;
 			
 			// aapt resource value: 0x7f070044
 			public const int buttonPanel = 2131165252;
@@ -1968,8 +1968,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070085
 			public const int cancel_action = 2131165317;
 			
-			// aapt resource value: 0x7f07009b
-			public const int cardview = 2131165339;
+			// aapt resource value: 0x7f07009d
+			public const int cardview = 2131165341;
 			
 			// aapt resource value: 0x7f07002b
 			public const int center = 2131165227;
@@ -2049,8 +2049,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070024
 			public const int enterAlwaysCollapsed = 2131165220;
 			
-			// aapt resource value: 0x7f070096
-			public const int escolherimg = 2131165334;
+			// aapt resource value: 0x7f070097
+			public const int escolherimg = 2131165335;
 			
 			// aapt resource value: 0x7f070025
 			public const int exitUntilCollapsed = 2131165221;
@@ -2073,8 +2073,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070038
 			public const int @fixed = 2131165240;
 			
-			// aapt resource value: 0x7f07009a
-			public const int guardar = 2131165338;
+			// aapt resource value: 0x7f07009b
+			public const int guardar = 2131165339;
 			
 			// aapt resource value: 0x7f070005
 			public const int home = 2131165189;
@@ -2097,8 +2097,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07007b
 			public const int imageView1 = 2131165307;
 			
-			// aapt resource value: 0x7f07009c
-			public const int imageview = 2131165340;
+			// aapt resource value: 0x7f07009e
+			public const int imageview = 2131165342;
 			
 			// aapt resource value: 0x7f07008f
 			public const int info = 2131165327;
@@ -2127,11 +2127,11 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070041
 			public const int list_item = 2131165249;
 			
-			// aapt resource value: 0x7f070097
-			public const int listapref = 2131165335;
+			// aapt resource value: 0x7f070098
+			public const int listapref = 2131165336;
 			
-			// aapt resource value: 0x7f070099
-			public const int listview = 2131165337;
+			// aapt resource value: 0x7f07009a
+			public const int listview = 2131165338;
 			
 			// aapt resource value: 0x7f070087
 			public const int media_actions = 2131165319;
@@ -2164,7 +2164,10 @@ namespace PickaPrato
 			public const int parentPanel = 2131165254;
 			
 			// aapt resource value: 0x7f07007f
-			public const int password_edittext = 2131165311;
+			public const int password = 2131165311;
+			
+			// aapt resource value: 0x7f07009c
+			public const int password_edittext = 2131165340;
 			
 			// aapt resource value: 0x7f07007e
 			public const int password_layout = 2131165310;
@@ -2322,8 +2325,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f07006b
 			public const int textView = 2131165291;
 			
-			// aapt resource value: 0x7f070098
-			public const int textView1 = 2131165336;
+			// aapt resource value: 0x7f070099
+			public const int textView1 = 2131165337;
 			
 			// aapt resource value: 0x7f07008a
 			public const int time = 2131165322;
@@ -2337,8 +2340,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f070076
 			public const int toolbar = 2131165302;
 			
-			// aapt resource value: 0x7f07009e
-			public const int toolbar_title = 2131165342;
+			// aapt resource value: 0x7f0700a0
+			public const int toolbar_title = 2131165344;
 			
 			// aapt resource value: 0x7f070032
 			public const int top = 2131165234;
@@ -2356,7 +2359,10 @@ namespace PickaPrato
 			public const int useLogo = 2131165204;
 			
 			// aapt resource value: 0x7f07007d
-			public const int username_edittext = 2131165309;
+			public const int username = 2131165309;
+			
+			// aapt resource value: 0x7f070096
+			public const int username_edittext = 2131165334;
 			
 			// aapt resource value: 0x7f07007c
 			public const int username_layout = 2131165308;

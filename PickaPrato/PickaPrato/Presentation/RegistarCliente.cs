@@ -38,8 +38,6 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.RegistarCliente);
 
-            
-
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
             mTitle.SetText("Registar cliente",TextView.BufferType.Normal);
@@ -56,7 +54,6 @@ namespace PickaPrato.Presentation {
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
             botaoRegistar.Click += (sender, e) => {
                 Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
-
                 var stream = new MemoryStream();
                 mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
                 var bytes = stream.ToArray();

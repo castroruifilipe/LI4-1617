@@ -25,7 +25,7 @@
             p1:layout_width="match_parent"
             p1:hint="Username"
             p1:layout_height="wrap_content"
-            p1:id="@+id/username_edittext" />
+            p1:id="@+id/username" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/password_layout"
@@ -39,7 +39,7 @@
             p1:inputType="textPassword"
             p1:hint="Palavra-passe"
             p1:layout_height="wrap_content"
-            p1:id="@+id/password_edittext" />
+            p1:id="@+id/password" />
     </android.support.design.widget.TextInputLayout>
     <Space
         p1:layout_width="match_parent"

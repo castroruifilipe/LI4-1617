@@ -13,7 +13,8 @@ namespace PickaPrato.Data {
 
         private HttpClient client;
         private String urlBase = "http://192.168.126.167/PickaPratoServer/";
-        
+
+
         public ServiceEngine() {
             client = new HttpClient();
             client.BaseAddress = new Uri(urlBase);
@@ -21,13 +22,11 @@ namespace PickaPrato.Data {
 
         public async Task<Cliente> GetCliente(String username) {
             var response = client.GetAsync("api/Cliente/" + username).Result;
-            if (response.IsSuccessStatusCode == true) {
-                var stream = await response.Content.ReadAsStringAsync();
-                Cliente c = JsonConvert.DeserializeObject<Cliente>(stream);
-                return c;
-            } else {
-                return null;
-            }
+            //if (response.IsSuccessStatusCode == true) {
+            var stream = await response.Content.ReadAsStringAsync();
+            Cliente c = JsonConvert.DeserializeObject<Cliente>(stream);
+            return c;
+            //}
         }
 
         public async Task PostCliente(Cliente c) {
@@ -36,5 +35,14 @@ namespace PickaPrato.Data {
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(uri, content);
         }
+
+        public async Task<Proprietario> GetProprietario(String username) {
+			var response = client.GetAsync("api/Cliente/" + username).Result;
+			//if (response.IsSuccessStatusCode == true) {
+			var stream = await response.Content.ReadAsStringAsync();
+			Proprietario p = JsonConvert.DeserializeObject<Proprietario>(stream);
+			return p;
+			//}
+		}
     }
 }
