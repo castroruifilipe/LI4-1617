@@ -54,10 +54,8 @@ namespace PickaPrato.Presentation {
             EditText user = FindViewById<EditText>(Resource.Id.username_edittext);
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
-            botaoRegistar.Click += async (sender, e) =>
-            {
-                Cliente c = new Cliente(user.Text, pass.Text);
-                await se.PostCliente(c);
+            botaoRegistar.Click += (sender, e) => {
+                Facade.RegistarCliente(user.Text, pass.Text);
             };
 
         }
