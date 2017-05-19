@@ -9,11 +9,9 @@ namespace PickaPrato {
 
         private static ServiceEngine server = new ServiceEngine();
 
-        public static void RegistarCliente(string Username, string Password) {
-            Cliente c = new Cliente(Username, Password);
+        public static void RegistarCliente(string Username, string Password, String Foto) {
+            Cliente c = new Cliente(Username, Password, Foto);
             Task.Run(() => server.PostCliente(c));
         }
-
-        public static 
     }
 }

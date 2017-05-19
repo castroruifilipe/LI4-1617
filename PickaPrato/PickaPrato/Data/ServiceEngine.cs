@@ -12,14 +12,14 @@ namespace PickaPrato.Data {
     public class ServiceEngine {
 
         private HttpClient client;
-        private String urlBase = "http://192.168.1.101/PickaPratoServer/";
+        private String urlBase = "http://192.168.126.167/PickaPratoServer/";
         
         public ServiceEngine() {
             client = new HttpClient();
             client.BaseAddress = new Uri(urlBase);
         }
 
-        public async Task<Cliente> GetCliente(string username) {
+        public async Task<Cliente> GetCliente(String username) {
             var response = client.GetAsync("api/Cliente/" + username).Result;
             if (response.IsSuccessStatusCode == true) {
                 var stream = await response.Content.ReadAsStringAsync();
@@ -35,9 +35,6 @@ namespace PickaPrato.Data {
             var json = JsonConvert.SerializeObject(c);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(uri, content);
-            if (response.StatusCode == HttpStatusCode.PreconditionFailed) {
-                
-            }
         }
     }
 }

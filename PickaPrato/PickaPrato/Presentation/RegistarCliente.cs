@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 using Android.App;
 using Android.Content;
@@ -10,13 +11,12 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
-using Newtonsoft.Json;
-using System.Json;
+using Android.Graphics;
+using Android.Util;
+using Android.Provider;
+
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
-using System.Threading.Tasks;
-using PickaPrato.Business;
-using System.Net;
-using System.IO;
+
 using PickaPrato.Data;
 
 namespace PickaPrato.Presentation {
@@ -29,7 +29,7 @@ namespace PickaPrato.Presentation {
 		private ImageView imageView;
         private CardView cardv;
         private SupportToolbar toolbar;
-        private ServiceEngine se = new ServiceEngine();
+        private Android.Net.Uri uri;
         
         
         protected override void OnCreate(Bundle savedInstanceState) {
@@ -55,7 +55,15 @@ namespace PickaPrato.Presentation {
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
             botaoRegistar.Click += (sender, e) => {
-                Facade.RegistarCliente(user.Text, pass.Text);
+                Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
+
+                var stream = new MemoryStream();
+                mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                var bytes = stream.ToArray();
+				var foto = Convert.ToBase64String(bytes);
+				
+				Facade.RegistarCliente(user.Text, pass.Text, foto);
+
             };
 
         }
@@ -71,7 +79,7 @@ namespace PickaPrato.Presentation {
 
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
 			if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {
-				Android.Net.Uri uri = data.Data;
+				uri = data.Data;
 				imageView.SetImageURI(uri);
                 cardv.Visibility = ViewStates.Visible;
 			}
