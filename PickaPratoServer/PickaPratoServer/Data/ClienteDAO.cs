@@ -40,9 +40,7 @@ namespace PickaPratoServer.Data
             return c;
         }
 
-        public void Put(Cliente c)
-        {
-
+        public void Put(Cliente c) {
             connection.Open();
 
             SqlCommand command = connection.CreateCommand();
@@ -50,12 +48,16 @@ namespace PickaPratoServer.Data
             command.CommandType = CommandType.Text;
             command.CommandText = @"
                 INSERT INTO Cliente
-                    ([username],[password])
-                VALUES (@username,@password)
+                    ([username],[password],[fotografia])
+                VALUES (@username,@password,@foto)
             ";
             command.Parameters.Add(new SqlParameter("@username", c.Username));
             command.Parameters.Add(new SqlParameter("@password", c.Password));
-            //command.Parameters.Add(new SqlParameter("@fotografia", "NULL"));
+            command.Parameters.Add(new SqlParameter("@foto", c.foto));
+            //SqlParameter p = new SqlParameter("@foto", SqlDbType.VarBinary);
+            //p.Value = c.foto;
+            //Debug.Print(c.foto);
+            //command.Parameters.AddWithValue("@foto", SqlDbType.Var).Value=c.foto;
             //command.Parameters.Add(new SqlParameter("@cidade", "NULL"));
 
             var result = command.ExecuteNonQuery();
