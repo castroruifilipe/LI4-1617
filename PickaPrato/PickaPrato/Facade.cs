@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+
 using PickaPrato.Data;
 using PickaPrato.Business;
+using PickaPrato.Exceptions;
 
 namespace PickaPrato {
 
@@ -9,11 +11,28 @@ namespace PickaPrato {
 
         private static ServiceEngine server = new ServiceEngine();
 
-        public static void RegistarCliente(string Username, string Password) {
-            Cliente c = new Cliente(Username, Password);
-            Task.Run(() => server.PostCliente(c));
+        private static UtilizadorDAO Utilizadores;
+
+
+        public static int IniciarSessao(String Username, String Password) {
+            int r = -1;
+            Cliente c = server.GetCliente(Username).Result;
+            if (c == null) {
+                Proprietario p = server.GetProprietario(Username).Result;
+                if (p == null) {
+                    throw new UtilizadorExistsException();
+                } else {
+                    r = 2;
+                }
+            } else {
+                r = 1;
+            }
+            return r;
         }
 
-        public static 
+        public static void RegistarCliente(string Username, string Password, String Foto) {
+            Cliente c = new Cliente(Username, Password, Foto);
+            Task.Run(() => server.PostCliente(c));
+        }
     }
 }

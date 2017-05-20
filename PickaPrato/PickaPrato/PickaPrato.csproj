@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Cliente.cs" />
-    <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Presentation\RegistarCliente.cs" />
@@ -92,6 +91,12 @@
     <Compile Include="Data\ServiceEngine.cs" />
     <Compile Include="Facade.cs" />
     <Compile Include="Exceptions\UtilizadorExistsException.cs" />
+    <Compile Include="Data\UtilizadorDAO.cs" />
+    <Compile Include="Business\Proprietario.cs" />
+    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="Presentation\MainActivity.cs" />
+    <Compile Include="Data\Database.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
