@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Widget;
 using Android.Speech;
 using Android.Views.InputMethods;
+using Android.Graphics;
 
 namespace PickaPrato.Presentation {
     
@@ -25,14 +26,23 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.PagInicCliente);
 
-            var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
-			preferenciasButtom.Click += (sender, e) => {
-                StartActivity(typeof(EditarPreferencias));
+			historico = new string[] {
+				"Francesinha", "Arroz de pato"
 			};
 
-            historico = new string[] {
-                "Francesinha", "Arroz de pato"
+            var imageuser = FindViewById<ImageView>(Resource.Id.foto);
+            byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
+            Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
+            imageuser.SetImageBitmap(b);
+
+			var nome = FindViewById<TextView>(Resource.Id.nome);
+            nome.Text = Facade.atualUserC.Username;
+
+            var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
+            preferenciasButtom.Click += (sender, e) => {
+                StartActivity(typeof(EditarPreferencias));
             };
+
 
 			textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);

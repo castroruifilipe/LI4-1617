@@ -13,6 +13,10 @@ namespace PickaPrato.Business {
         public String Foto { set; get; }
 
 
+        public Cliente() {
+            
+        }
+
         public Cliente(String Username, String Password, String Foto) {
             this.Username = Username;
             this.Password = Password;

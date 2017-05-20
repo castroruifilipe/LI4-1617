@@ -12,7 +12,7 @@ namespace PickaPrato.Data {
     public class ServiceEngine {
 
         private HttpClient client;
-        private String urlBase = "http://192.168.126.167/PickaPratoServer/";
+        private String urlBase = "http://192.168.1.8/PickaPratoServer/";
 
 
         public ServiceEngine() {

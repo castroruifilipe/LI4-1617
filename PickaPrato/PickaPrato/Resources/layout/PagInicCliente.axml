@@ -11,10 +11,47 @@
     <ImageView
         p1:src="@drawable/logo"
         p1:layout_width="283.7dp"
-        p1:layout_height="150.7dp"
+        p1:layout_height="93.0dp"
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
+    <android.support.v7.widget.CardView
+        p1:layout_width="200dp"
+        p1:layout_height="80dp"
+        p1:elevation="12dp"
+        p1:id="@+id/cardview"
+        app:cardCornerRadius="10dp"
+        p1:layout_centerHorizontal="true"
+        p1:innerRadius="0dp"
+        p1:shape="ring"
+        p1:thicknessRatio="1.9"
+        p1:layout_gravity="center"
+        p1:minWidth="25px"
+        p1:minHeight="25px">
+        <ImageView
+            p1:id="@+id/foto"
+            p1:src="@android:drawable/ic_menu_gallery"
+            p1:layout_width="80.0dp"
+            p1:adjustViewBounds="true"
+            p1:layout_height="match_parent"
+            p1:layout_marginLeft="0.0dp"
+            p1:layout_gravity="right" />
+        <TextView
+            p1:text="Large Text"
+            p1:textAppearance="?android:attr/textAppearanceLarge"
+            p1:layout_width="match_parent"
+            p1:layout_height="match_parent"
+            p1:id="@+id/nome"
+            p1:layout_marginTop="9.5dp"
+            p1:layout_marginLeft="7.0dp"
+            p1:layout_marginRight="82.5dp"
+            p1:layout_marginBottom="7.5dp" />
+    </android.support.v7.widget.CardView>
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="10.0dp"
+        p1:id="@+id/space1"
+        p1:layout_marginBottom="19.0dp" />
     <ImageView
         p1:src="@drawable/micro"
         p1:layout_width="match_parent"

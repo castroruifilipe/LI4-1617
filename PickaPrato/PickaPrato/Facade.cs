@@ -10,22 +10,29 @@ namespace PickaPrato {
     public class Facade {
 
         private static ServiceEngine server = new ServiceEngine();
-
         private static UtilizadorDAO Utilizadores;
+		public static Cliente atualUserC = null;
+		public static Proprietario atualUserP = null;
 
 
         public static int IniciarSessao(String Username, String Password) {
             int r = -1;
             Cliente c = server.GetCliente(Username).Result;
-            if (c == null) {
+            if (c.Username == null) {
                 Proprietario p = server.GetProprietario(Username).Result;
-                if (p == null) {
+                if (p.Username == null) {
                     throw new UtilizadorExistsException();
                 } else {
-                    r = 2;
+                    if (p.Password == Password) {
+                        atualUserP = p;
+                        r = 2;
+                    }
                 }
             } else {
-                r = 1;
+                if (c.Password == Password) {
+                    atualUserC = c;
+                    r = 1;
+                }
             }
             return r;
         }
