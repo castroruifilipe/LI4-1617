@@ -23,7 +23,7 @@ namespace PickaPratoServer.Controllers {
         // GET: api/Cliente/5
         public Cliente Get(String id) {
             Console.Out.Write("Um pedido recebido" + id + "\n");
-            Cliente c = clientes.GetCliente();
+            Cliente c = clientes.GetCliente(id);
             return c;
         }
 
