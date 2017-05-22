@@ -18,6 +18,15 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.PagInicProp);
 
+			EditText nome = FindViewById<EditText>(Resource.Id.nome);
+            EditText localidade = FindViewById<EditText>(Resource.Id.morada);
+			EditText contacto = FindViewById<EditText>(Resource.Id.contacto);
+			EditText email = FindViewById<EditText>(Resource.Id.email);
+
+			nome.Text = Facade.atualUserP.Nome;
+            localidade.Text = Facade.atualUserP.Localizacao;
+            contacto.Text = Facade.atualUserP.Telefone;
+            email.Text = Facade.atualUserP.Email;
         }
     }
 }

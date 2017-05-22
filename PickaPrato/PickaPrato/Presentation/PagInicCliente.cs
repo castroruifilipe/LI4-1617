@@ -35,9 +35,6 @@ namespace PickaPrato.Presentation {
             Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
             imageuser.SetImageBitmap(b);
 
-			var nome = FindViewById<TextView>(Resource.Id.nome);
-            nome.Text = Facade.atualUserC.Username;
-
             var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
             preferenciasButtom.Click += (sender, e) => {
                 StartActivity(typeof(EditarPreferencias));

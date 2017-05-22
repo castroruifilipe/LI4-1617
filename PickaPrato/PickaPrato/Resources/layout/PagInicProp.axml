@@ -24,7 +24,7 @@
             p1:layout_width="match_parent"
             p1:hint="Nome do restaurante"
             p1:layout_height="wrap_content"
-            p1:id="@+id/username_edittext" />
+            p1:id="@+id/nome" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/username_layout"
@@ -35,7 +35,7 @@
             p1:layout_width="match_parent"
             p1:hint="Localidade"
             p1:layout_height="wrap_content"
-            p1:id="@+id/username_edittext" />
+            p1:id="@+id/morada" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/username_layout"
@@ -46,7 +46,7 @@
             p1:layout_width="match_parent"
             p1:hint="Contacto"
             p1:layout_height="wrap_content"
-            p1:id="@+id/username_edittext" />
+            p1:id="@+id/contacto" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/username_layout"
@@ -57,7 +57,7 @@
             p1:layout_width="match_parent"
             p1:hint="Email"
             p1:layout_height="wrap_content"
-            p1:id="@+id/username_edittext" />
+            p1:id="@+id/email" />
     </android.support.design.widget.TextInputLayout>
     <Space
         p1:layout_width="match_parent"

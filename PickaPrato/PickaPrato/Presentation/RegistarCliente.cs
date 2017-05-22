@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +18,19 @@ using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 using PickaPrato.Data;
 
+
 namespace PickaPrato.Presentation {
 
-    [Activity(Label = "RegistarRestaurante")]
+    [Activity(Label = "RegistarCliente")]
 
-    public class RegistarRestaurante : Activity {
+    public class RegistarCliente : Activity {
 
 		public static readonly int PickImageId = 1000;
 		private ImageView imageView;
         private CardView cardv;
         private SupportToolbar toolbar;
         private Android.Net.Uri uri;
-        
+
         
         protected override void OnCreate(Bundle savedInstanceState) {
             

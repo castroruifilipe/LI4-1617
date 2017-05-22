@@ -44,5 +44,12 @@ namespace PickaPrato.Data {
 			return p;
 			//}
 		}
+
+        public async Task PostRestaurante(Restaurante r) {
+            var uri = new Uri(urlBase + "api/Restaurante");
+            var json = JsonConvert.SerializeObject(r);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+        }
     }
 }

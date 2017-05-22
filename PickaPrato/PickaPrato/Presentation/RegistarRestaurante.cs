@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,13 +16,12 @@ using Android.Provider;
 
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
-using PickaPrato.Data;
 
 namespace PickaPrato.Presentation {
 
-    [Activity(Label = "RegistarCliente")]
+    [Activity(Label = "RegistarRestaurante")]
 
-    public class RegistarCliente : Activity {
+    public class RegistarRestaurante : Activity {
 
 		public static readonly int PickImageId = 1000;
 		private List<ImageView> imagens;
@@ -62,23 +60,29 @@ namespace PickaPrato.Presentation {
             EditText telefone = FindViewById<EditText>(Resource.Id.telefone_edittext);
             EditText email = FindViewById<EditText>(Resource.Id.email_edittext);
 
+            List<string> fotos = new List<string>();
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
             botaoRegistar.Click += (sender, e) => {
-                Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
-                var stream = new MemoryStream();
-                mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
-                var bytes = stream.ToArray();
-				var foto = Convert.ToBase64String(bytes);
-				
-				Facade.RegistarCliente(user.Text, pass.Text, foto);
-
+                for (int i = 0; i < nImagens; i++) {
+					Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
+					var stream = new MemoryStream();
+					mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+					var bytes = stream.ToArray();
+					var foto = Convert.ToBase64String(bytes);
+                    fotos.Add(foto);
+                }
+                Facade.RegistarRestaurante(user.Text, pass.Text, nome.Text, morada.Text, telefone.Text, email.Text, fotos);
             };
-
         }
 
-
-
         private void ButtonOnClick(object sender, EventArgs eventArgs) {
+            if (nImagens == 6) {
+				new AlertDialog.Builder(this).
+					SetPositiveButton("OK", (senderAlert, args) => { }).
+					SetMessage("Já inseriu todas as imagens!").
+					SetTitle("Erro").
+					Show();
+			}
 			Intent = new Intent();
 			Intent.SetType("image/*");
 			Intent.SetAction(Intent.ActionGetContent);
@@ -90,6 +94,7 @@ namespace PickaPrato.Presentation {
 				uri = data.Data;
                 imagens[nImagens].SetImageURI(uri);
                 imagens[nImagens].Visibility = ViewStates.Visible;
+                nImagens++;
 			}
 		}
     }

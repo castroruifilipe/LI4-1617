@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using PickaPrato.Data;
 using PickaPrato.Business;
 using PickaPrato.Exceptions;
-
+using System.Collections.Generic;
 
 namespace PickaPrato {
 
@@ -21,7 +21,7 @@ namespace PickaPrato {
             Cliente c = server.GetCliente(Username).Result;
             if (c.Username == null) {
                 Restaurante p = server.GetRestaurante(Username).Result;
-                if (p.Username == null) {
+                if (p.Proprietario == null) {
                     throw new UtilizadorExistsException();
                 } else {
                     if (p.Password == Password) {
@@ -42,8 +42,13 @@ namespace PickaPrato {
             Cliente c = new Cliente(Username, Password, Foto);
             Task.Run(() => server.PostCliente(c));
         }
-        public static void RegistarRestaurante(string Username, string Password, string Nome, string Morada, string Telefone, string Email) {
+
+		public static void RegistarRestaurante(String Proprietario, String Password, String Localizacao, String Telefone,
+                                               String Email, String Nome, List<string> Fotos) {
+            Restaurante r = new Restaurante(Proprietario, Password, Localizacao, Telefone, Email, Nome, Fotos);
+            Task.Run(() => server.PostRestaurante(r));
         }
+
         public static void AdicionaPrato(string Descricao, string[] Fotos, Ingrediente[] Ingredientes, bool[] Customizavel) { }
         public static void EditarPreferencias(){}
         public static void PesquisaPrato() { }
