@@ -25,14 +25,14 @@ namespace PickaPrato.Presentation {
 			base.OnCreate(bundle);
 
             pratoList = new List<Prato>();
-            Prato teste = new Prato(1, "Francesinha");
+            /*Prato teste = new Prato(1, "Francesinha");
             pratoList.Add(teste);
 			pratoList.Add(teste);
 			pratoList.Add(teste);
 			pratoList.Add(teste);
 			pratoList.Add(teste);
 			pratoList.Add(teste);
-			pratoList.Add(teste);
+			pratoList.Add(teste);*/
 
 
 			SetContentView(Resource.Layout.ListaPratos);
@@ -73,8 +73,8 @@ namespace PickaPrato.Presentation {
 		public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 			PratoHolder ph = holder as PratoHolder;
 
-            ph.Image.SetImageResource(pratoList[position].photo);
-            ph.Caption.Text = pratoList[position].designacao;
+            //ph.Image.SetImageResource(pratoList[position].photo);
+            //ph.Caption.Text = pratoList[position].designacao;
 		}
 
 		public override int ItemCount {

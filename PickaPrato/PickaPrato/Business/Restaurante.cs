@@ -2,13 +2,13 @@
 
 namespace PickaPrato.Business {
     
-    public class Proprietario {
+    public class Restaurante {
         
         public String Username { set; get; }
         public String Password { set; get; }
 
 
-		public Proprietario(String Username, String Password) {
+		public Restaurante(String Username, String Password) {
 			this.Username = Username;
 			this.Password = Password;
 		}
