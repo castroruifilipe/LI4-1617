@@ -15,7 +15,7 @@ namespace PickaPratoServer.Data
 
         SqlConnection connection = new SqlConnection("Server=DIOGO-PC\\SQLEXPRESS; Database=PickPrato; Trusted_Connection=True;");
 
-        public Cliente GetCliente()
+        public Cliente GetCliente(String id)
         {
 
             connection.Open();
@@ -28,7 +28,7 @@ namespace PickaPratoServer.Data
                 from Cliente
                 where username = @username
             ";
-            command.Parameters.Add(new SqlParameter("@username","diogo"));
+            command.Parameters.Add(new SqlParameter("@username",id));
             var result = command.ExecuteReader();
             Cliente c = new Cliente();
 
@@ -36,6 +36,7 @@ namespace PickaPratoServer.Data
             {
                 c.Username = (String)result["username"];
                 c.Password = (String)result["password"];
+                c.Foto = (String)result["fotografia"];
             }
             return c;
         }
@@ -53,7 +54,7 @@ namespace PickaPratoServer.Data
             ";
             command.Parameters.Add(new SqlParameter("@username", c.Username));
             command.Parameters.Add(new SqlParameter("@password", c.Password));
-            command.Parameters.Add(new SqlParameter("@foto", c.foto));
+            command.Parameters.Add(new SqlParameter("@foto", c.Foto));
             //SqlParameter p = new SqlParameter("@foto", SqlDbType.VarBinary);
             //p.Value = c.foto;
             //Debug.Print(c.foto);
