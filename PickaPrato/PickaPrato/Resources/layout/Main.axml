@@ -64,7 +64,7 @@
         p1:layout_height="57.0dp"
         p1:layout_gravity="center" />
     <Button
-        p1:id="@+id/registarprop"
+        p1:id="@+id/registarest"
         p1:text="REGISTAR RESTAURANTE"
         p1:layout_width="156.0dp"
         p1:layout_height="wrap_content"

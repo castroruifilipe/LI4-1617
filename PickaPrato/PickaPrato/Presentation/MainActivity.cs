@@ -18,9 +18,13 @@ namespace PickaPrato.Business {
 
             SetContentView(Resource.Layout.Main);
 
-            var registarButtom = FindViewById<Button>(Resource.Id.registarcliente);
-            registarButtom.Click += (sender, e) => {
+            var registarClienteButtom = FindViewById<Button>(Resource.Id.registarcliente);
+            registarClienteButtom.Click += (sender, e) => {
                 StartActivity(typeof(RegistarCliente));
+			};
+            var registarRestauranteButtom = FindViewById<Button>(Resource.Id.registarest);
+			registarRestauranteButtom.Click += (sender, e) => {
+                StartActivity(typeof(RegistarRestaurante));
 			};
 
 			TextView username = FindViewById<TextView>(Resource.Id.username);

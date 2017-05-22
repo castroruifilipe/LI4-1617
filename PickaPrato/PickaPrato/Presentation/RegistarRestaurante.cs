@@ -21,13 +21,13 @@ using PickaPrato.Data;
 
 namespace PickaPrato.Presentation {
 
-    [Activity(Label = "RegistarRestaurante")]
+    [Activity(Label = "RegistarCliente")]
 
-    public class RegistarRestaurante : Activity {
+    public class RegistarCliente : Activity {
 
 		public static readonly int PickImageId = 1000;
-		private ImageView imageView;
-        private CardView cardv;
+		private List<ImageView> imagens;
+        private int nImagens;
         private SupportToolbar toolbar;
         private Android.Net.Uri uri;
         
@@ -36,21 +36,32 @@ namespace PickaPrato.Presentation {
             
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.RegistarCliente);
+            nImagens = 0;
+
+            SetContentView(Resource.Layout.RegistarRestaurante);
 
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
-            mTitle.SetText("Registar cliente",TextView.BufferType.Normal);
+            mTitle.SetText("Registar restaurante",TextView.BufferType.Normal);
 
-            cardv = FindViewById<CardView>(Resource.Id.cardview);
-            cardv.Visibility = ViewStates.Invisible;
+            imagens = new List<ImageView>();
+            imagens.Add(FindViewById<ImageView>(Resource.Id.imagem1));
+			imagens.Add(FindViewById<ImageView>(Resource.Id.imagem2));
+			imagens.Add(FindViewById<ImageView>(Resource.Id.imagem3));
+			imagens.Add(FindViewById<ImageView>(Resource.Id.imagem4));
+			imagens.Add(FindViewById<ImageView>(Resource.Id.imagem5));
+			imagens.Add(FindViewById<ImageView>(Resource.Id.imagem6));
 
-            imageView = FindViewById<ImageView>(Resource.Id.imageview);
             Button button = FindViewById<Button>(Resource.Id.escolherimg);
 			button.Click += ButtonOnClick;
            
             EditText user = FindViewById<EditText>(Resource.Id.username_edittext);
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
+            EditText nome = FindViewById<EditText>(Resource.Id.nome_edittext);
+            EditText morada = FindViewById<EditText>(Resource.Id.username_edittext);
+            EditText telefone = FindViewById<EditText>(Resource.Id.telefone_edittext);
+            EditText email = FindViewById<EditText>(Resource.Id.email_edittext);
+
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
             botaoRegistar.Click += (sender, e) => {
                 Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
@@ -77,8 +88,8 @@ namespace PickaPrato.Presentation {
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
 			if ((requestCode == PickImageId) && (resultCode == Result.Ok) && (data != null)) {
 				uri = data.Data;
-				imageView.SetImageURI(uri);
-                cardv.Visibility = ViewStates.Visible;
+                imagens[nImagens].SetImageURI(uri);
+                imagens[nImagens].Visibility = ViewStates.Visible;
 			}
 		}
     }
