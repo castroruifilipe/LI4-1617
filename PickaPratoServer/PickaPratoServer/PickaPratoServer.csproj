@@ -102,9 +102,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\PratoController.cs" />
+    <Compile Include="Controllers\RestauranteController.cs" />
     <Compile Include="Data\ClienteDAO.cs" />
+    <Compile Include="Data\PratoDAO.cs" />
+    <Compile Include="Data\RestauranteDAO.cs" />
     <Compile Include="Global.asax.cs" />
+    <Compile Include="Models\Classificacao.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Ingrediente.cs" />
+    <Compile Include="Models\Prato.cs" />
+    <Compile Include="Models\Restaurante.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

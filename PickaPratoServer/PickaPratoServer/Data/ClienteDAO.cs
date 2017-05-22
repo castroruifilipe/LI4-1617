@@ -36,7 +36,8 @@ namespace PickaPratoServer.Data
             {
                 c.Username = (String)result["username"];
                 c.Password = (String)result["password"];
-                c.Foto = (String)result["fotografia"];
+                if (result["fotografia"] != System.DBNull.Value)
+                    c.Foto = (String)result["fotografia"];
             }
             return c;
         }
@@ -54,7 +55,8 @@ namespace PickaPratoServer.Data
             ";
             command.Parameters.Add(new SqlParameter("@username", c.Username));
             command.Parameters.Add(new SqlParameter("@password", c.Password));
-            command.Parameters.Add(new SqlParameter("@foto", c.Foto));
+            if(c.Foto==null) command.Parameters.Add(new SqlParameter("@foto", DBNull.Value));
+            else command.Parameters.Add(new SqlParameter("@foto", c.Foto));
             //SqlParameter p = new SqlParameter("@foto", SqlDbType.VarBinary);
             //p.Value = c.foto;
             //Debug.Print(c.foto);
