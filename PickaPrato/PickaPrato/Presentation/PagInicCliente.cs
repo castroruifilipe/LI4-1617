@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Widget;
 using Android.Speech;
 using Android.Views.InputMethods;
+using Android.Views;
 using Android.Graphics;
 
 namespace PickaPrato.Presentation {
@@ -30,10 +31,14 @@ namespace PickaPrato.Presentation {
 				"Francesinha", "Arroz de pato"
 			};
 
-            var imageuser = FindViewById<ImageView>(Resource.Id.foto);
-            byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
-            Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
-            imageuser.SetImageBitmap(b);
+			var imageuser = FindViewById<ImageView>(Resource.Id.foto);
+            if (Facade.atualUserC.Foto == null) {
+				imageuser.Visibility = ViewStates.Invisible;
+            } else {
+				byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
+				Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
+				imageuser.SetImageBitmap(b);
+            }
 
             var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
             preferenciasButtom.Click += (sender, e) => {

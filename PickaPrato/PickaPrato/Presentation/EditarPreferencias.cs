@@ -8,8 +8,11 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
+
+using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace PickaPrato.Presentation {
     
@@ -19,6 +22,8 @@ namespace PickaPrato.Presentation {
     public class EditarPreferencias : Activity {
         
         private List<string> listaIngr;
+        private List<string> listaPref;
+        private SupportToolbar toolbar;
 
         
         protected override void OnCreate(Bundle savedInstanceState) {
@@ -26,15 +31,34 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.Preferencias);
 
-            listaIngr = Facade.GetPreferencias();
+			toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
+			mTitle.SetText("Editar preferências", TextView.BufferType.Normal);
 
+            listaIngr = Facade.GetIngredientes();
+			listaPref = Facade.GetPreferencias();
             ListView listview = FindViewById<ListView>(Resource.Id.listview);
-            listview.Adapter = new HomeScreenAdapter(this, listaIngr);
+            listview.Adapter = new HomeScreenAdapter(this, listaIngr, listaPref);
             listview.ItemClick += OnListItemClick;
 
+
+            for (int i = 0; i < listaIngr.Count; i++) {
+                if (listaPref.Contains(listaIngr[i])) {
+                    listview.SetItemChecked(i, true);
+                }
+            }
+
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
-			guardarButtom.Click += (sender, e) => {
-                //
+            guardarButtom.Click += (sender, e) => {
+                List<string> selecionados = new List<string>();
+				long[] ids = listview.GetCheckedItemIds();
+                for (int i = 0; i < listaIngr.Count; i++) {
+                    long id = listview.Adapter.GetItemId(i);
+                    if (ids.Contains(id)) {
+                        selecionados.Add(listaIngr[i]);
+                    }
+                }
+                Facade.EditarPreferencias(selecionados);
             };
 		}
 
@@ -48,11 +72,13 @@ namespace PickaPrato.Presentation {
 	public class HomeScreenAdapter : BaseAdapter<string> {
 		
         List<string> items;
+        List<string> ativos;
 		Activity context;
 
-		public HomeScreenAdapter(Activity context, List<string> items) : base() {
+        public HomeScreenAdapter(Activity context, List<string> items, List<string> ativos) : base() {
 			this.context = context;
 			this.items = items;
+            this.ativos = ativos;
 		}
 
 		public override long GetItemId(int position) {
@@ -68,13 +94,25 @@ namespace PickaPrato.Presentation {
 		}
 
 		public override View GetView(int position, View convertView, ViewGroup parent) {
-			var item = items[position];
-			View view = convertView;
-            if (view == null) {
-                view = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekbox, null);
+  			var item = items[position];
+            ViewHolder row = new ViewHolder();
+            if (convertView == null) {
+                convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekbox, null);
             }
-            view.FindViewById<TextView>(Resource.Id.descricao).Text = item;
-			return view;
-		}
+			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
+			row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
+            row.text.Text = items[position];
+            if (this.ativos.Contains(items[position])) {
+				row.check.Checked = true;
+            } else {
+                row.check.Checked = false;
+            }
+			return convertView;
+        }
+
+        public class ViewHolder {
+            public TextView text;
+            public CheckBox check;
+        }
 	}
 }

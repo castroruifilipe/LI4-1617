@@ -15,18 +15,21 @@ namespace PickaPrato {
         public static Cliente atualUserC = null;
         public static Restaurante atualUserP = null;
 
-
         public static int IniciarSessao(String Username, String Password) {
             int r = -1;
             Cliente c = server.GetCliente(Username).Result;
             if (c.Username == null) {
                 Restaurante p = server.GetRestaurante(Username).Result;
                 if (p.Proprietario == null) {
-                    throw new UtilizadorExistsException();
+                    r = -2;
                 } else {
                     if (p.Password == Password) {
-                        atualUserP = p;
-                        r = 2;
+                        if (p.Estado == 1) {
+	                        atualUserP = p;
+	                        r = 2;
+                        } else {
+                            r = -3;
+                        }
                     }
                 }
             } else {
@@ -38,15 +41,25 @@ namespace PickaPrato {
             return r;
         }
 
-        public static void RegistarCliente(string Username, string Password, String Foto) {
+        public static bool RegistarCliente(string Username, string Password, String Foto) {
+            Cliente teste = server.GetCliente(Username).Result;
+            if (teste.Username != null) {
+                return false;
+            }
             Cliente c = new Cliente(Username, Password, Foto);
             Task.Run(() => server.PostCliente(c));
+            return true;
         }
 
-		public static void RegistarRestaurante(String Proprietario, String Password, String Localizacao, String Telefone,
+		public static bool RegistarRestaurante(String Proprietario, String Password, String Localizacao, String Telefone,
                                                String Email, String Nome, List<string> Fotos) {
+            Restaurante teste = server.GetRestaurante(Proprietario).Result;
+            if (teste.Proprietario != null) {
+                return false;
+            }
             Restaurante r = new Restaurante(Proprietario, Password, Localizacao, Telefone, Email, Nome, Fotos);
             Task.Run(() => server.PostRestaurante(r));
+            return true;
         }
 
         public static List<String> GetPreferencias() {
@@ -54,8 +67,16 @@ namespace PickaPrato {
             return preferencias;
         }
 
+        public static List<String> GetIngredientes() {
+            List<String> ingredientes = server.GetIngredientes().Result;
+            return ingredientes;
+        }
+		
+        public static void EditarPreferencias(List<String> preferencias) {
+            Task.Run(() => server.PostPreferencias(atualUserC.Username, preferencias));
+        }
+
         public static void AdicionaPrato(string Descricao, string[] Fotos, Ingrediente[] Ingredientes, bool[] Customizavel) { }
-        public static void EditarPreferencias(){}
         public static void PesquisaPrato() { }
         public static void EscolhePrato() { }
         public static void GuardaPesquisa() { }
