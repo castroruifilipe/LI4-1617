@@ -38,20 +38,30 @@ namespace PickaPrato.Business {
 						SetTitle("Erro").
 						Show();
                 } else {
-	                try {
-	                    int r = Facade.IniciarSessao(username.Text, password.Text);
-	                    if (r == 1) {
-	                        StartActivity(typeof(PagInicCliente));
-	                    } else if (r == 2) {
-	                        StartActivity(typeof(PagInicProp));
-	                    }
-	                } catch (UtilizadorExistsException) {
+                    int r = Facade.IniciarSessao(username.Text, password.Text);
+                    if (r == 1) {
+                        StartActivity(typeof(PagInicCliente));
+                    } else if (r == 2) {
+                        StartActivity(typeof(PagInicProp));
+                    } else if (r == -1) {
 	                    new AlertDialog.Builder(this).
                             SetPositiveButton("OK", (senderAlert, args) => { }).
-	                        SetMessage("Dados incorretos!").
+	                        SetMessage("Password incorreta!").
 	                        SetTitle("Erro").
 	                        Show();
-	                }
+					} else if (r == -2) {
+						new AlertDialog.Builder(this).
+							SetPositiveButton("OK", (senderAlert, args) => { }).
+							SetMessage("Utilizador não existe!").
+							SetTitle("Erro").
+							Show();
+                    } else {
+						new AlertDialog.Builder(this).
+							SetPositiveButton("OK", (senderAlert, args) => { }).
+							SetMessage("Restaurante não validado!").
+							SetTitle("Erro").
+							Show();
+                    }
                 }
 			};
         }

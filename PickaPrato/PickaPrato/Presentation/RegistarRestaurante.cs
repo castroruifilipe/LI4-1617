@@ -71,7 +71,20 @@ namespace PickaPrato.Presentation {
 					var foto = Convert.ToBase64String(bytes);
                     fotos.Add(foto);
                 }
-                Facade.RegistarRestaurante(user.Text, pass.Text, nome.Text, morada.Text, telefone.Text, email.Text, fotos);
+                bool r = Facade.RegistarRestaurante(user.Text, pass.Text, nome.Text, morada.Text, telefone.Text, email.Text, fotos);
+                if (r == false) {
+					new AlertDialog.Builder(this).
+						SetPositiveButton("OK", (senderAlert, args) => { }).
+						SetMessage("Utilizador já registado!").
+						SetTitle("Erro").
+						Show();
+                } else {
+					new AlertDialog.Builder(this).
+						SetPositiveButton("OK", (senderAlert, args) => { this.Finish(); }).
+						SetMessage("Pedido de registo efetuado com sucesso!").
+						SetTitle("Sucesso").
+						Show();
+                }
             };
         }
 

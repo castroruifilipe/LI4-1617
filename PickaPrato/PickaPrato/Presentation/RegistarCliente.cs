@@ -17,7 +17,8 @@ using Android.Provider;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 using PickaPrato.Data;
-
+using PickaPrato.Exceptions;
+using System.Threading.Tasks;
 
 namespace PickaPrato.Presentation {
 
@@ -30,6 +31,7 @@ namespace PickaPrato.Presentation {
         private CardView cardv;
         private SupportToolbar toolbar;
         private Android.Net.Uri uri;
+        private bool imagem = false;
 
         
         protected override void OnCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.RegistarCliente);
 
-            toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
             mTitle.SetText("Registar cliente",TextView.BufferType.Normal);
 
@@ -52,15 +54,31 @@ namespace PickaPrato.Presentation {
             EditText user = FindViewById<EditText>(Resource.Id.username_edittext);
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
             Button botaoRegistar = FindViewById<Button>(Resource.Id.bregistar);
+            Boolean r;
             botaoRegistar.Click += (sender, e) => {
-                Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
-                var stream = new MemoryStream();
-                mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
-                var bytes = stream.ToArray();
-				var foto = Convert.ToBase64String(bytes);
-				
-				Facade.RegistarCliente(user.Text, pass.Text, foto);
-
+                if (imagem == true) {
+                    Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
+                    var stream = new MemoryStream();
+                    mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                    var bytes = stream.ToArray();
+                    var foto = Convert.ToBase64String(bytes);
+                    r = Facade.RegistarCliente(user.Text, pass.Text, foto);
+                } else {
+                    r = Facade.RegistarCliente(user.Text, pass.Text, null);
+                }
+                if (r == false) {
+					new AlertDialog.Builder(this).
+						SetPositiveButton("OK", (senderAlert, args) => { }).
+						SetMessage("Utilizador já registado!").
+						SetTitle("Erro").
+						Show();
+                } else {
+					new AlertDialog.Builder(this).
+						SetPositiveButton("OK", (senderAlert, args) => { this.Finish(); }).
+						SetMessage("Registado com sucesso!").
+						SetTitle("Sucesso").
+						Show();
+                }
             };
 
         }
@@ -72,6 +90,7 @@ namespace PickaPrato.Presentation {
 			Intent.SetType("image/*");
 			Intent.SetAction(Intent.ActionGetContent);
 			StartActivityForResult(Intent.CreateChooser(Intent, "Select Picture"), PickImageId);
+            imagem = true;
 		}
 
 		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) {
