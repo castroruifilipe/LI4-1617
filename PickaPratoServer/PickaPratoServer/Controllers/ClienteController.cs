@@ -7,6 +7,7 @@ using System.Web.Http;
 using PickaPratoServer.Models;
 using PickaPratoServer.Data;
 using System.Diagnostics;
+using System.Net.Http;
 
 namespace PickaPratoServer.Controllers {
 
@@ -22,7 +23,7 @@ namespace PickaPratoServer.Controllers {
 
         // GET: api/Cliente/5
         public Cliente Get(String id) {
-            Console.Out.Write("Um pedido recebido" + id + "\n");
+            Debug.Write("Um pedido recebido" + id + "\n");
             Cliente c = clientes.GetCliente(id);
             return c;
         }

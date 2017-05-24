@@ -93,7 +93,7 @@ namespace PickaPratoServer.Data
             return p;
         }
 
-        public void Post(Prato p, String restaurante){
+        public void Post(Prato p){
             connection.Open();
 
             SqlCommand command = connection.CreateCommand();
@@ -111,7 +111,7 @@ namespace PickaPratoServer.Data
             command.Parameters.Add(new SqlParameter("@tipoComida", p.TipoComida));
             command.Parameters.Add(new SqlParameter("@preco", p.Preco));
             command.Parameters.Add(new SqlParameter("@classificacao", p.Classificacao));
-            command.Parameters.Add(new SqlParameter("@restaurante", restaurante));
+            command.Parameters.Add(new SqlParameter("@restaurante", p.Restaurante.Proprietario));
             command.Parameters.Add(new SqlParameter("@fotografia", p.Fotografia));
 
             var result = command.ExecuteNonQuery();
@@ -135,7 +135,6 @@ namespace PickaPratoServer.Data
                 (@prato ,@ingrediente,@costumizavel)
                 ";
                 command.Parameters.Add(new SqlParameter("@prato", id));
-                command.Parameters.Add(new SqlParameter("@ingrediente", i.IdIngrediente));
                 command.Parameters.Add(new SqlParameter("@costumizavel", i.Constumizavel));
                 result = command.ExecuteNonQuery();
             }

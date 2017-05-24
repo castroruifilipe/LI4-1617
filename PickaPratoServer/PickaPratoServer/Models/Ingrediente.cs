@@ -8,7 +8,6 @@ namespace PickaPratoServer.Models
     public class Ingrediente
     {
         public String Designacao;
-        public int IdIngrediente;
         public Byte Constumizavel;
     }
 }

@@ -62,6 +62,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -102,10 +103,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\IngredienteController.cs" />
     <Compile Include="Controllers\PratoController.cs" />
+    <Compile Include="Controllers\PreferenciaController.cs" />
     <Compile Include="Controllers\RestauranteController.cs" />
     <Compile Include="Data\ClienteDAO.cs" />
+    <Compile Include="Data\IngredienteDAO.cs" />
     <Compile Include="Data\PratoDAO.cs" />
+    <Compile Include="Data\PreferenciaDAO.cs" />
     <Compile Include="Data\RestauranteDAO.cs" />
     <Compile Include="Global.asax.cs" />
     <Compile Include="Models\Classificacao.cs" />

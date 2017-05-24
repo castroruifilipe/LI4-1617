@@ -30,10 +30,7 @@ namespace PickaPratoServer.Controllers
         // POST: api/Restaurante
         public void Post(Restaurante r)
         {
-            foreach(string s in r.Fotografias){
-                Debug.WriteLine(s);
-            }
-            restaurantes.Put(r);
+                restaurantes.Put(r);
         }
 
         // PUT: api/Restaurante/5

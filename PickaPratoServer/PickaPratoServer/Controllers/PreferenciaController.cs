@@ -24,14 +24,14 @@ namespace PickaPratoServer.Controllers
         public List<string> Get(string id)
         {
             List<string> r = new List<string>();
-            Debug.WriteLine("AQUIIIII");
             r = preferencias.Get(id);
             return r;
         }
 
         // POST: api/Preferencia
-        public void Post([FromBody]string value)
+        public void Post(List<string> value)
         {
+            preferencias.Put(value);
         }
 
         // PUT: api/Preferencia/5
