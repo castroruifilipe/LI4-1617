@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PickaPrato.Business;
 using System.Net;
+using System.Collections.Generic;
 
 namespace PickaPrato.Data {
     
@@ -48,6 +49,21 @@ namespace PickaPrato.Data {
         public async Task PostRestaurante(Restaurante r) {
             var uri = new Uri(urlBase + "api/Restaurante");
             var json = JsonConvert.SerializeObject(r);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+        }
+
+        public async Task<List<string>> GetPreferencias(String username) {
+            var response = client.GetAsync("api/Preferencia" + username).Result;
+            var stream = await response.Content.ReadAsStringAsync();
+            List<string>  preferencias = JsonConvert.DeserializeObject<List<string>>(stream);
+            return preferencias;
+        }
+
+        public async Task PostPreferencias(String username, List<string> preferencias) {
+            var uri = new Uri(urlBase + "api/Preferencia");
+            preferencias.Insert(0, username);
+            var json = JsonConvert.SerializeObject(preferencias);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(uri, content);
         }

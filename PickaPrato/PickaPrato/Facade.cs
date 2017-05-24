@@ -49,6 +49,11 @@ namespace PickaPrato {
             Task.Run(() => server.PostRestaurante(r));
         }
 
+        public static List<String> GetPreferencias() {
+            List<String> preferencias = server.GetPreferencias(atualUserC.Username).Result;
+            return preferencias;
+        }
+
         public static void AdicionaPrato(string Descricao, string[] Fotos, Ingrediente[] Ingredientes, bool[] Customizavel) { }
         public static void EditarPreferencias(){}
         public static void PesquisaPrato() { }

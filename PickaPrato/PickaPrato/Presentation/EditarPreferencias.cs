@@ -15,31 +15,22 @@ namespace PickaPrato.Presentation {
     
     [Activity(Label = "EditarPreferencias")]
 
-    public class EditarPreferencias : Activity {
 
+    public class EditarPreferencias : Activity {
+        
         private List<string> listaIngr;
+
         
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.Preferencias);
 
-            listaIngr = new List<string>();
-			listaIngr.Add("Tomate2");
-			listaIngr.Add("Tomate");
-			listaIngr.Add("Tomate2");
-			listaIngr.Add("Tomate");
-			listaIngr.Add("Tomate2");
-			listaIngr.Add("Tomate");
-			listaIngr.Add("Tomate2");
-			listaIngr.Add("Tomate");
-			listaIngr.Add("Tomate2");
-			listaIngr.Add("Tomate");
+            listaIngr = Facade.GetPreferencias();
 
             ListView listview = FindViewById<ListView>(Resource.Id.listview);
             listview.Adapter = new HomeScreenAdapter(this, listaIngr);
             listview.ItemClick += OnListItemClick;
-
 
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
 			guardarButtom.Click += (sender, e) => {
