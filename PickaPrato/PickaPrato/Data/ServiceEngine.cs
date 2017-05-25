@@ -71,5 +71,12 @@ namespace PickaPrato.Data {
             List<string> ingredientes = JsonConvert.DeserializeObject<List<string>>(stream);
             return ingredientes;
         }
+
+		public async Task PostPrato(Prato p) {
+			var uri = new Uri(urlBase + "api/Prato");
+			var json = JsonConvert.SerializeObject(p);
+			var content = new StringContent(json, Encoding.UTF8, "application/json");
+			var response = await client.PostAsync(uri, content);
+		}
     }
 }

@@ -83,8 +83,6 @@ namespace PickaPrato.Presentation {
 
         }
 
-
-
         private void ButtonOnClick(object sender, EventArgs eventArgs) {
 			Intent = new Intent();
 			Intent.SetType("image/*");

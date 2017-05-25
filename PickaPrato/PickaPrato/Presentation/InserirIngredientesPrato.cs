@@ -12,17 +12,18 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
+using PickaPrato.Business;
+
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace PickaPrato.Presentation {
     
-    [Activity(Label = "EditarPreferencias")]
+    [Activity(Label = "InserirIngredientesPrato")]
 
 
-    public class EditarPreferencias : Activity {
+    public class InserirIngredientesPrato : Activity {
         
-        private List<string> listaIngr;
-        private List<string> listaPref;
+        public static List<Ingrediente> listaIngr;
         private SupportToolbar toolbar;
 
         
@@ -33,44 +34,35 @@ namespace PickaPrato.Presentation {
 
 			toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
-			mTitle.SetText("Editar preferências", TextView.BufferType.Normal);
+			mTitle.SetText("Inserir ingredientes", TextView.BufferType.Normal);
 
-            listaIngr = Facade.GetIngredientes();
-			listaPref = Facade.GetPreferencias();
+            List<string> listastrings = Facade.GetIngredientes();
             ListView listview = FindViewById<ListView>(Resource.Id.listview);
-            listview.Adapter = new HomeScreenAdapter(this, listaIngr, listaPref);
-            listview.ItemClick += OnListItemClick;
+            listview.Adapter = new IngredientesPratoAdapter(this, listastrings);
 
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
-            HomeScreenAdapter adapter = (HomeScreenAdapter)listview.Adapter;
+			listaIngr = new List<Ingrediente>();
+			IngredientesPratoAdapter adapter = (IngredientesPratoAdapter)listview.Adapter;
             guardarButtom.Click += (sender, e) => {
-                List<string> selecionados = adapter.Ativos;
-                for (int i = 0; i < selecionados.Count; i++) {
-                    Console.WriteLine(selecionados[i] + "\n\n");
+				Dictionary<string, bool> ativos = adapter.Ativos;
+				foreach (KeyValuePair<string, bool> entry in ativos) {
+					Ingrediente ing = new Ingrediente(entry.Key, entry.Value);
+                    listaIngr.Add(ing);
                 }
-                Facade.EditarPreferencias(selecionados);
             };
-		}
-
-		void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e) {
-			var listView = sender as ListView;
-            var t = listaIngr[e.Position];
-			Toast.MakeText(this, t, ToastLength.Short).Show();
 		}
     }
 
-	public class HomeScreenAdapter : BaseAdapter<string> {
+    public class IngredientesPratoAdapter : BaseAdapter<string> {
 		
         public List<string> items;
-        public List<string> Preativos;
-        public List<string> Ativos { get; }
+        public Dictionary<string, bool> Ativos { get; }
 		public Activity context;
 
-        public HomeScreenAdapter(Activity context, List<string> items, List<string> Preativos) : base() {
+        public IngredientesPratoAdapter(Activity context, List<string> items) : base() {
 			this.context = context;
 			this.items = items;
-            this.Preativos = Preativos;
-            this.Ativos = new List<string>();
+            this.Ativos = new Dictionary<string, bool>();
 		}
 
 		public override long GetItemId(int position) {
@@ -93,27 +85,32 @@ namespace PickaPrato.Presentation {
             }
 			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
 			row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
+            row.swit = convertView.FindViewById<Switch>(Resource.Id.switch1);
+            row.swit.Visibility = ViewStates.Invisible;
             row.text.Text = items[position];
 			row.check.CheckedChange += (sender, e) => {
                 if (row.check.Checked == true) {
-                    Ativos.Add(row.text.Text);
+                    Ativos.Add(row.text.Text, row.swit.Checked);
+                    row.swit.Visibility = ViewStates.Visible;
                 } else {
                     Ativos.Remove(row.text.Text);
+                    row.swit.Visibility = ViewStates.Invisible;
                 }
 			};
-
-            if (this.Preativos.Contains(items[position])) {
-                row.check.Checked = true;
-            } else {
-                row.check.Checked = false;
-            }
-
+            row.swit.CheckedChange += (sender, e) => {
+                if (row.swit.Checked == true) {
+                    Ativos[row.text.Text] = true;
+                } else {
+                    Ativos[row.text.Text] = false;
+                }
+            };
 			return convertView;
         }
 
         public class ViewHolder {
             public TextView text;
             public CheckBox check;
+            public Switch swit;
         }
 	}
 }

@@ -9,13 +9,30 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using PickaPrato.Business;
 
-namespace PickaPrato.Business
-{
-    public class Ingrediente
-    {
-        private string descricao  { get; set; }
-        private int id  { get; set; }
+namespace PickaPrato.Business {
+    
+    public class Ingrediente {
+        
+        public string Designacao  { get; set; }
+        public byte Customizavel  { get; set; }
+
+
+        public Ingrediente(string Designacao) {
+            this.Designacao = Designacao;
+        }
+
+        public Ingrediente(string Designacao, bool Customizavel) {
+            this.Designacao = Designacao;
+            if (Customizavel == true) {
+				this.Customizavel = 1;
+            } else {
+                this.Customizavel = 0;
+            }
+        }
+
+        public Ingrediente() {
+            
+        }
     }
 }

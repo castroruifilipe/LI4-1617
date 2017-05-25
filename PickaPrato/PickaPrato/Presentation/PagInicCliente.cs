@@ -45,6 +45,11 @@ namespace PickaPrato.Presentation {
                 StartActivity(typeof(EditarPreferencias));
             };
 
+            var terminarButtom = FindViewById<Button>(Resource.Id.termsessao);
+            terminarButtom.Click += (sender, e) => {
+                Facade.atualUserC = null;
+                this.Finish();
+            };
 
 			textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
