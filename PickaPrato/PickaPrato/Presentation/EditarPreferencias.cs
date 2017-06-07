@@ -49,6 +49,7 @@ namespace PickaPrato.Presentation {
                     Console.WriteLine(selecionados[i] + "\n\n");
                 }
                 Facade.EditarPreferencias(selecionados);
+                this.Finish();
             };
 		}
 

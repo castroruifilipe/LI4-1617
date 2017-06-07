@@ -42,8 +42,14 @@ namespace PickaPrato.Presentation {
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.SetLayoutManager(mLayoutManager);
 
-            mAdapter = new PratoAdapter(pratoList, this);
-            mRecyclerView.SetAdapter(mAdapter);
+            mAdapter = new PratoAdapter(pratoList);
+            mAdapter.ItemClick += OnItemClick;
+			mRecyclerView.SetAdapter(mAdapter);
+		}
+
+		void OnItemClick(object sender, int position) {
+            DescricaoPrato.pratosel = Facade.GetPrato(pratoList[position].IdPrato);
+            StartActivity(typeof(DescricaoPrato));
 		}
 	}
     
@@ -51,17 +57,14 @@ namespace PickaPrato.Presentation {
 
         public event EventHandler<int> ItemClick;
         public List<Prato> pratoList;
-        private Context context;
 
 
-        public PratoAdapter(List<Prato> pratoList, Context context) {
+        public PratoAdapter(List<Prato> pratoList) {
             this.pratoList = pratoList;
-            this.context = context;
         }
 
 		public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.CardView, parent, false);
-
             PratoHolder ph = new PratoHolder(itemView, OnClick);
 			return ph;
 		}
@@ -84,8 +87,6 @@ namespace PickaPrato.Presentation {
 		void OnClick(int position) {
             if (ItemClick != null) {
                 ItemClick(this, position);
-                DescricaoPrato.prato = pratoList[position];
-                context.StartActivity(typeof(ListaPratos));
             }
 		}
     }

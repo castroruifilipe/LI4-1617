@@ -14,7 +14,7 @@ namespace PickaPrato.Data {
     public class ServiceEngine {
 
         private HttpClient client;
-        private String urlBase = "http://192.168.1.100/PickaPratoServer/";
+        private String urlBase = "http://192.168.1.203/PickaPratoServer/";
 
 
         public ServiceEngine() {
@@ -85,5 +85,12 @@ namespace PickaPrato.Data {
 			List<Prato> pratos = JsonConvert.DeserializeObject<List<Prato>>(stream);
 			return pratos;
         }
+
+		public async Task<Prato> GetPrato(int idPrato) {
+            var response = client.GetAsync("api/Prato/" + idPrato).Result;
+			var stream = await response.Content.ReadAsStringAsync();
+			Prato p = JsonConvert.DeserializeObject<Prato>(stream);
+			return p;
+		}
     }
 }

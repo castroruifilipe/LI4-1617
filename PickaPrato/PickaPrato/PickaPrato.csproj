@@ -141,6 +141,8 @@
     <AndroidResource Include="Resources\layout\EscolherIngredientes.axml" />
     <AndroidResource Include="Resources\drawable\search.png" />
     <AndroidResource Include="Resources\layout\DescricaoPrato.axml" />
+    <AndroidResource Include="Resources\drawable\Add.png" />
+    <AndroidResource Include="Resources\layout\ListItemComentario.xml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
