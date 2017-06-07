@@ -26,13 +26,12 @@ namespace PickaPrato.Business {
             this.Fotografia = Fotografia;
             this.Restaurante = Restaurante;
             this.Ingredientes = Ingredientes;
-            this.Classificacao = 0;
+            this.Classificacao = 0.0;
             this.Classificacoes = null;
         }
 
 		public Prato(string Designacao, string TipoComida, double Preco, string Fotografia,
-					 Restaurante Restaurante, List<Ingrediente> Ingredientes)
-		{
+					 Restaurante Restaurante, List<Ingrediente> Ingredientes) {
             this.IdPrato = 0;
 			this.Designacao = Designacao;
 			this.TipoComida = TipoComida;
@@ -40,7 +39,7 @@ namespace PickaPrato.Business {
 			this.Fotografia = Fotografia;
 			this.Restaurante = Restaurante;
 			this.Ingredientes = Ingredientes;
-			this.Classificacao = 0;
+			this.Classificacao = 0.0;
 			this.Classificacoes = null;
 		}
 

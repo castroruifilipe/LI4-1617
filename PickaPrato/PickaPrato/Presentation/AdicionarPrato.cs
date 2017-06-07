@@ -35,9 +35,9 @@ namespace PickaPrato.Presentation {
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.Preferencias);
+            SetContentView(Resource.Layout.AdicionarPrato);
 
-			cardv = FindViewById<CardView>(Resource.Id.cardview);
+            cardv = FindViewById<CardView>(Resource.Id.cardview);
 			cardv.Visibility = ViewStates.Invisible;
 
 			imageView = FindViewById<ImageView>(Resource.Id.imageview);
@@ -70,6 +70,7 @@ namespace PickaPrato.Presentation {
                 } else {
                     Facade.AdicionaPrato(designacao.Text, tipo.Text, Convert.ToDouble(preco.Text), "", ingredientes);
                 }
+                this.Finish();
             };
 		}
 

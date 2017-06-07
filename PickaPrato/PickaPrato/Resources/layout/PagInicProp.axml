@@ -11,7 +11,7 @@
     <ImageView
         p1:src="@drawable/logo"
         p1:layout_width="283.7dp"
-        p1:layout_height="150.7dp"
+        p1:layout_height="116.0dp"
         p1:id="@+id/imageView1"
         p1:layout_marginBottom="0.0dp"
         p1:layout_gravity="center" />
@@ -85,6 +85,14 @@
         p1:layout_width="155.0dp"
         p1:layout_height="wrap_content"
         p1:text="Remover prato"
+        p1:layout_marginRight="0.0dp"
+        p1:layout_marginLeft="0.0dp"
+        p1:layout_gravity="center" />
+    <Button
+        p1:id="@+id/termsessao"
+        p1:layout_width="155.0dp"
+        p1:layout_height="wrap_content"
+        p1:text="Terminar sessão"
         p1:layout_marginRight="0.0dp"
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />

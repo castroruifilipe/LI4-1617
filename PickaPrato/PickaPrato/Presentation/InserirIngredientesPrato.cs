@@ -30,7 +30,7 @@ namespace PickaPrato.Presentation {
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.Preferencias);
+            SetContentView(Resource.Layout.EscolherIngredientes);
 
 			toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
@@ -49,6 +49,7 @@ namespace PickaPrato.Presentation {
 					Ingrediente ing = new Ingrediente(entry.Key, entry.Value);
                     listaIngr.Add(ing);
                 }
+                this.Finish();
             };
 		}
     }
@@ -81,7 +82,7 @@ namespace PickaPrato.Presentation {
   			var item = items[position];
             ViewHolder row = new ViewHolder();
             if (convertView == null) {
-                convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekbox, null);
+                convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekboxWithSwitch, null);
             }
 			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
 			row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);

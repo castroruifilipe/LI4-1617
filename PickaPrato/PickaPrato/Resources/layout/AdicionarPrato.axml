@@ -48,7 +48,7 @@
         <android.support.design.widget.TextInputEditText
             p1:layout_width="match_parent"
             p1:hint="Preco"
-            p1:inputType="number"
+            p1:inputType="numberDecimal"
             p1:layout_height="wrap_content"
             p1:id="@+id/preco" />
     </android.support.design.widget.TextInputLayout>
