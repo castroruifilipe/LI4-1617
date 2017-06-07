@@ -30,7 +30,6 @@ namespace PickaPratoServer.Controllers {
 
         // POST: api/Cliente
         public void Post([FromBody]Cliente value) {
-            Debug.Write("Chego aqui!!!!!!!" + value.Username + "\n");
             clientes.Put(value);
         }
 
