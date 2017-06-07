@@ -7,6 +7,8 @@ using Android.Speech;
 using Android.Views.InputMethods;
 using Android.Views;
 using Android.Graphics;
+using System.Collections.Generic;
+using PickaPrato.Business;
 
 namespace PickaPrato.Presentation {
     
@@ -51,20 +53,29 @@ namespace PickaPrato.Presentation {
                 this.Finish();
             };
 
-			textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
-            var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
-			textView.Adapter = adapter;
+			var switchpref = FindViewById<Switch>(Resource.Id.switchpref);
 
-            textView.EditorAction += (sender, e) => {
-                if (e.ActionId == ImeAction.Done) {
-                    //search.PerformClick();
-				} else {
-					e.Handled = false;
-				}
+            var gobottom = FindViewById<ImageView>(Resource.Id.go);
+
+            textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
+            textView.Click += (sender, e) => {
+                textView.Text = "";
             };
+            var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
+            textView.Adapter = adapter;
+            gobottom.Click += (sender, e) => {
+                List<Prato> pratos;
+                if (switchpref.Checked == true) {
+                    pratos = Facade.PesquisaPrato(textView.Text, true);
+                } else {
+                    pratos = Facade.PesquisaPrato(textView.Text, false);
+                }
+				ListaPratos.pratoList = pratos;
+				ListaPratos.pesquisa = textView.Text;
+                StartActivity(typeof(ListaPratos));
+	        };
 
             recButton = FindViewById<ImageView>(Resource.Id.rec);
-
             recButton.Click += delegate {
 				var voiceIntent = new Intent(RecognizerIntent.ActionRecognizeSpeech);
 				voiceIntent.PutExtra(RecognizerIntent.ExtraLanguageModel, "pr-BR");

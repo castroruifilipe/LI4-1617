@@ -78,5 +78,12 @@ namespace PickaPrato.Data {
 			var content = new StringContent(json, Encoding.UTF8, "application/json");
 			var response = await client.PostAsync(uri, content);
 		}
+
+        public async Task<List<Prato>> GetPratos(string pesquisa, string username) {
+			var response = client.GetAsync("api/Prato/" + pesquisa + "/" + username).Result;
+			var stream = await response.Content.ReadAsStringAsync();
+			List<Prato> pratos = JsonConvert.DeserializeObject<List<Prato>>(stream);
+			return pratos;
+        }
     }
 }

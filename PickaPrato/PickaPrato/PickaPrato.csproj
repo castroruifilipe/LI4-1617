@@ -103,6 +103,7 @@
     <Compile Include="Business\Classificacao.cs" />
     <Compile Include="Presentation\AdicionarPrato.cs" />
     <Compile Include="Presentation\InserirIngredientesPrato.cs" />
+    <Compile Include="Presentation\DescricaoPrato.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -138,6 +139,8 @@
     <AndroidResource Include="Resources\layout\AdicionarPrato.axml" />
     <AndroidResource Include="Resources\layout\IngredientesPrato.axml" />
     <AndroidResource Include="Resources\layout\EscolherIngredientes.axml" />
+    <AndroidResource Include="Resources\drawable\search.png" />
+    <AndroidResource Include="Resources\layout\DescricaoPrato.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
