@@ -41,22 +41,94 @@
         p1:layout_marginBottom="0.0dp" />
     <Space
         p1:layout_width="match_parent"
-        p1:layout_height="15.7dp"
+        p1:layout_height="1.7dp"
         p1:id="@+id/space1"
         p1:layout_marginBottom="19.0dp" />
-    <AutoCompleteTextView
-        p1:layout_gravity="center"
-        p1:id="@+id/autocomplete_prato"
-        p1:layout_width="253.7dp"
-        p1:layout_height="wrap_content"
-        p1:text="Pesquise por um prato..."
-        p1:textColor="#ffbdbdbd"
-        p1:layout_centerInParent="true" />
-    <Space
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="300.0dp"
+        p1:layout_height="45.5dp"
+        p1:layout_gravity="center">
+        <RelativeLayout
+            p1:layout_width="281.0dp"
+            p1:layout_height="55.0dp"
+            p1:gravity="center_vertical"
+            p1:padding="8dp">
+            <AutoCompleteTextView
+                p1:layout_gravity="center"
+                p1:id="@+id/autocomplete_prato"
+                p1:layout_width="218.5dp"
+                p1:layout_height="wrap_content"
+                p1:text="Pesquise por um prato..."
+                p1:textColor="#ffbdbdbd"
+                p1:layout_centerInParent="true"
+                p1:layout_alignParentLeft="true" />
+            <ImageView
+                p1:src="@drawable/search"
+                p1:id="@+id/go"
+                p1:layout_width="42.0dp"
+                p1:layout_height="25.0dp"
+                p1:layout_marginBottom="0.0dp"
+                p1:layout_marginRight="0.0dp"
+                p1:layout_alignParentRight="true"
+                p1:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="280.0dp"
+        p1:layout_height="40dp"
+        p1:layout_gravity="center">
+        <RelativeLayout
+            p1:layout_width="275.5dp"
+            p1:layout_height="match_parent"
+            p1:gravity="center_vertical"
+            p1:padding="8dp">
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:layout_width="wrap_content"
+                p1:layout_height="wrap_content"
+                p1:paddingLeft="10dip"
+                p1:layout_marginLeft="0dp">
+                <TextView
+                    p1:id="@+id/descricao"
+                    p1:text="Usar preferências"
+                    p1:layout_width="wrap_content"
+                    p1:layout_height="wrap_content"
+                    p1:textColor="#ff263238"
+                    p1:textSize="15dip"
+                    p1:layout_marginTop="5.0dp"
+                    p1:layout_marginLeft="0dp" />
+            </LinearLayout>
+            <LinearLayout
+                p1:orientation="vertical"
+                p1:minWidth="25px"
+                p1:minHeight="25px"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:layout_marginRight="0.0dp"
+                p1:layout_marginLeft="0.0dp">
+                <Switch
+                    p1:layout_width="47.5dp"
+                    p1:layout_height="wrap_content"
+                    p1:id="@+id/switchpref"
+                    p1:layout_marginLeft="0.0dp"
+                    p1:layout_gravity="right" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        p1:orientation="vertical"
+        p1:minWidth="25px"
+        p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="15.7dp"
-        p1:id="@+id/space1"
-        p1:layout_marginBottom="19.0dp" />
+        p1:layout_height="17.5dp"
+        p1:layout_marginRight="15.0dp"
+        p1:id="@+id/linearLayout1" />
     <Button
         p1:id="@+id/selecoes"
         p1:layout_width="155.0dp"

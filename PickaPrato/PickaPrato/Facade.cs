@@ -82,7 +82,17 @@ namespace PickaPrato {
             Task.Run(() => server.PostPrato(p));
         }
 
-        public static void PesquisaPrato() { }
+        public static List<Prato> PesquisaPrato(string pesquisa, Boolean preferencias) {
+            List<Prato> pratos;
+            if (preferencias == false) {
+                pratos = server.GetPratos(pesquisa, "-1").Result;
+            } else {
+                pratos = server.GetPratos(pesquisa, atualUserC.Username).Result;
+            }
+            return pratos;
+        }
+
+
         public static void EscolhePrato() { }
         public static void GuardaPesquisa() { }
         public static void GuardaPrato() { }

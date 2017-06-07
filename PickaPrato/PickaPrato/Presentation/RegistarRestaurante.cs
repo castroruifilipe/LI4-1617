@@ -56,7 +56,7 @@ namespace PickaPrato.Presentation {
             EditText user = FindViewById<EditText>(Resource.Id.username_edittext);
             EditText pass = FindViewById<EditText>(Resource.Id.password_edittext);
             EditText nome = FindViewById<EditText>(Resource.Id.nome_edittext);
-            EditText morada = FindViewById<EditText>(Resource.Id.username_edittext);
+            EditText morada = FindViewById<EditText>(Resource.Id.morada_edittext);
             EditText telefone = FindViewById<EditText>(Resource.Id.telefone_edittext);
             EditText email = FindViewById<EditText>(Resource.Id.email_edittext);
 
@@ -71,7 +71,7 @@ namespace PickaPrato.Presentation {
 					var foto = Convert.ToBase64String(bytes);
                     fotos.Add(foto);
                 }
-                bool r = Facade.RegistarRestaurante(user.Text, pass.Text, nome.Text, morada.Text, telefone.Text, email.Text, fotos);
+                bool r = Facade.RegistarRestaurante(user.Text, pass.Text, morada.Text, telefone.Text, email.Text, nome.Text, fotos);
                 if (r == false) {
 					new AlertDialog.Builder(this).
 						SetPositiveButton("OK", (senderAlert, args) => { }).
