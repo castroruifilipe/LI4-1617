@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace PickaPratoServer.Models
@@ -16,6 +17,25 @@ namespace PickaPratoServer.Models
         public Restaurante Restaurante { get; set; }
         public List<Ingrediente> Ingredientes { get; set; }
         public List<Classificacao> Classificacoes { get; set; }
-       
+     
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(IdPrato+"\n");
+            sb.Append(Designacao + "\n");
+            sb.Append(TipoComida + "\n");
+            sb.Append(Preco + "\n");
+            sb.Append(Classificacao + "\n");
+            sb.Append(Fotografia + "\n");
+            sb.Append(Restaurante.Proprietario + "\n");
+            foreach (Ingrediente i in Ingredientes)
+            {
+                sb.Append(i.Designacao+"\n");
+                sb.Append(i.Customizavel+"\n");
+            }
+            return sb.ToString();
+
+        } 
+
     }
 }

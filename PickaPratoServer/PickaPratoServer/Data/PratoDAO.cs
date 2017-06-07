@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +13,7 @@ namespace PickaPratoServer.Data
     {
         SqlConnection connection = new SqlConnection("Server=DIOGO-PC\\SQLEXPRESS; Database=PickPrato; Trusted_Connection=True;");
 
+        
         public Prato Get(int id) {
             connection.Open();
 
@@ -93,7 +95,8 @@ namespace PickaPratoServer.Data
             return p;
         }
 
-        public void Post(Prato p){
+        public int Put(Prato p) {
+            int id = 0;
             connection.Open();
 
             SqlCommand command = connection.CreateCommand();
@@ -101,11 +104,9 @@ namespace PickaPratoServer.Data
             command.CommandType = CommandType.Text;
             command.CommandText = @"
                 INSERT INTO Prato
-                    ([designacao],[tipoComida],[preco]
-                    ,[restaurante],[fotografia])
+                    ([designacao],[tipoComida],[preco],[restaurante],[fotografia])
                 VALUES
-                (@designacao,@tipoComida,@preco,
-                 @classificacao, @restaurante,@fotografia)
+                (@designacao,@tipoComida,@preco,@restaurante,@fotografia)
             ";
             command.Parameters.Add(new SqlParameter("@designacao", p.Designacao));
             command.Parameters.Add(new SqlParameter("@tipoComida", p.TipoComida));
@@ -122,24 +123,48 @@ namespace PickaPratoServer.Data
             command.CommandText = @"SELECT MAX(idPrato) as id FROM Prato";
 
             var result2 = command.ExecuteReader();
-            int id = (int)result2["id"];
 
-            foreach (Ingrediente i in p.Ingredientes){
-                command = connection.CreateCommand();
-                command.Connection = connection;
-                command.CommandType = CommandType.Text;
-                command.CommandText = @"
-                INSERT INTO Prato_possui_Ingrediente
-                ([prato] ,[ingrediente],[costumizavel])
-                VALUES
-                (@prato ,@ingrediente,@costumizavel)
-                ";
-                command.Parameters.Add(new SqlParameter("@prato", id));
-                command.Parameters.Add(new SqlParameter("@costumizavel", i.Constumizavel));
-                result = command.ExecuteNonQuery();
+            if (result2.Read())
+            {
+                id = (int)result2["id"];
             }
-
+            connection.Close();
+            return id;
         }
 
+        public void PutIngrediente(int id, Ingrediente i)
+        {
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+                INSERT INTO Prato_possui_Ingrediente
+                ([prato],[ingrediente],[customizavel])
+                VALUES
+                (@prato,@ingrediente,@customizavel)
+                ";
+            command.Parameters.Add(new SqlParameter("@prato", id));
+            command.Parameters.Add(new SqlParameter("@ingrediente", i.Designacao));
+            command.Parameters.Add(new SqlParameter("@customizavel", i.Customizavel));
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public void Delete(int id){
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+                DELETE FROM [dbo].[Prato]
+                WHERE idPrato=@idPrato
+            ";
+            command.Parameters.Add(new SqlParameter("@idPrato", id));
+            var result = command.ExecuteNonQuery();
+        }
     }
 }
