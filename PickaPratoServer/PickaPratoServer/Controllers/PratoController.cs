@@ -13,6 +13,9 @@ namespace PickaPratoServer.Controllers
     public class PratoController : ApiController
     {
         private PratoDAO pratos = new PratoDAO();
+        private PreferenciaDAO prefs = new PreferenciaDAO();
+        private IngredienteDAO ings = new IngredienteDAO();
+
 
         // GET: api/Prato
         public IEnumerable<string> Get()
@@ -20,10 +23,32 @@ namespace PickaPratoServer.Controllers
             return new string[] { "value1", "value2" };
         }
 
+        [Route("api/Prato/{pesquisa}/{user}")]
+        public List<Prato> Get(string pesquisa, String user) {
+            List<Prato> lista = pratos.Pesquisa(pesquisa);
+            
+            if (user.Equals("NO") == false) {
+                List<Prato> devolve = new List<Prato>();
+                List<String> preferencias = prefs.Get(user);
+                Debug.Print(lista.Count.ToString());
+                foreach(Prato p in lista) {
+                    if (ings.TestaIngredientes(p.IdPrato, preferencias) == true) {
+                        devolve.Add(p);
+                    }
+                }
+                return devolve;
+            } else {
+                return lista;
+            }
+        }
+
+
         // GET: api/Prato/5
         public Prato Get(int id)
         {
             Prato p = pratos.Get(id);
+            List<Classificacao> classificacoes = pratos.GetClassificacoes(id);
+            p.Classificacoes = classificacoes;
             return p;
         }
 

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using PickaPratoServer.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
 
 namespace PickaPratoServer.Data
 {
@@ -20,12 +22,45 @@ namespace PickaPratoServer.Data
             command.CommandText = @"
             select *
             from Ingrediente
-        ";
+            ";
             var result = command.ExecuteReader();
             while (result.Read()) {
                 lista.Add((String)result["designacao"]);
             }
+            connection.Close();
             return lista;
+        }
+
+        public bool TestaIngredientes(int idPrato,List<String> prefs)
+        {
+            bool r = true;
+            List<Ingrediente> lista = new List<Ingrediente>();
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+            select *
+            from Prato_possui_Ingrediente
+            where prato=@id
+            ";
+            command.Parameters.Add(new SqlParameter("@id", idPrato));
+            var result = command.ExecuteReader();
+            while (result.Read())
+            {
+                string designacao = (String)result["ingrediente"];
+                if (prefs.Contains(designacao))
+                {
+                    byte Customizavel = (byte)result["customizavel"];
+                    if (Customizavel==0)
+                    {
+                        r = false;
+                        break;
+                    }
+                }
+            }
+            connection.Close();
+            return r;
         }
     }
 }

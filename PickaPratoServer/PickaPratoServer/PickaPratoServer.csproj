@@ -104,6 +104,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\IngredienteController.cs" />
+    <Compile Include="Controllers\PesquisaController.cs" />
     <Compile Include="Controllers\PratoController.cs" />
     <Compile Include="Controllers\PreferenciaController.cs" />
     <Compile Include="Controllers\RestauranteController.cs" />
