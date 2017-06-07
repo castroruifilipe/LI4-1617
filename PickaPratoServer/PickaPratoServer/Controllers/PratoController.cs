@@ -24,24 +24,22 @@ namespace PickaPratoServer.Controllers
         }
 
         [Route("api/Prato/{pesquisa}/{user}")]
-        public List<Prato> Get(string pesquisa, String user)
-        {
-            List<Prato> lista;
-            List<Prato> devolve = new List<Prato>();
-            lista = pratos.Pesquisa(pesquisa);
-            if (!user.Equals("NO"))
-            {
+        public List<Prato> Get(string pesquisa, String user) {
+            List<Prato> lista = pratos.Pesquisa(pesquisa);
+            
+            if (user.Equals("NO") == false) {
+                List<Prato> devolve = new List<Prato>();
                 List<String> preferencias = prefs.Get(user);
-                foreach(Prato p in lista)
-                {
-                    if (ings.TestaIngredientes(p.IdPrato, preferencias) == true)
-                    {
+                Debug.Print(lista.Count.ToString());
+                foreach(Prato p in lista) {
+                    if (ings.TestaIngredientes(p.IdPrato, preferencias) == true) {
                         devolve.Add(p);
                     }
                 }
+                return devolve;
+            } else {
+                return lista;
             }
-            return devolve;
-
         }
 
 
@@ -49,6 +47,8 @@ namespace PickaPratoServer.Controllers
         public Prato Get(int id)
         {
             Prato p = pratos.Get(id);
+            List<Classificacao> classificacoes = pratos.GetClassificacoes(id);
+            p.Classificacoes = classificacoes;
             return p;
         }
 

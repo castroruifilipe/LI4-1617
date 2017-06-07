@@ -33,6 +33,11 @@ namespace PickaPratoServer.Models
                 sb.Append(i.Designacao+"\n");
                 sb.Append(i.Customizavel+"\n");
             }
+            foreach (Classificacao c in Classificacoes)
+            {
+                sb.Append(c.Atribuicao + "\n");
+                sb.Append(c.Comentario + "\n");
+            }
             return sb.ToString();
 
         } 

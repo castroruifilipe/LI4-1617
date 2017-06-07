@@ -30,8 +30,7 @@ namespace PickaPratoServer.Data
             var result = command.ExecuteReader();
             Prato p = new Prato();
             Restaurante r = new Restaurante();
-            if (result.Read())
-            {
+            if (result.Read()) {
                 p.IdPrato = id;
                 p.Preco = (Double)result["preco"];
                 p.Designacao = (String)result["designacao"];
@@ -52,51 +51,36 @@ namespace PickaPratoServer.Data
                 p.Restaurante = r;
             }
 
-            /*
-            // Buscar Fotografias
-            command = connection.CreateCommand();
+            connection.Close();
+            return p;
+        }
+
+        public List<Classificacao> GetClassificacoes(int id) {
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
             command.CommandText = @"
                 select *
-                from Fotografia
-                where restaurante = @idRestaurante
-            ";
-            command.Parameters.Add(new SqlParameter("@idRestaurante",r.Proprietario));
-            result = command.ExecuteReader();
-            List<String> fotos = new List<string>();
-            while (result.Read())
-            {
-                fotos.Add((String)result["fotografia"]);
-            }
-            r.Fotografias = fotos;
-            p.Restaurante = r;
-
-            result.Close();
-
-            // Buscar Classificacoes
-            command = connection.CreateCommand();
-            command.Connection = connection;
-            command.CommandType = CommandType.Text;
-            command.CommandText = @"
-                select *
-                from Classificacao
+                from Classificacao C
+                join Cliente Cl on C.cliente = Cl.username
                 where prato = @idPrato
             ";
             command.Parameters.Add(new SqlParameter("@idPrato", id));
-            result = command.ExecuteReader();
+
+            var result = command.ExecuteReader();
             List<Classificacao> classificacoes = new List<Classificacao>();
-            while (result.Read())
-            {
-                Classificacao c = new Classificacao();
+            Classificacao c;
+            while (result.Read()) {
+                c = new Classificacao();
                 c.Atribuicao = (int)result["classificacao"];
                 c.Comentario = (String)result["comentario"];
+                c.Utilizador = (String)result["cliente"];
+                c.Foto = (String)result["fotografia"];
                 classificacoes.Add(c);
             }
-            p.Classificacoes = classificacoes;
-            */
-            connection.Close();
-            return p;
+            return classificacoes;
         }
 
         public int Put(Prato p) {

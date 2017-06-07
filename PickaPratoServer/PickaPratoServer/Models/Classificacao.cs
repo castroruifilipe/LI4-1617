@@ -9,5 +9,7 @@ namespace PickaPratoServer.Models
     {
         public String Comentario;
         public int Atribuicao;
+        public string Utilizador;
+        public string Foto;
     }
 }
