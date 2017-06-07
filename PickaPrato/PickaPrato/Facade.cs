@@ -76,7 +76,12 @@ namespace PickaPrato {
             Task.Run(() => server.PostPreferencias(atualUserC.Username, preferencias));
         }
 
-        public static void AdicionaPrato(string Descricao, string[] Fotos, Ingrediente[] Ingredientes, bool[] Customizavel) { }
+		public static void AdicionaPrato(string Designacao, string TipoComida, double Preco, string Fotografia,
+					                     List<Ingrediente> Ingredientes) {
+            Prato p = new Prato(Designacao, TipoComida, Preco, Fotografia, atualUserP, Ingredientes);
+            Task.Run(() => server.PostPrato(p));
+        }
+
         public static void PesquisaPrato() { }
         public static void EscolhePrato() { }
         public static void GuardaPesquisa() { }

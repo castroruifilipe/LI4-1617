@@ -100,6 +100,9 @@
     <Compile Include="Data\Database.cs" />
     <Compile Include="Presentation\PagInicProp.cs" />
     <Compile Include="Presentation\RegistarRestaurante.cs" />
+    <Compile Include="Business\Classificacao.cs" />
+    <Compile Include="Presentation\AdicionarPrato.cs" />
+    <Compile Include="Presentation\InserirIngredientesPrato.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -131,6 +134,10 @@
     <AndroidResource Include="Resources\layout\Preferencias.axml" />
     <AndroidResource Include="Resources\layout\ListItemChekbox.xml" />
     <AndroidResource Include="Resources\layout\RegistarRestaurante.axml" />
+    <AndroidResource Include="Resources\layout\ListItemChekboxWithSwitch.xml" />
+    <AndroidResource Include="Resources\layout\AdicionarPrato.axml" />
+    <AndroidResource Include="Resources\layout\IngredientesPrato.axml" />
+    <AndroidResource Include="Resources\layout\EscolherIngredientes.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
