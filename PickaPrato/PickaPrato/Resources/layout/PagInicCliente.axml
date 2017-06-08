@@ -85,49 +85,27 @@
         p1:layout_gravity="center">
         <RelativeLayout
             p1:layout_width="269.0dp"
-            p1:layout_height="match_parent"
+            p1:layout_height="51.0dp"
             p1:gravity="center_vertical"
             p1:padding="2dp">
-            <LinearLayout
-                p1:orientation="vertical"
+            <TextView
+                p1:id="@+id/descricao"
+                p1:text="Usar preferências"
                 p1:layout_width="wrap_content"
                 p1:layout_height="wrap_content"
-                p1:layout_marginLeft="0dp">
-                <TextView
-                    p1:id="@+id/descricao"
-                    p1:text="Usar preferências"
-                    p1:layout_width="wrap_content"
-                    p1:layout_height="wrap_content"
-                    p1:textColor="#ff263238"
-                    p1:textSize="15dip"
-                    p1:layout_marginTop="5.0dp"
-                    p1:layout_marginLeft="0dp" />
-            </LinearLayout>
-            <LinearLayout
-                p1:orientation="vertical"
-                p1:minWidth="25px"
-                p1:minHeight="25px"
-                p1:layout_width="253.5dp"
+                p1:textColor="#ff263238"
+                p1:textSize="15dip"
+                p1:layout_marginTop="5.0dp"
+                p1:layout_marginLeft="0dp" />
+            <Switch
+                p1:layout_width="47.5dp"
                 p1:layout_height="wrap_content"
-                p1:layout_marginRight="0.0dp"
-                p1:layout_marginLeft="0.0dp">
-                <Switch
-                    p1:layout_width="47.5dp"
-                    p1:layout_height="wrap_content"
-                    p1:id="@+id/switchpref"
-                    p1:layout_marginLeft="0.0dp"
-                    p1:layout_gravity="right" />
-            </LinearLayout>
+                p1:id="@+id/switchpref"
+                p1:layout_marginLeft="0.0dp"
+                p1:layout_gravity="right"
+                p1:layout_alignParentRight="true" />
         </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
-        p1:orientation="vertical"
-        p1:minWidth="25px"
-        p1:minHeight="25px"
-        p1:layout_width="match_parent"
-        p1:layout_height="17.5dp"
-        p1:layout_marginRight="15.0dp"
-        p1:id="@+id/linearLayout1" />
     <Button
         p1:id="@+id/selecoes"
         p1:layout_width="155.0dp"
@@ -135,7 +113,8 @@
         p1:text="Seleções"
         p1:layout_marginRight="0.0dp"
         p1:layout_marginLeft="0.0dp"
-        p1:layout_gravity="center" />
+        p1:layout_gravity="center"
+        p1:layout_marginTop="19.5dp" />
     <Button
         p1:id="@+id/pref"
         p1:layout_width="155.0dp"

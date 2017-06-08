@@ -104,6 +104,7 @@
     <Compile Include="Presentation\AdicionarPrato.cs" />
     <Compile Include="Presentation\InserirIngredientesPrato.cs" />
     <Compile Include="Presentation\DescricaoPrato.cs" />
+    <Compile Include="Presentation\AdicionarComentario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -143,6 +144,7 @@
     <AndroidResource Include="Resources\layout\DescricaoPrato.axml" />
     <AndroidResource Include="Resources\drawable\Add.png" />
     <AndroidResource Include="Resources\layout\ListItemComentario.xml" />
+    <AndroidResource Include="Resources\layout\AdicionarComentario.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
