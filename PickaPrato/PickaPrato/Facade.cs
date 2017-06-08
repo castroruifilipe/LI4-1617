@@ -96,6 +96,7 @@ namespace PickaPrato {
 			Prato p = server.GetPrato(idPrato).Result;
 			return p;
 		}
+
         public static void EscolhePrato() { }
         public static void GuardaPesquisa() { }
         public static void GuardaPrato() { }
