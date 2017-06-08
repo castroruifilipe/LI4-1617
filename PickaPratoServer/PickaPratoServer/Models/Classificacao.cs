@@ -11,5 +11,6 @@ namespace PickaPratoServer.Models
         public int Atribuicao;
         public string Utilizador;
         public string Foto;
+        public int idPrato;
     }
 }

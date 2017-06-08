@@ -62,5 +62,36 @@ namespace PickaPratoServer.Data
             connection.Close();
             return r;
         }
+
+
+        public bool PesquisaPratoNoIng(int idPrato, String ing)
+        {
+            bool r = true;
+            List<Ingrediente> lista = new List<Ingrediente>();
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+            select *
+            from Prato_possui_Ingrediente
+            where prato=@id AND ingrediente LIKE @ing
+            ";
+            command.Parameters.Add(new SqlParameter("@id", idPrato));
+            command.Parameters.Add(new SqlParameter("@ing", "%"+ing+"%"));
+            var result = command.ExecuteReader();
+            while (result.Read())
+            {
+                byte Customizavel = (byte)result["customizavel"];
+                if (Customizavel == 0)
+                {
+                    r = false;
+                    break;
+                }
+            }
+            connection.Close();
+            return r;
+        }
+        
     }
 }

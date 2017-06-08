@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 
 namespace PickaPratoServer.Controllers
@@ -25,12 +26,32 @@ namespace PickaPratoServer.Controllers
 
         [Route("api/Prato/{pesquisa}/{user}")]
         public List<Prato> Get(string pesquisa, String user) {
-            List<Prato> lista = pratos.Pesquisa(pesquisa);
-            
+            String[] partida = Regex.Split(pesquisa," sem ");
+            foreach (String s in partida)
+            {
+                Debug.Print(s);
+            }
+            List<Prato> lista = pratos.Pesquisa(partida[0]);
+            Debug.Print("cheguei aqui");
+            List<Prato> aux = new List<Prato>();
+            List<Prato> devolve = new List<Prato>();
+            if (partida.Count() > 1){
+                Debug.Print("entrei");
+                Debug.Print(lista.Count.ToString());
+                foreach (Prato p in lista)
+                {
+                    if (ings.PesquisaPratoNoIng(p.IdPrato, partida[1]) == true)
+                    {
+                        aux.Add(p);
+                    }
+                }
+                Debug.Print(aux.Count.ToString());
+                lista = aux;
+            }
             if (user.Equals("NO") == false) {
-                List<Prato> devolve = new List<Prato>();
                 List<String> preferencias = prefs.Get(user);
                 Debug.Print(lista.Count.ToString());
+
                 foreach(Prato p in lista) {
                     if (ings.TestaIngredientes(p.IdPrato, preferencias) == true) {
                         devolve.Add(p);
@@ -61,6 +82,13 @@ namespace PickaPratoServer.Controllers
                 pratos.PutIngrediente(id, i);
             }
             
+        }
+
+        [Route("api/Prato/comment")]
+        public void Post([FromBody]Classificacao classificacao)
+        {
+            pratos.InsereClassificacao(classificacao);
+
         }
 
         // PUT: api/Prato/5

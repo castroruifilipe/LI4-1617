@@ -193,6 +193,29 @@ namespace PickaPratoServer.Data
             return lista;
         }
 
-        
+        public void InsereClassificacao(Classificacao c){
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+            INSERT INTO Classificacao
+                ([cliente],[prato],[classificacao],[comentario])
+            VALUES
+                (@cli,@prato,@classificacao,@comentario)
+            ";
+            command.Parameters.Add(new SqlParameter("@cli", c.Utilizador));
+            command.Parameters.Add(new SqlParameter("@prato", c.idPrato));
+            command.Parameters.Add(new SqlParameter("@classificacao",c.Atribuicao));
+            command.Parameters.Add(new SqlParameter("@comentario", c.Comentario));
+            ;
+
+            var result = command.ExecuteNonQuery();
+
+            connection.Close();
+
+        }
+
     }
 }
