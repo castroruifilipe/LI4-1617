@@ -25,9 +25,12 @@ namespace PickaPrato.Data {
 		}
 
         public void Put(Pesquisa p) {
-			var connection = new SQLiteConnection(path);
-            connection.Insert(p);
-			connection.Close();
+            try {
+				var connection = new SQLiteConnection(path);
+				connection.Insert(p);
+				connection.Close();
+            } catch (Exception) {
+            }
         }
     }
 }

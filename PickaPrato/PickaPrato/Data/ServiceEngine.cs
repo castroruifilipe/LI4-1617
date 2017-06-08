@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using PickaPrato.Business;
 using System.Net;
 using System.Collections.Generic;
-using PickaPrato.Exceptions;
 
 namespace PickaPrato.Data {
     

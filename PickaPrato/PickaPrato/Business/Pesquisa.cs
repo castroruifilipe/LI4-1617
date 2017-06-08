@@ -6,8 +6,7 @@ namespace PickaPrato.Business {
 
     public class Pesquisa {
 
-        [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
+        [PrimaryKey]
 		public string pesquisa { get; set; }
 
 

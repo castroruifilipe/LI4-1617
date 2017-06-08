@@ -137,7 +137,7 @@
                 <ListView
                     android:id="@+id/listview"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="778.0dp"
                     android:cacheColorHint="#FFDAFF7F" />
             </LinearLayout>
         </LinearLayout>

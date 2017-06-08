@@ -17,7 +17,6 @@ using Android.Provider;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 using PickaPrato.Data;
-using PickaPrato.Exceptions;
 using System.Threading.Tasks;
 
 namespace PickaPrato.Presentation {

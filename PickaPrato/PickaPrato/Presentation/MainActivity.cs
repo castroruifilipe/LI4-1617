@@ -4,7 +4,6 @@ using Android.OS;
 
 using PickaPrato.Presentation;
 using PickaPrato.Data;
-using PickaPrato.Exceptions;
 
 namespace PickaPrato.Business {
     

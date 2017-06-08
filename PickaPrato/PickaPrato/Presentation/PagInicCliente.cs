@@ -49,6 +49,12 @@ namespace PickaPrato.Presentation {
 
 			var switchpref = FindViewById<Switch>(Resource.Id.switchpref);
 
+            Button guardadosbottom = FindViewById<Button>(Resource.Id.selecoes);
+            guardadosbottom.Click += (sender, e) => {
+                ListaPratos.pratoList = Facade.GetPratosGuardados();
+                StartActivity(typeof(ListaPratos));
+            };
+
             var gobottom = FindViewById<ImageView>(Resource.Id.go);
 
             textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
@@ -58,15 +64,25 @@ namespace PickaPrato.Presentation {
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
             textView.Adapter = adapter;
             gobottom.Click += (sender, e) => {
-                List<Prato> pratos;
-                if (switchpref.Checked == true) {
-                    pratos = Facade.PesquisaPrato(textView.Text, true);
-                } else {
-                    pratos = Facade.PesquisaPrato(textView.Text, false);
+                if (textView.Text.Length != 0) {
+	                List<Prato> pratos;
+	                if (switchpref.Checked == true) {
+	                    pratos = Facade.PesquisaPrato(textView.Text, true);
+	                } else {
+	                    pratos = Facade.PesquisaPrato(textView.Text, false);
+	                }
+                    if (pratos.Count == 0) {
+						new AlertDialog.Builder(this).
+							SetPositiveButton("OK", (senderAlert, args) => { }).
+							SetMessage("Não encontramos o que procura :(").
+							SetTitle("Sem resultados").
+							Show();
+                    } else {
+						ListaPratos.pratoList = pratos;
+						ListaPratos.pesquisa = textView.Text;
+		                StartActivity(typeof(ListaPratos));
+                    }
                 }
-				ListaPratos.pratoList = pratos;
-				ListaPratos.pesquisa = textView.Text;
-                StartActivity(typeof(ListaPratos));
 	        };
 
             recButton = FindViewById<ImageView>(Resource.Id.rec);

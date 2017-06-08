@@ -63,6 +63,16 @@ namespace PickaPrato.Presentation {
                 dialog.Show(FragmentManager, "dialog");
             };
 
+            Button guardarbuttom = FindViewById<Button>(Resource.Id.guardar);
+			guardarbuttom.Click += (sender, e) => {
+                Facade.GuardarPrato(pratosel);
+				new AlertDialog.Builder(this).
+					SetPositiveButton("OK", (senderAlert, args) => { }).
+					SetMessage("Prato guardado nas seleções!").
+					SetTitle("Sucesso").
+					Show();
+			};
+
             Button mapabuttom = FindViewById<Button>(Resource.Id.mapa);
             mapabuttom.Click += (sender, e) => {
                 var geoUri = Android.Net.Uri.Parse("geo:0,0?q=" + pratosel.Restaurante.Localizacao);
