@@ -92,5 +92,12 @@ namespace PickaPrato.Data {
 			Prato p = JsonConvert.DeserializeObject<Prato>(stream);
 			return p;
 		}
+
+        public async Task PostClassificacao(Classificacao c) {
+            var uri = new Uri(urlBase + "api/Prato/comment");
+            var json = JsonConvert.SerializeObject(c);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+        }
     }
 }

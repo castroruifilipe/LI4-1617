@@ -16,6 +16,8 @@ namespace PickaPrato.Business {
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 
+            Facade.init();
+
             SetContentView(Resource.Layout.Main);
 
             var registarClienteButtom = FindViewById<Button>(Resource.Id.registarcliente);

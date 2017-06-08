@@ -29,18 +29,12 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.PagInicCliente);
 
-			historico = new string[] {
-				"Francesinha", "Arroz de pato"
-			};
+            historico = Facade.GetPesquisas();
 
 			var imageuser = FindViewById<ImageView>(Resource.Id.foto);
-            if (Facade.atualUserC.Foto == null) {
-				imageuser.Visibility = ViewStates.Invisible;
-            } else {
-				byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
-				Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
-				imageuser.SetImageBitmap(b);
-            }
+			byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
+			Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
+			imageuser.SetImageBitmap(b);
 
             var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
             preferenciasButtom.Click += (sender, e) => {

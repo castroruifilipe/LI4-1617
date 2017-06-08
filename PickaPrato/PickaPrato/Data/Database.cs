@@ -16,7 +16,7 @@ namespace PickaPrato.Data {
 		public string CreateDatabase() {
 			try {
 				var connection = new SQLiteConnection(path);
-				connection.CreateTable<Cliente>();
+				connection.CreateTable<Pesquisa>();
 				return "Database created";
             } catch (SQLiteException ex) {
                 return ex.Message;

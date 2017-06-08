@@ -11,9 +11,24 @@ namespace PickaPrato {
     public class Facade {
 
         private static ServiceEngine server = new ServiceEngine();
-        private static UtilizadorDAO Utilizadores;
+        private static PesquisaDAO pesquisas = new PesquisaDAO();
+        private static Database baseDadosMovel = new Database();
         public static Cliente atualUserC = null;
         public static Restaurante atualUserP = null;
+
+        public static void init() {
+            baseDadosMovel.CreateDatabase();
+        }
+
+        public static string[] GetPesquisas() {
+            List<Pesquisa> ps = pesquisas.GetPesquisas();
+            string[] pss = new string[ps.Count];
+            int i = 0;
+            foreach (Pesquisa p in ps) {
+                pss[i++] = p.pesquisa;
+            }
+            return pss;
+        }
 
         public static int IniciarSessao(String Username, String Password) {
             int r = -1;
@@ -96,6 +111,11 @@ namespace PickaPrato {
 			Prato p = server.GetPrato(idPrato).Result;
 			return p;
 		}
+
+        public static void AdicionarClassificacao(String comentario, int classificacao, int idPrato) {
+            Classificacao c = new Classificacao(comentario, classificacao, atualUserC.Username, "", idPrato);
+            Task.Run(() => server.PostClassificacao(c));
+        }
 
         public static void EscolhePrato() { }
         public static void GuardaPesquisa() { }

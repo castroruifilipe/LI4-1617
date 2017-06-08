@@ -105,6 +105,8 @@
     <Compile Include="Presentation\InserirIngredientesPrato.cs" />
     <Compile Include="Presentation\DescricaoPrato.cs" />
     <Compile Include="Presentation\AdicionarComentario.cs" />
+    <Compile Include="Business\Pesquisa.cs" />
+    <Compile Include="Data\PesquisaDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
