@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using PickaPrato.Data;
 using PickaPrato.Business;
 using System.Collections.Generic;
+using Xamarin.Facebook;
 
 namespace PickaPrato {
 
@@ -15,6 +16,7 @@ namespace PickaPrato {
         private static Database baseDadosMovel = new Database();
         public static Cliente atualUserC = null;
         public static Restaurante atualUserP = null;
+        public static AccessToken token = null;
 
         public static void init() {
             baseDadosMovel.CreateDatabase();
@@ -102,9 +104,9 @@ namespace PickaPrato {
             pesquisas.Put(p);
             List<Prato> pratoss;
             if (preferencias == false) {
-                pratoss = server.GetPratos(pesquisa, "NO").Result;
+                pratoss = server.GetPratos(pesquisa, atualUserC.Username, 0).Result;
             } else {
-                pratoss = server.GetPratos(pesquisa, atualUserC.Username).Result;
+                pratoss = server.GetPratos(pesquisa, atualUserC.Username, 1).Result;
             }
             return pratoss;
         }

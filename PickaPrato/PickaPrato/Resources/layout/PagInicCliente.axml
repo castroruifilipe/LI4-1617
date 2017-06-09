@@ -18,25 +18,27 @@
             p1:src="@drawable/logo"
             p1:id="@+id/imageView1"
             p1:layout_width="266.5dp"
-            p1:layout_height="124.0dp"
+            p1:layout_height="80.5dp"
             p1:layout_marginBottom="0.0dp"
-            p1:layout_marginRight="0.0dp" />
+            p1:layout_marginRight="0.0dp"
+            p1:layout_alignParentTop="true"
+            p1:layout_marginTop="9.5dp" />
         <ImageView
             p1:id="@+id/foto"
             p1:src="@android:drawable/ic_menu_gallery"
-            p1:layout_width="96.0dp"
+            p1:layout_width="74.5dp"
             p1:adjustViewBounds="true"
-            p1:layout_height="92.5dp"
+            p1:layout_height="67.5dp"
             p1:layout_marginLeft="0.0dp"
             p1:layout_gravity="right"
             p1:layout_alignParentRight="true"
             p1:layout_marginTop="10.5dp"
-            p1:layout_marginRight="5.5dp" />
+            p1:layout_marginRight="22.5dp" />
     </RelativeLayout>
     <ImageView
         p1:src="@drawable/micro"
         p1:layout_width="match_parent"
-        p1:layout_height="162.0dp"
+        p1:layout_height="148.0dp"
         p1:id="@+id/rec"
         p1:layout_marginBottom="0.0dp" />
     <Space
@@ -85,7 +87,7 @@
         p1:layout_gravity="center">
         <RelativeLayout
             p1:layout_width="269.0dp"
-            p1:layout_height="51.0dp"
+            p1:layout_height="40.0dp"
             p1:gravity="center_vertical"
             p1:padding="2dp">
             <TextView
@@ -123,12 +125,11 @@
         p1:layout_marginRight="0.0dp"
         p1:layout_marginLeft="0.0dp"
         p1:layout_gravity="center" />
-    <Button
-        p1:id="@+id/termsessao"
-        p1:layout_width="155.0dp"
+    <com.facebook.login.widget.LoginButton
+        p1:id="@+id/login_button"
+        p1:layout_width="wrap_content"
         p1:layout_height="wrap_content"
-        p1:text="Terminar sessão"
-        p1:layout_marginRight="0.0dp"
-        p1:layout_marginLeft="0.0dp"
-        p1:layout_gravity="center" />
+        p1:layout_gravity="center_horizontal"
+        p1:layout_marginTop="30dp"
+        p1:layout_marginBottom="30dp" />
 </LinearLayout>

@@ -69,6 +69,18 @@
                 android:layout_marginRight="21.0dp" />
         </RelativeLayout>
         <RelativeLayout
+            android:layout_width="335.5dp"
+            android:layout_height="wrap_content"
+            android:splitMotionEvents="true"
+            android:layout_marginLeft="0.0dp">
+            <com.facebook.share.widget.ShareButton
+                android:id="@+id/shareButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -79,14 +91,14 @@
                 android:layout_height="wrap_content"
                 android:text="Partilhar"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="23.5dp" />
+                android:layout_marginRight="43.0dp" />
             <Button
                 android:id="@+id/cancelar"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="Cancelar"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="133.5dp" />
+                android:layout_marginRight="175.5dp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

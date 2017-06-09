@@ -9,12 +9,17 @@ using Android.Views;
 using Android.Graphics;
 using System.Collections.Generic;
 using PickaPrato.Business;
+using Android.Content.PM;
+using Java.Security;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login.Widget;
+using Xamarin.Facebook.Login;
 
 namespace PickaPrato.Presentation {
     
     [Activity(Label = "PagInicCliente")]
 
-    public class PagInicCliente : Activity {
+    public class PagInicCliente : Activity, IFacebookCallback {
 
         string[] historico;
 
@@ -22,14 +27,35 @@ namespace PickaPrato.Presentation {
         private ImageView recButton;
 		private readonly int VOICE = 10;
 		private string resultado;
+        private ICallbackManager mCallBackManager;
 
 
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
+			FacebookSdk.SdkInitialize(this.ApplicationContext);
 
             SetContentView(Resource.Layout.PagInicCliente);
 
             historico = Facade.GetPesquisas();
+
+            // Facebook
+            LoginButton loginbutton = FindViewById<LoginButton>(Resource.Id.login_button);
+            loginbutton.SetReadPermissions("user_friends");
+
+            mCallBackManager = CallbackManagerFactory.Create();
+
+            loginbutton.RegisterCallback(mCallBackManager, this);
+
+            PackageInfo info = this.PackageManager.GetPackageInfo("com.uminhomieili4.pick_a_prato", PackageInfoFlags.Signatures);
+
+            foreach (Android.Content.PM.Signature signature in info.Signatures) {
+                MessageDigest md = MessageDigest.GetInstance("SHA");
+                md.Update(signature.ToByteArray());
+
+                string keyhash = Convert.ToBase64String(md.Digest());
+                Console.WriteLine("KeyHash: " + keyhash);
+            }
+            ///////////////////////
 
 			var imageuser = FindViewById<ImageView>(Resource.Id.foto);
 			byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
@@ -39,12 +65,6 @@ namespace PickaPrato.Presentation {
             var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
             preferenciasButtom.Click += (sender, e) => {
                 StartActivity(typeof(EditarPreferencias));
-            };
-
-            var terminarButtom = FindViewById<Button>(Resource.Id.termsessao);
-            terminarButtom.Click += (sender, e) => {
-                Facade.atualUserC = null;
-                this.Finish();
             };
 
 			var switchpref = FindViewById<Switch>(Resource.Id.switchpref);
@@ -98,6 +118,19 @@ namespace PickaPrato.Presentation {
 			};
         }
 
+        public void OnCancel() {
+            Console.WriteLine("Insucesso!!! \n\n\n\n");
+        }
+
+        public void OnError(FacebookException error) {
+            Console.WriteLine("Erro!!! \n\n\n\n" + error.StackTrace);
+        }
+
+        public void OnSuccess(Java.Lang.Object result) {
+            LoginResult loginresult = result as LoginResult;
+            Facade.token = loginresult.AccessToken;
+        }
+
 		protected override void OnActivityResult(int requestCode, Result resultVal, Intent data) {
 			if (requestCode == VOICE) {
 				if (resultVal == Result.Ok) {
@@ -121,8 +154,12 @@ namespace PickaPrato.Presentation {
 						alert.Show();
 					}
 				}
-			}
-			base.OnActivityResult(requestCode, resultVal, data);
+				base.OnActivityResult(requestCode, resultVal, data);
+            } else {
+                base.OnActivityResult(requestCode, resultVal, data);
+                mCallBackManager.OnActivityResult(requestCode, (int)resultVal, data);
+            }
 		}
     }
+
 }
