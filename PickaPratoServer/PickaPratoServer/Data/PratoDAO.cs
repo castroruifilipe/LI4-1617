@@ -187,22 +187,26 @@ namespace PickaPratoServer.Data
             var result = command.ExecuteNonQuery();
         }
 
-        public List<Prato> Pesquisa(string pesquisa){
+        public List<Prato> Pesquisa(string pesquisa,string user){
             List<Prato> lista = new List<Prato>();
             connection.Open();
             SqlCommand command = connection.CreateCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
             command.CommandText = @"
-            SELECT * 
-            FROM Prato
+            SELECT * FROM Prato
             join Restaurante
             on Prato.restaurante = Restaurante.proprietario
-            WHERE Prato.designacao LIKE @prato OR Prato.tipoComida LIKE @tipo
-            ORDER BY classificacao DESC
+            WHERE (Prato.designacao LIKE @prato OR Prato.tipoComida LIKE @tipo) and 
+            Prato.idPrato not in(
+            SELECT Classificacao.prato 
+            FROM Classificacao
+            where Classificacao.cliente=@user and Classificacao.classificacao<=2)
+            ORDER BY Prato.classificacao DESC
             ";
             command.Parameters.Add(new SqlParameter("@prato", "%" + pesquisa + "%"));
             command.Parameters.Add(new SqlParameter("@tipo", "%" + pesquisa + "%"));
+            command.Parameters.Add(new SqlParameter("@user", user));
             var result = command.ExecuteReader();
             Prato p;
             Restaurante r;

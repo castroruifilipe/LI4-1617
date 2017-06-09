@@ -22,10 +22,10 @@ namespace PickaPratoServer.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        [Route("api/Prato/{pesquisa}/{user}")]
-        public List<Prato> Get(string pesquisa, String user) {
+        [Route("api/Prato/{pesquisa}/{user}/{filtro}")]
+        public List<Prato> Get(string pesquisa, String user, int filtro) {
             String[] partida = Regex.Split(pesquisa," sem ");
-            List<Prato> lista = pratos.Pesquisa(partida[0]);
+            List<Prato> lista = pratos.Pesquisa(partida[0],user);
             List<Prato> aux = new List<Prato>();
             List<Prato> devolve = new List<Prato>();
             if (partida.Count() > 1){
@@ -36,7 +36,7 @@ namespace PickaPratoServer.Controllers
                 }
                 lista = aux;
             }
-            if (user.Equals("NO") == false) {
+            if (filtro==1) {
                 List<String> preferencias = prefs.Get(user);
                 foreach(Prato p in lista) {
                     if (ings.TestaIngredientes(p.IdPrato, preferencias) == true) {
