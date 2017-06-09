@@ -17,6 +17,9 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using PickaPrato.Business;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Share.Model;
+using Xamarin.Facebook.Share.Widget;
 
 namespace PickaPrato.Presentation {
     
@@ -44,11 +47,11 @@ namespace PickaPrato.Presentation {
             partilharButton.Click += (sender, e) => {
                 Facade.AdicionarClassificacao(comentario.Text, Convert.ToInt32(classificacao.Rating), 
                                               DescricaoPrato.pratosel.IdPrato);
-                
+
                 Dismiss();
             };
-			return view;
-		}
+            return view;
+        }
 
 		private void Button_Dismiss_Click(object sender, EventArgs e) {
 			Dismiss();
