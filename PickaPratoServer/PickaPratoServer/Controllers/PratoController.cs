@@ -17,52 +17,35 @@ namespace PickaPratoServer.Controllers
         private PreferenciaDAO prefs = new PreferenciaDAO();
         private IngredienteDAO ings = new IngredienteDAO();
 
-
         // GET: api/Prato
-        public IEnumerable<string> Get()
-        {
+        public IEnumerable<string> Get(){
             return new string[] { "value1", "value2" };
         }
 
         [Route("api/Prato/{pesquisa}/{user}")]
         public List<Prato> Get(string pesquisa, String user) {
             String[] partida = Regex.Split(pesquisa," sem ");
-            foreach (String s in partida)
-            {
-                Debug.Print(s);
-            }
             List<Prato> lista = pratos.Pesquisa(partida[0]);
-            Debug.Print("cheguei aqui");
             List<Prato> aux = new List<Prato>();
             List<Prato> devolve = new List<Prato>();
             if (partida.Count() > 1){
-                Debug.Print("entrei");
-                Debug.Print(lista.Count.ToString());
-                foreach (Prato p in lista)
-                {
-                    if (ings.PesquisaPratoNoIng(p.IdPrato, partida[1]) == true)
-                    {
+                foreach (Prato p in lista){
+                    if (ings.PesquisaPratoNoIng(p.IdPrato, partida[1]) == true){
                         aux.Add(p);
                     }
                 }
-                Debug.Print(aux.Count.ToString());
                 lista = aux;
             }
             if (user.Equals("NO") == false) {
                 List<String> preferencias = prefs.Get(user);
-                Debug.Print(lista.Count.ToString());
-
                 foreach(Prato p in lista) {
                     if (ings.TestaIngredientes(p.IdPrato, preferencias) == true) {
                         devolve.Add(p);
                     }
                 }
                 return devolve;
-            } else {
-                return lista;
-            }
+            } else { return lista;}
         }
-
 
         // GET: api/Prato/5
         public Prato Get(int id)
@@ -71,6 +54,11 @@ namespace PickaPratoServer.Controllers
             List<Classificacao> classificacoes = pratos.GetClassificacoes(id);
             p.Classificacoes = classificacoes;
             return p;
+        }
+
+        [Route("api/Restaurante/pratos/{user}")]
+        public List<Prato> Get(String user){
+            return pratos.GetPratos(user);
         }
 
         // POST: api/Prato
@@ -87,7 +75,11 @@ namespace PickaPratoServer.Controllers
         [Route("api/Prato/comment")]
         public void Post([FromBody]Classificacao classificacao)
         {
-            pratos.InsereClassificacao(classificacao);
+            bool res = pratos.verificaComentario(classificacao);
+            if (res == true)
+                pratos.InsereClassificacao(classificacao);
+            else
+                pratos.AtualizaClassificacao(classificacao);
 
         }
 
