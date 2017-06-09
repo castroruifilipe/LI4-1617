@@ -27,6 +27,7 @@ namespace PickaPrato.Data {
             var table = connection.Table<PratoLite>();
             foreach (var s in table) {
                 Prato p = new Prato();
+                p.IdPrato = s.IdPrato;
                 p.Designacao = s.Designacao;
                 p.Fotografia = s.Fotografia;
                 Restaurante r = new Restaurante();

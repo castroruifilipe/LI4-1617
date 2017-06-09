@@ -68,6 +68,7 @@ namespace PickaPrato.Presentation {
             };
 
 			var switchpref = FindViewById<Switch>(Resource.Id.switchpref);
+            switchpref.Checked = true;
 
             Button guardadosbottom = FindViewById<Button>(Resource.Id.selecoes);
             guardadosbottom.Click += (sender, e) => {

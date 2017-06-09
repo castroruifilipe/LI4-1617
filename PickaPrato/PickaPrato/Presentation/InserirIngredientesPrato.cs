@@ -40,6 +40,12 @@ namespace PickaPrato.Presentation {
             ListView listview = FindViewById<ListView>(Resource.Id.listview);
             listview.Adapter = new IngredientesPratoAdapter(this, listastrings);
 
+            Button addingre = FindViewById<Button>(Resource.Id.addingrediente);
+            addingre.Click += (sender, e) => {
+                var dialog = new AdicionarIngrediente();
+				dialog.Show(FragmentManager, "dialog");
+            };
+
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
 			listaIngr = new List<Ingrediente>();
 			IngredientesPratoAdapter adapter = (IngredientesPratoAdapter)listview.Adapter;

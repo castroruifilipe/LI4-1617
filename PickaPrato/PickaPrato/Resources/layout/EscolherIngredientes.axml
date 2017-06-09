@@ -56,12 +56,26 @@
         p1:layout_width="match_parent"
         p1:layout_height="11.3dp"
         p1:id="@+id/space2" />
-    <Button
-        p1:id="@+id/guardar"
-        p1:layout_width="155.0dp"
+    <RelativeLayout
+        p1:layout_width="fill_parent"
         p1:layout_height="wrap_content"
-        p1:text="Guardar"
-        p1:layout_marginRight="0.0dp"
-        p1:layout_marginLeft="0.0dp"
-        p1:layout_gravity="center" />
+        p1:padding="8dp">
+        <Button
+            p1:id="@+id/addingrediente"
+            p1:layout_width="155.0dp"
+            p1:layout_height="wrap_content"
+            p1:text="Adicionar ingrediente"
+            p1:layout_marginRight="0.0dp"
+            p1:layout_marginLeft="14.0dp"
+            p1:layout_gravity="center" />
+        <Button
+            p1:id="@+id/guardar"
+            p1:layout_width="155.0dp"
+            p1:layout_height="wrap_content"
+            p1:text="Guardar"
+            p1:layout_marginRight="18.0dp"
+            p1:layout_marginLeft="0.0dp"
+            p1:layout_gravity="center"
+            p1:layout_alignParentRight="true" />
+    </RelativeLayout>
 </LinearLayout>

@@ -30,7 +30,6 @@ namespace PickaPrato.Presentation {
 
         private Button cancelarButton;
         private Button partilharButton;
-        private ShareButton sharebutton;
         private ShareDialog sharedialog;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,9 +44,7 @@ namespace PickaPrato.Presentation {
 
             EditText comentario = view.FindViewById<EditText>(Resource.Id.comentario);
             RatingBar classificacao = view.FindViewById<RatingBar>(Resource.Id.classificacao);
-            Switch partilhar = view.FindViewById<Switch>(Resource.Id.partilhar);
-            sharebutton = view.FindViewById<ShareButton>(Resource.Id.shareButton);
-            sharebutton.Visibility = ViewStates.Invisible;
+            Switch partilhar = view.FindViewById<Switch>(Resource.Id.switchpartilhar);
 
             partilharButton = view.FindViewById<Button>(Resource.Id.partilhar);
             partilharButton.Click += (sender, e) => {
@@ -55,29 +52,20 @@ namespace PickaPrato.Presentation {
                                               DescricaoPrato.pratosel.IdPrato);
 
                 if (partilhar.Checked == true) {
-	                byte[] a = Convert.FromBase64String(DescricaoPrato.pratosel.Fotografia);
-	                Bitmap image = BitmapFactory.DecodeByteArray(a, 0, a.Length);
-	                SharePhoto photo = new SharePhoto.Builder()
-	                                                 .SetBitmap(image)
-	                                                 .Build()
-	                                                 .JavaCast<SharePhoto>();
-	                
-	                SharePhotoContent content2 = new SharePhotoContent.Builder()
-	                                                                  .AddPhoto(photo)
-	                                                                  .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
-	                                                                  .JavaCast<SharePhotoContent.Builder>()
-	                                                                  .Build();
-	                
-	                ShareLinkContent content = new ShareLinkContent.Builder()
-	                                                               .SetContentTitle("Partilha de experiência")
-	                                                               .SetContentDescription(comentario.Text)
-	                                                               .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
-	                                                               .JavaCast<ShareLinkContent.Builder>()
-	                                                               .Build();
-	                sharedialog.Show(content);
+					ShareLinkContent content = new ShareLinkContent.Builder()
+					                                               .SetContentTitle(comentario.Text)
+					                                               .SetContentDescription("Estive no restaurante " + DescricaoPrato.pratosel.Restaurante.Nome +
+					                                                                      " e experimentei o prato " + DescricaoPrato.pratosel.Designacao +
+					                                                                      ". O que tenho a dizer é: " + comentario.Text + 
+					                                                                      ". Atribui " + Convert.ToInt32(classificacao.Rating) + " de classificacao.")
+					                                               .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
+					                                               .JavaCast<ShareLinkContent.Builder>()
+					                                               .Build();
+					sharedialog.Show(content);
+                } else {
+                    Dismiss();
                 }
-
-				Dismiss();
+				
             };
 			return view;
         }
@@ -95,7 +83,7 @@ namespace PickaPrato.Presentation {
             Dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
 
             SetStyle(DialogFragmentStyle.NoTitle, Android.Resource.Style.Theme);
-            
+			Dismiss();
             base.OnResume();
         }
 

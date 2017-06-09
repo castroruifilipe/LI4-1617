@@ -37,7 +37,7 @@ namespace PickaPrato.Presentation {
 
 			toolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
 			TextView mTitle = (TextView)toolbar.FindViewById(Resource.Id.toolbar_title);
-			mTitle.SetText("Resultados de " + pesquisa, TextView.BufferType.Normal);
+			mTitle.SetText("Resultados" + pesquisa, TextView.BufferType.Normal);
 
             mLayoutManager = new LinearLayoutManager(this);
             mRecyclerView.SetLayoutManager(mLayoutManager);

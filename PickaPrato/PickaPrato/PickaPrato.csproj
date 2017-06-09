@@ -131,6 +131,7 @@
     <Compile Include="Business\Pesquisa.cs" />
     <Compile Include="Data\PesquisaDAO.cs" />
     <Compile Include="Business\PratoLite.cs" />
+    <Compile Include="Presentation\AdicionarIngrediente.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -171,6 +172,7 @@
     <AndroidResource Include="Resources\drawable\Add.png" />
     <AndroidResource Include="Resources\layout\ListItemComentario.xml" />
     <AndroidResource Include="Resources\layout\AdicionarComentario.axml" />
+    <AndroidResource Include="Resources\layout\AdicionarIngrediente.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

@@ -76,7 +76,7 @@
     </android.support.v7.widget.CardView>
     <Space
         p1:layout_width="match_parent"
-        p1:layout_height="30.0dp"
+        p1:layout_height="16.5dp"
         p1:id="@+id/space2" />
     <Button
         p1:text="Registar"
