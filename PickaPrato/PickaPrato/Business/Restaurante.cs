@@ -1,18 +1,20 @@
 ﻿using System;
+using PickaPrato.Business;
 using System.Collections.Generic;
+using SQLite;
 
 namespace PickaPrato.Business {
     
     public class Restaurante {
 
-        public String Proprietario;
-        public String Password;
-        public String Localizacao;
-        public String Telefone;
-        public String Email;
-        public String Nome;
-        public Byte Estado;
-        public List<string> Fotografias;
+        public string Proprietario { get; set; }
+        public String Password { get; set; }
+        public String Localizacao { get; set; }
+        public String Telefone { get; set; }
+        public String Email { get; set; }
+        public string Nome { get; set; }
+        public Byte Estado { get; set; }
+        public List<string> Fotografias { get; set; }
 
 
 		public Restaurante(String Proprietario, String Password, String Localizacao, String Telefone, String Email,

@@ -29,18 +29,12 @@ namespace PickaPrato.Presentation {
 
             SetContentView(Resource.Layout.PagInicCliente);
 
-			historico = new string[] {
-				"Francesinha", "Arroz de pato"
-			};
+            historico = Facade.GetPesquisas();
 
 			var imageuser = FindViewById<ImageView>(Resource.Id.foto);
-            if (Facade.atualUserC.Foto == null) {
-				imageuser.Visibility = ViewStates.Invisible;
-            } else {
-				byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
-				Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
-				imageuser.SetImageBitmap(b);
-            }
+			byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
+			Bitmap b = BitmapFactory.DecodeByteArray(a, 0, a.Length);
+			imageuser.SetImageBitmap(b);
 
             var preferenciasButtom = FindViewById<Button>(Resource.Id.pref);
             preferenciasButtom.Click += (sender, e) => {
@@ -55,6 +49,12 @@ namespace PickaPrato.Presentation {
 
 			var switchpref = FindViewById<Switch>(Resource.Id.switchpref);
 
+            Button guardadosbottom = FindViewById<Button>(Resource.Id.selecoes);
+            guardadosbottom.Click += (sender, e) => {
+                ListaPratos.pratoList = Facade.GetPratosGuardados();
+                StartActivity(typeof(ListaPratos));
+            };
+
             var gobottom = FindViewById<ImageView>(Resource.Id.go);
 
             textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_prato);
@@ -64,15 +64,25 @@ namespace PickaPrato.Presentation {
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.ListItem, historico);
             textView.Adapter = adapter;
             gobottom.Click += (sender, e) => {
-                List<Prato> pratos;
-                if (switchpref.Checked == true) {
-                    pratos = Facade.PesquisaPrato(textView.Text, true);
-                } else {
-                    pratos = Facade.PesquisaPrato(textView.Text, false);
+                if (textView.Text.Length != 0) {
+	                List<Prato> pratos;
+	                if (switchpref.Checked == true) {
+	                    pratos = Facade.PesquisaPrato(textView.Text, true);
+	                } else {
+	                    pratos = Facade.PesquisaPrato(textView.Text, false);
+	                }
+                    if (pratos.Count == 0) {
+						new AlertDialog.Builder(this).
+							SetPositiveButton("OK", (senderAlert, args) => { }).
+							SetMessage("Não encontramos o que procura :(").
+							SetTitle("Sem resultados").
+							Show();
+                    } else {
+						ListaPratos.pratoList = pratos;
+						ListaPratos.pesquisa = textView.Text;
+		                StartActivity(typeof(ListaPratos));
+                    }
                 }
-				ListaPratos.pratoList = pratos;
-				ListaPratos.pesquisa = textView.Text;
-                StartActivity(typeof(ListaPratos));
 	        };
 
             recButton = FindViewById<ImageView>(Resource.Id.rec);

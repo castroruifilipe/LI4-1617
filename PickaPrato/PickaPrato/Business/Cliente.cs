@@ -7,7 +7,7 @@ namespace PickaPrato.Business {
     
     public class Cliente {
 
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public String Username { set; get; }
         public String Password { set; get; }
         public String Foto { set; get; }

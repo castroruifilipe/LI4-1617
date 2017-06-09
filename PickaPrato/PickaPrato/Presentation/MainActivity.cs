@@ -4,7 +4,6 @@ using Android.OS;
 
 using PickaPrato.Presentation;
 using PickaPrato.Data;
-using PickaPrato.Exceptions;
 
 namespace PickaPrato.Business {
     
@@ -15,6 +14,8 @@ namespace PickaPrato.Business {
 
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
+
+            Facade.init();
 
             SetContentView(Resource.Layout.Main);
 

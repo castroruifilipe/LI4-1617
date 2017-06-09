@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 
 using PickaPrato.Data;
 using PickaPrato.Business;
-using PickaPrato.Exceptions;
 using System.Collections.Generic;
 
 namespace PickaPrato {
@@ -11,9 +10,25 @@ namespace PickaPrato {
     public class Facade {
 
         private static ServiceEngine server = new ServiceEngine();
-        private static UtilizadorDAO Utilizadores;
+        private static PesquisaDAO pesquisas = new PesquisaDAO();
+        private static PratoDAO pratos = new PratoDAO();
+        private static Database baseDadosMovel = new Database();
         public static Cliente atualUserC = null;
         public static Restaurante atualUserP = null;
+
+        public static void init() {
+            baseDadosMovel.CreateDatabase();
+        }
+
+        public static string[] GetPesquisas() {
+            List<Pesquisa> ps = pesquisas.GetPesquisas();
+            string[] pss = new string[ps.Count];
+            int i = 0;
+            foreach (Pesquisa p in ps) {
+                pss[i++] = p.pesquisa;
+            }
+            return pss;
+        }
 
         public static int IniciarSessao(String Username, String Password) {
             int r = -1;
@@ -83,13 +98,15 @@ namespace PickaPrato {
         }
 
         public static List<Prato> PesquisaPrato(string pesquisa, Boolean preferencias) {
-            List<Prato> pratos;
+            Pesquisa p = new Pesquisa(pesquisa);
+            pesquisas.Put(p);
+            List<Prato> pratoss;
             if (preferencias == false) {
-                pratos = server.GetPratos(pesquisa, "NO").Result;
+                pratoss = server.GetPratos(pesquisa, "NO").Result;
             } else {
-                pratos = server.GetPratos(pesquisa, atualUserC.Username).Result;
+                pratoss = server.GetPratos(pesquisa, atualUserC.Username).Result;
             }
-            return pratos;
+            return pratoss;
         }
 
 		public static Prato GetPrato(int idPrato) {
@@ -97,9 +114,22 @@ namespace PickaPrato {
 			return p;
 		}
 
-        public static void EscolhePrato() { }
-        public static void GuardaPesquisa() { }
-        public static void GuardaPrato() { }
-        public static void AvaliaeComenta() { }
+        public static void AdicionarClassificacao(String comentario, int classificacao, int idPrato) {
+            Classificacao c = new Classificacao(comentario, classificacao, atualUserC.Username, "", idPrato);
+            Task.Run(() => server.PostClassificacao(c));
+        }
+
+        public static void GuardarPrato(Prato p) {
+            PratoLite pl = new PratoLite();
+            pl.Designacao = p.Designacao;
+            pl.Fotografia = p.Fotografia;
+            pl.IdPrato = p.IdPrato;
+            pl.Restaurante = p.Restaurante.Nome;
+            pratos.Put(pl);
+        }
+
+        public static List<Prato> GetPratosGuardados() {
+            return pratos.GetPratos();
+        }
     }
 }
