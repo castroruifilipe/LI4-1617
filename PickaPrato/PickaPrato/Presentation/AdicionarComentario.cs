@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -52,25 +52,19 @@ namespace PickaPrato.Presentation {
                                               DescricaoPrato.pratosel.IdPrato);
 
                 if (partilhar.Checked == true) {
-					ShareLinkContent content = new ShareLinkContent.Builder()
-					                                               .SetContentTitle(comentario.Text)
-					                                               .SetContentDescription("Estive no restaurante " + DescricaoPrato.pratosel.Restaurante.Nome +
-					                                                                      " e experimentei o prato " + DescricaoPrato.pratosel.Designacao +
-					                                                                      ". O que tenho a dizer é: " + comentario.Text + 
-					                                                                      ". Atribui " + Convert.ToInt32(classificacao.Rating) + " de classificacao.")
-					                                               .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
-					                                               .JavaCast<ShareLinkContent.Builder>()
-					                                               .Build();
-					sharedialog.Show(content);
-                } else {
-                    Dismiss();
+	                ShareLinkContent content = new ShareLinkContent.Builder()
+	                                                               .SetContentTitle("Partilha de experiência")
+                                                                   .SetContentDescription("Comi " + DescricaoPrato.pratosel.Designacao + " no " + DescricaoPrato.pratosel.Restaurante.Nome + " e: " + comentario.Text)
+	                                                               .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
+	                                                               .JavaCast<ShareLinkContent.Builder>()
+	                                                               .Build();
+	                sharedialog.Show(content);
                 }
-				
+
+				Dismiss();
             };
 			return view;
         }
-
-		
 
 
 		private void Button_Dismiss_Click(object sender, EventArgs e) {
@@ -83,7 +77,7 @@ namespace PickaPrato.Presentation {
             Dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
 
             SetStyle(DialogFragmentStyle.NoTitle, Android.Resource.Style.Theme);
-			Dismiss();
+            
             base.OnResume();
         }
 

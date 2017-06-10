@@ -124,7 +124,7 @@
                     android:src="@drawable/Add"
                     android:layout_width="50.0dp"
                     android:layout_height="50.0dp"
-                    android:id="@+id/add"
+                    android:id="@+id/addBo"
                     android:layout_gravity="right"
                     android:layout_marginRight="10.5dp" />
             </android.support.v7.widget.Toolbar>

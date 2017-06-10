@@ -48,8 +48,9 @@ namespace PickaPrato.Presentation {
 
             inserirButton = view.FindViewById<Button>(Resource.Id.adicionar);
             inserirButton.Click += (sender, e) => {
-                Ingrediente i = new Ingrediente(descricao.Text);
-                InserirIngredientesPrato.listaIngr.Add(i);
+                Ingrediente i = Facade.AdicionarIngrediente(descricao.Text);
+                //InserirIngredientesPrato.adapter.AdicionarItem(i);
+                //InserirIngredientesPrato.adapter.NotifyDataSetChanged();
                 Dismiss();
             };
 

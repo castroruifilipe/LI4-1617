@@ -2193,8 +2193,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a00c6
 			public const int Text = 2131361990;
 			
-			// aapt resource value: 0x7f0a00d0
-			public const int action0 = 2131362000;
+			// aapt resource value: 0x7f0a00cf
+			public const int action0 = 2131361999;
 			
 			// aapt resource value: 0x7f0a0068
 			public const int action_bar = 2131361896;
@@ -2220,8 +2220,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0069
 			public const int action_context_bar = 2131361897;
 			
-			// aapt resource value: 0x7f0a00d4
-			public const int action_divider = 2131362004;
+			// aapt resource value: 0x7f0a00d3
+			public const int action_divider = 2131362003;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -2242,13 +2242,13 @@ namespace PickaPrato
 			public const int activity_chooser_view_content = 2131361867;
 			
 			// aapt resource value: 0x7f0a00a1
-			public const int add = 2131361953;
-			
-			// aapt resource value: 0x7f0a008a
-			public const int addingrediente = 2131361930;
+			public const int addBo = 2131361953;
 			
 			// aapt resource value: 0x7f0a008b
-			public const int adicionar = 2131361931;
+			public const int addingrediente = 2131361931;
+			
+			// aapt resource value: 0x7f0a007e
+			public const int adicionar = 2131361918;
 			
 			// aapt resource value: 0x7f0a000b
 			public const int adjust_height = 2131361803;
@@ -2262,8 +2262,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0020
 			public const int always = 2131361824;
 			
-			// aapt resource value: 0x7f0a00de
-			public const int autocomplete_prato = 2131362014;
+			// aapt resource value: 0x7f0a00dd
+			public const int autocomplete_prato = 2131362013;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int automatic = 2131361859;
@@ -2286,8 +2286,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0052
 			public const int buttonPanel = 2131361874;
 			
-			// aapt resource value: 0x7f0a00d1
-			public const int cancel_action = 2131362001;
+			// aapt resource value: 0x7f0a00d0
+			public const int cancel_action = 2131362000;
 			
 			// aapt resource value: 0x7f0a0094
 			public const int cancel_button = 2131361940;
@@ -2295,8 +2295,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a007c
 			public const int cancelar = 2131361916;
 			
-			// aapt resource value: 0x7f0a0088
-			public const int cardview = 2131361928;
+			// aapt resource value: 0x7f0a0089
+			public const int cardview = 2131361929;
 			
 			// aapt resource value: 0x7f0a002d
 			public const int center = 2131361837;
@@ -2313,8 +2313,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0060
 			public const int checkbox = 2131361888;
 			
-			// aapt resource value: 0x7f0a00d7
-			public const int chronometer = 2131362007;
+			// aapt resource value: 0x7f0a00d6
+			public const int chronometer = 2131362006;
 			
 			// aapt resource value: 0x7f0a0079
 			public const int classificacao = 2131361913;
@@ -2358,8 +2358,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0091
 			public const int confirmation_code = 2131361937;
 			
-			// aapt resource value: 0x7f0a00e4
-			public const int contacto = 2131362020;
+			// aapt resource value: 0x7f0a00e3
+			public const int contacto = 2131362019;
 			
 			// aapt resource value: 0x7f0a0058
 			public const int contentPanel = 2131361880;
@@ -2376,8 +2376,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a004e
 			public const int default_activity_button = 2131361870;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int descricao = 2131361991;
+			// aapt resource value: 0x7f0a007d
+			public const int descricao = 2131361917;
 			
 			// aapt resource value: 0x7f0a00a4
 			public const int design_bottom_sheet = 2131361956;
@@ -2394,11 +2394,11 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a00a8
 			public const int design_navigation_view = 2131361960;
 			
-			// aapt resource value: 0x7f0a0081
-			public const int designacao = 2131361921;
+			// aapt resource value: 0x7f0a0082
+			public const int designacao = 2131361922;
 			
-			// aapt resource value: 0x7f0a0080
-			public const int designacao_layout = 2131361920;
+			// aapt resource value: 0x7f0a0081
+			public const int designacao_layout = 2131361921;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int disableHome = 2131361809;
@@ -2409,8 +2409,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a006a
 			public const int edit_query = 2131361898;
 			
-			// aapt resource value: 0x7f0a00e5
-			public const int email = 2131362021;
+			// aapt resource value: 0x7f0a00e4
+			public const int email = 2131362020;
 			
 			// aapt resource value: 0x7f0a00b8
 			public const int email_edittext = 2131361976;
@@ -2421,8 +2421,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a001e
 			public const int end = 2131361822;
 			
-			// aapt resource value: 0x7f0a00dc
-			public const int end_padder = 2131362012;
+			// aapt resource value: 0x7f0a00db
+			public const int end_padder = 2131362011;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int enterAlways = 2131361829;
@@ -2430,8 +2430,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0026
 			public const int enterAlwaysCollapsed = 2131361830;
 			
-			// aapt resource value: 0x7f0a0087
-			public const int escolherimg = 2131361927;
+			// aapt resource value: 0x7f0a0088
+			public const int escolherimg = 2131361928;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int exitUntilCollapsed = 2131361831;
@@ -2457,8 +2457,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a009b
 			public const int foto = 2131361947;
 			
-			// aapt resource value: 0x7f0a00df
-			public const int go = 2131362015;
+			// aapt resource value: 0x7f0a00de
+			public const int go = 2131362014;
 			
 			// aapt resource value: 0x7f0a00b9
 			public const int gridLayout1 = 2131361977;
@@ -2508,14 +2508,14 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a00c1
 			public const int imagem6 = 2131361985;
 			
-			// aapt resource value: 0x7f0a0089
-			public const int imageview = 2131361929;
+			// aapt resource value: 0x7f0a008a
+			public const int imageview = 2131361930;
 			
-			// aapt resource value: 0x7f0a00db
-			public const int info = 2131362011;
+			// aapt resource value: 0x7f0a00da
+			public const int info = 2131362010;
 			
-			// aapt resource value: 0x7f0a00cc
-			public const int iniciarsessao = 2131361996;
+			// aapt resource value: 0x7f0a00cb
+			public const int iniciarsessao = 2131361995;
 			
 			// aapt resource value: 0x7f0a0042
 			public const int inline = 2131361858;
@@ -2529,14 +2529,14 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0031
 			public const int left = 2131361841;
 			
-			// aapt resource value: 0x7f0a00d5
-			public const int line1 = 2131362005;
+			// aapt resource value: 0x7f0a00d4
+			public const int line1 = 2131362004;
 			
-			// aapt resource value: 0x7f0a00d9
-			public const int line3 = 2131362009;
+			// aapt resource value: 0x7f0a00d8
+			public const int line3 = 2131362008;
 			
-			// aapt resource value: 0x7f0a007d
-			public const int linearLayout1 = 2131361917;
+			// aapt resource value: 0x7f0a007f
+			public const int linearLayout1 = 2131361919;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int listMode = 2131361806;
@@ -2544,23 +2544,23 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a004f
 			public const int list_item = 2131361871;
 			
-			// aapt resource value: 0x7f0a007f
-			public const int listapref = 2131361919;
+			// aapt resource value: 0x7f0a00e6
+			public const int listapref = 2131362022;
 			
 			// aapt resource value: 0x7f0a00a2
 			public const int listview = 2131361954;
 			
-			// aapt resource value: 0x7f0a00e3
-			public const int login_button = 2131362019;
+			// aapt resource value: 0x7f0a00e2
+			public const int login_button = 2131362018;
 			
 			// aapt resource value: 0x7f0a00a0
 			public const int mapa = 2131361952;
 			
-			// aapt resource value: 0x7f0a00d3
-			public const int media_actions = 2131362003;
+			// aapt resource value: 0x7f0a00d2
+			public const int media_actions = 2131362002;
 			
-			// aapt resource value: 0x7f0a00cf
-			public const int messenger_send_button = 2131361999;
+			// aapt resource value: 0x7f0a00ce
+			public const int messenger_send_button = 2131361998;
 			
 			// aapt resource value: 0x7f0a001f
 			public const int middle = 2131361823;
@@ -2589,8 +2589,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0045
 			public const int never_display = 2131361861;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int nome = 2131361993;
+			// aapt resource value: 0x7f0a00c8
+			public const int nome = 2131361992;
 			
 			// aapt resource value: 0x7f0a00b2
 			public const int nome_edittext = 2131361970;
@@ -2619,8 +2619,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a007b
 			public const int partilhar = 2131361915;
 			
-			// aapt resource value: 0x7f0a00cb
-			public const int password = 2131361995;
+			// aapt resource value: 0x7f0a00ca
+			public const int password = 2131361994;
 			
 			// aapt resource value: 0x7f0a00b0
 			public const int password_edittext = 2131361968;
@@ -2634,14 +2634,14 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a008e
 			public const int prato = 2131361934;
 			
+			// aapt resource value: 0x7f0a0086
+			public const int preco = 2131361926;
+			
 			// aapt resource value: 0x7f0a0085
-			public const int preco = 2131361925;
+			public const int preco_layout = 2131361925;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int preco_layout = 2131361924;
-			
-			// aapt resource value: 0x7f0a00e2
-			public const int pref = 2131362018;
+			// aapt resource value: 0x7f0a00e1
+			public const int pref = 2131362017;
 			
 			// aapt resource value: 0x7f0a0092
 			public const int progress_bar = 2131361938;
@@ -2655,23 +2655,23 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0062
 			public const int radio = 2131361890;
 			
-			// aapt resource value: 0x7f0a00dd
-			public const int rec = 2131362013;
+			// aapt resource value: 0x7f0a00dc
+			public const int rec = 2131362012;
 			
 			// aapt resource value: 0x7f0a00c3
 			public const int recycler_view = 2131361987;
 			
-			// aapt resource value: 0x7f0a00cd
-			public const int registarcliente = 2131361997;
+			// aapt resource value: 0x7f0a00cc
+			public const int registarcliente = 2131361996;
 			
-			// aapt resource value: 0x7f0a00ce
-			public const int registarest = 2131361998;
+			// aapt resource value: 0x7f0a00cd
+			public const int registarest = 2131361997;
 			
 			// aapt resource value: 0x7f0a009c
 			public const int relativeLayout1 = 2131361948;
 			
-			// aapt resource value: 0x7f0a00e6
-			public const int remover = 2131362022;
+			// aapt resource value: 0x7f0a00e5
+			public const int remover = 2131362021;
 			
 			// aapt resource value: 0x7f0a008f
 			public const int restaurante = 2131361935;
@@ -2727,8 +2727,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0075
 			public const int search_voice_btn = 2131361909;
 			
-			// aapt resource value: 0x7f0a00e1
-			public const int selecoes = 2131362017;
+			// aapt resource value: 0x7f0a00e0
+			public const int selecoes = 2131362016;
 			
 			// aapt resource value: 0x7f0a0076
 			public const int select_dialog_listview = 2131361910;
@@ -2760,8 +2760,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a008d
 			public const int space1 = 2131361933;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int space2 = 2131361926;
+			// aapt resource value: 0x7f0a0087
+			public const int space2 = 2131361927;
 			
 			// aapt resource value: 0x7f0a00bd
 			public const int space3 = 2131361981;
@@ -2787,20 +2787,20 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0033
 			public const int start = 2131361843;
 			
-			// aapt resource value: 0x7f0a00d2
-			public const int status_bar_latest_event_content = 2131362002;
+			// aapt resource value: 0x7f0a00d1
+			public const int status_bar_latest_event_content = 2131362001;
 			
 			// aapt resource value: 0x7f0a0073
 			public const int submit_area = 2131361907;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int switch1 = 2131361992;
+			// aapt resource value: 0x7f0a00c7
+			public const int switch1 = 2131361991;
 			
 			// aapt resource value: 0x7f0a007a
 			public const int switchpartilhar = 2131361914;
 			
-			// aapt resource value: 0x7f0a00e0
-			public const int switchpref = 2131362016;
+			// aapt resource value: 0x7f0a00df
+			public const int switchpref = 2131362015;
 			
 			// aapt resource value: 0x7f0a0010
 			public const int tabMode = 2131361808;
@@ -2814,14 +2814,11 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a00b5
 			public const int telefone_layout = 2131361973;
 			
-			// aapt resource value: 0x7f0a00e7
-			public const int termsessao = 2131362023;
+			// aapt resource value: 0x7f0a00d9
+			public const int text = 2131362009;
 			
-			// aapt resource value: 0x7f0a00da
-			public const int text = 2131362010;
-			
-			// aapt resource value: 0x7f0a00d8
-			public const int text2 = 2131362008;
+			// aapt resource value: 0x7f0a00d7
+			public const int text2 = 2131362007;
 			
 			// aapt resource value: 0x7f0a005b
 			public const int textSpacerNoButtons = 2131361883;
@@ -2832,14 +2829,14 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0078
 			public const int textView1 = 2131361912;
 			
-			// aapt resource value: 0x7f0a00d6
-			public const int time = 2131362006;
+			// aapt resource value: 0x7f0a00d5
+			public const int time = 2131362005;
+			
+			// aapt resource value: 0x7f0a0084
+			public const int tipo = 2131361924;
 			
 			// aapt resource value: 0x7f0a0083
-			public const int tipo = 2131361923;
-			
-			// aapt resource value: 0x7f0a0082
-			public const int tipo_layout = 2131361922;
+			public const int tipo_layout = 2131361923;
 			
 			// aapt resource value: 0x7f0a0051
 			public const int title = 2131361873;
@@ -2847,11 +2844,11 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0056
 			public const int title_template = 2131361878;
 			
-			// aapt resource value: 0x7f0a007e
-			public const int toolbar = 2131361918;
+			// aapt resource value: 0x7f0a0080
+			public const int toolbar = 2131361920;
 			
-			// aapt resource value: 0x7f0a00e8
-			public const int toolbar_title = 2131362024;
+			// aapt resource value: 0x7f0a00e7
+			public const int toolbar_title = 2131362023;
 			
 			// aapt resource value: 0x7f0a0034
 			public const int top = 2131361844;
@@ -2871,8 +2868,8 @@ namespace PickaPrato
 			// aapt resource value: 0x7f0a0016
 			public const int useLogo = 2131361814;
 			
-			// aapt resource value: 0x7f0a00ca
-			public const int username = 2131361994;
+			// aapt resource value: 0x7f0a00c9
+			public const int username = 2131361993;
 			
 			// aapt resource value: 0x7f0a00ae
 			public const int username_edittext = 2131361966;
@@ -3018,157 +3015,160 @@ namespace PickaPrato
 			public const int AdicionarComentario = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int AdicionarPrato = 2130968602;
+			public const int AdicionarIngrediente = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int CardView = 2130968603;
+			public const int AdicionarPrato = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int com_facebook_activity_layout = 2130968604;
+			public const int CardView = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int com_facebook_device_auth_dialog_fragment = 2130968605;
+			public const int com_facebook_activity_layout = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int com_facebook_login_fragment = 2130968606;
+			public const int com_facebook_device_auth_dialog_fragment = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int com_facebook_tooltip_bubble = 2130968607;
+			public const int com_facebook_login_fragment = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int DescricaoPrato = 2130968608;
+			public const int com_facebook_tooltip_bubble = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int design_bottom_sheet_dialog = 2130968609;
+			public const int DescricaoPrato = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int design_layout_snackbar = 2130968610;
+			public const int design_bottom_sheet_dialog = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_layout_snackbar_include = 2130968611;
+			public const int design_layout_snackbar = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_layout_tab_icon = 2130968612;
+			public const int design_layout_snackbar_include = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_layout_tab_text = 2130968613;
+			public const int design_layout_tab_icon = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_menu_item_action_area = 2130968614;
+			public const int design_layout_tab_text = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_navigation_item = 2130968615;
+			public const int design_menu_item_action_area = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_navigation_item_header = 2130968616;
+			public const int design_navigation_item = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_navigation_item_separator = 2130968617;
+			public const int design_navigation_item_header = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int design_navigation_item_subheader = 2130968618;
+			public const int design_navigation_item_separator = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int design_navigation_menu = 2130968619;
+			public const int design_navigation_item_subheader = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int design_navigation_menu_item = 2130968620;
+			public const int design_navigation_menu = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int EscolherIngredientes = 2130968621;
+			public const int design_navigation_menu_item = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int IngredientesPrato = 2130968622;
+			public const int EscolherIngredientes = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int ListaPratos = 2130968623;
+			public const int IngredientesPrato = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int ListItem = 2130968624;
+			public const int ListaPratos = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int ListItemChekbox = 2130968625;
+			public const int ListItem = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int ListItemChekboxWithSwitch = 2130968626;
+			public const int ListItemChekbox = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int ListItemComentario = 2130968627;
+			public const int ListItemChekboxWithSwitch = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int Main = 2130968628;
+			public const int ListItemComentario = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int messenger_button_send_blue_large = 2130968629;
+			public const int Main = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int messenger_button_send_blue_round = 2130968630;
+			public const int messenger_button_send_blue_large = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int messenger_button_send_blue_small = 2130968631;
+			public const int messenger_button_send_blue_round = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int messenger_button_send_white_large = 2130968632;
+			public const int messenger_button_send_blue_small = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int messenger_button_send_white_round = 2130968633;
+			public const int messenger_button_send_white_large = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int messenger_button_send_white_small = 2130968634;
+			public const int messenger_button_send_white_round = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_media_action = 2130968635;
+			public const int messenger_button_send_white_small = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_media_cancel_action = 2130968636;
+			public const int notification_media_action = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_template_big_media = 2130968637;
+			public const int notification_media_cancel_action = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_big_media_narrow = 2130968638;
+			public const int notification_template_big_media = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_lines = 2130968639;
+			public const int notification_template_big_media_narrow = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int notification_template_media = 2130968640;
+			public const int notification_template_lines = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int notification_template_part_chronometer = 2130968641;
+			public const int notification_template_media = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int notification_template_part_time = 2130968642;
+			public const int notification_template_part_chronometer = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int PagInicCliente = 2130968643;
+			public const int notification_template_part_time = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int PagInicProp = 2130968644;
+			public const int PagInicCliente = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int Preferencias = 2130968645;
+			public const int PagInicProp = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int RegistarCliente = 2130968646;
+			public const int Preferencias = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int RegistarRestaurante = 2130968647;
+			public const int RegistarCliente = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int select_dialog_item_material = 2130968648;
+			public const int RegistarRestaurante = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int select_dialog_multichoice_material = 2130968649;
+			public const int select_dialog_item_material = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int select_dialog_singlechoice_material = 2130968650;
+			public const int select_dialog_multichoice_material = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int support_simple_spinner_dropdown_item = 2130968651;
+			public const int select_dialog_singlechoice_material = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int Toolbar = 2130968652;
+			public const int support_simple_spinner_dropdown_item = 2130968652;
+			
+			// aapt resource value: 0x7f04004d
+			public const int Toolbar = 2130968653;
 			
 			static Layout()
 			{

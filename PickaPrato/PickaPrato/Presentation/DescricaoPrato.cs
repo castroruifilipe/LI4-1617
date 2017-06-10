@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -12,7 +12,7 @@ using PickaPrato.Business;
 
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 using FragmentManagerApp = Android.Support.V4.App.FragmentManager;
-
+using Java.Lang;
 
 namespace PickaPrato.Presentation {
     
@@ -57,9 +57,11 @@ namespace PickaPrato.Presentation {
 			ListView listview = FindViewById<ListView>(Resource.Id.listview);
 			listview.Adapter = new ComentariosAdapter(this, classificacoes);
 
-            ImageView addComment = FindViewById<ImageView>(Resource.Id.add);
+            ImageView addComment = FindViewById<ImageView>(Resource.Id.addBo);
             addComment.Click += (sender, e) => {
+                Console.WriteLine("\n\n\nBOTAOCOMENTARIOS");
                 var dialog = new AdicionarComentario();
+                Console.WriteLine("\n\n\nAdicionaComentario");
                 dialog.Show(FragmentManager, "dialog");
             };
 

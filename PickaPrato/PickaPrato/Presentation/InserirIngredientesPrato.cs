@@ -50,20 +50,30 @@ namespace PickaPrato.Presentation {
 			listaIngr = new List<Ingrediente>();
 			IngredientesPratoAdapter adapter = (IngredientesPratoAdapter)listview.Adapter;
             guardarButtom.Click += (sender, e) => {
-				Dictionary<string, bool> ativos = adapter.Ativos;
+				/*Dictionary<string, bool> ativos = adapter.Ativos;
 				foreach (KeyValuePair<string, bool> entry in ativos) {
 					Ingrediente ing = new Ingrediente(entry.Key, entry.Value);
                     listaIngr.Add(ing);
-                }
+                }*/
                 this.Finish();
             };
 		}
+
+        void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e) {
+            var listView = sender as ListView;
+            Ingrediente i = listaIngr[e.Position];
+            if (listaIngr.Contains(i)) {
+                listaIngr.Remove(i);
+            } else {
+                listaIngr.Add(i);
+            }
+        }
     }
 
     public class IngredientesPratoAdapter : BaseAdapter<string> {
 		
         public List<string> items;
-        public Dictionary<string, bool> Ativos { get; }
+        public Dictionary<string, bool> Ativos;
 		public Activity context;
 
         public IngredientesPratoAdapter(Activity context, List<string> items) : base() {
@@ -112,6 +122,11 @@ namespace PickaPrato.Presentation {
                 }
             };
 			return convertView;
+        }
+
+        public void AdicionarItem(Ingrediente i) {
+            items.Add(i.Designacao);
+            NotifyDataSetChanged();
         }
 
         public class ViewHolder {

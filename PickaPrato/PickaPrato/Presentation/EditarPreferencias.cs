@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,7 +11,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-
+using Java.Lang;
 using SupportToolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace PickaPrato.Presentation {
@@ -23,6 +23,7 @@ namespace PickaPrato.Presentation {
         
         private List<string> listaIngr;
         private List<string> listaPref;
+        private List<string> selecionados;
         private SupportToolbar toolbar;
 
         
@@ -41,37 +42,44 @@ namespace PickaPrato.Presentation {
             listview.Adapter = new HomeScreenAdapter(this, listaIngr, listaPref);
             listview.ItemClick += OnListItemClick;
 
+			selecionados = new List<string>();
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
             HomeScreenAdapter adapter = (HomeScreenAdapter)listview.Adapter;
             guardarButtom.Click += (sender, e) => {
-                List<string> selecionados = adapter.Ativos;
-                for (int i = 0; i < selecionados.Count; i++) {
-                    Console.WriteLine(selecionados[i] + "\n\n");
-                }
-                Facade.EditarPreferencias(selecionados);
+                /*for (int i = 0; i < listaIngr.Count; i++) {
+                    var t = adapter.GetView(i, null, listview);
+                    string text = t.FindViewById<TextView>(Resource.Id.descricao).Text;
+                    bool check = t.FindViewById<CheckBox>(Resource.Id.checkBox).Checked;
+                    if (check == true) {
+						Console.WriteLine("\n\n\n" + text);
+                        selecionados.Add(text);
+                    }
+                }*/
+
+                Facade.EditarPreferencias(adapter.Ativos);
                 this.Finish();
             };
 		}
 
 		void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e) {
 			var listView = sender as ListView;
-            var t = listaIngr[e.Position];
-			Toast.MakeText(this, t, ToastLength.Short).Show();
+            string t = listaIngr[e.Position];
 		}
     }
 
 	public class HomeScreenAdapter : BaseAdapter<string> {
 		
         public List<string> items;
-        public List<string> Preativos;
         public List<string> Ativos { get; }
 		public Activity context;
 
-        public HomeScreenAdapter(Activity context, List<string> items, List<string> Preativos) : base() {
+        public HomeScreenAdapter(Activity context, List<string> items, List<string> PreAtivos) : base() {
 			this.context = context;
 			this.items = items;
-            this.Preativos = Preativos;
             this.Ativos = new List<string>();
+            /*foreach (string s in PreAtivos) {
+                this.Ativos.Add(s);
+            }*/
 		}
 
 		public override long GetItemId(int position) {
@@ -93,21 +101,21 @@ namespace PickaPrato.Presentation {
                 convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekbox, null);
             }
 			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
-			row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
-            row.text.Text = items[position];
-			row.check.CheckedChange += (sender, e) => {
-                if (row.check.Checked == true) {
-                    Ativos.Add(row.text.Text);
-                } else {
-                    Ativos.Remove(row.text.Text);
+			row.text.Text = items[position];
+            row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
+            row.check.Click += (sender, e) => {
+                if (row.check.Checked == true && Ativos.Contains(row.text.Text) == false) {
+                    this.Ativos.Add(row.text.Text);
+                } else if (row.check.Checked == false && Ativos.Contains(row.text.Text) == true) {
+                    this.Ativos.Remove(row.text.Text);
                 }
-			};
+            };
 
-            if (this.Preativos.Contains(items[position])) {
+            /*if (Ativos.Contains(items[position])) {
                 row.check.Checked = true;
             } else {
                 row.check.Checked = false;
-            }
+            }*/
 
 			return convertView;
         }

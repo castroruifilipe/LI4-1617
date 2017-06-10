@@ -98,5 +98,12 @@ namespace PickaPrato.Data {
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(uri, content);
         }
+
+        public async Task PostIngrediente(Ingrediente i) {
+            var uri = new Uri(urlBase + "api/Ingrediente/");
+            var json = JsonConvert.SerializeObject(i);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(uri, content);
+        }
     }
 }

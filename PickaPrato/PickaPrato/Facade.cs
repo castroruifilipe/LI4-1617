@@ -133,5 +133,11 @@ namespace PickaPrato {
         public static List<Prato> GetPratosGuardados() {
             return pratos.GetPratos();
         }
+
+        public static Ingrediente AdicionarIngrediente(string descricao) {
+            Ingrediente i = new Ingrediente(descricao);
+            Task.Run(() => server.PostIngrediente(i));
+            return i;
+        }
     }
 }
