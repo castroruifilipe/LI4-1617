@@ -42,7 +42,7 @@
         p1:layout_marginBottom="0.0dp" />
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         p1:layout_width="match_parent"
-        p1:layout_height="400.3dp"
+        p1:layout_height="370dp"
         tools:context="recyclerview.com.icoderslab.recyclerviewtutorial.MainActivity"
         p1:minWidth="25px"
         p1:minHeight="25px">

@@ -24,6 +24,7 @@ namespace PickaPrato.Presentation {
     public class InserirIngredientesPrato : Activity {
         
         public static List<Ingrediente> listaIngr;
+        public static ListView listview;
         private SupportToolbar toolbar;
 
         
@@ -37,7 +38,7 @@ namespace PickaPrato.Presentation {
 			mTitle.SetText("Inserir ingredientes", TextView.BufferType.Normal);
 
             List<string> listastrings = Facade.GetIngredientes();
-            ListView listview = FindViewById<ListView>(Resource.Id.listview);
+            listview = FindViewById<ListView>(Resource.Id.listview);
             listview.Adapter = new IngredientesPratoAdapter(this, listastrings);
 
             Button addingre = FindViewById<Button>(Resource.Id.addingrediente);
@@ -50,12 +51,13 @@ namespace PickaPrato.Presentation {
 			listaIngr = new List<Ingrediente>();
 			IngredientesPratoAdapter adapter = (IngredientesPratoAdapter)listview.Adapter;
             guardarButtom.Click += (sender, e) => {
-				/*Dictionary<string, bool> ativos = adapter.Ativos;
-				foreach (KeyValuePair<string, bool> entry in ativos) {
-					Ingrediente ing = new Ingrediente(entry.Key, entry.Value);
-                    listaIngr.Add(ing);
-                }*/
-                this.Finish();
+				foreach (Model2 m in adapter.items) {
+                    if (m.isSelected()) {
+                        Ingrediente i = new Ingrediente(m.getName(), m.isCostume());
+                        listaIngr.Add(i);
+                    }
+                }
+                Finish();
             };
 		}
 
@@ -70,23 +72,58 @@ namespace PickaPrato.Presentation {
         }
     }
 
-    public class IngredientesPratoAdapter : BaseAdapter<string> {
+    public class Model2 {
+    
+        private string name;
+        private bool selected;
+        private bool costume;
+        
+        public Model2(string name) {
+            this.name = name;
+        }
+        
+        public string getName() {
+            return name;
+        }
+        
+        public bool isSelected() {
+            return selected;
+        }
+
+        public bool isCostume() {
+            return costume;
+        }
+
+        public void setCostume(bool costume) {
+            this.costume = costume;
+        }
+
+        public void setSelected(bool selected) {
+            this.selected = selected;
+        }
+    }
+
+    public class IngredientesPratoAdapter : BaseAdapter<Model2> {
 		
-        public List<string> items;
-        public Dictionary<string, bool> Ativos;
+        public List<Model2> items;
 		public Activity context;
 
         public IngredientesPratoAdapter(Activity context, List<string> items) : base() {
 			this.context = context;
-			this.items = items;
-            this.Ativos = new Dictionary<string, bool>();
+            this.items = new List<Model2>();
+            foreach (string s in items) {
+                Model2 m = new Model2(s);
+                m.setSelected(false);
+                m.setCostume(false);
+                this.items.Add(m);
+            }
 		}
 
 		public override long GetItemId(int position) {
 			return position;
 		}
 
-		public override string this[int position] {
+		public override Model2 this[int position] {
 			get { return items[position]; }
 		}
 		
@@ -100,32 +137,44 @@ namespace PickaPrato.Presentation {
             if (convertView == null) {
                 convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekboxWithSwitch, null);
             }
+
 			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
 			row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
             row.swit = convertView.FindViewById<Switch>(Resource.Id.switch1);
-            row.swit.Visibility = ViewStates.Invisible;
-            row.text.Text = items[position];
-			row.check.CheckedChange += (sender, e) => {
-                if (row.check.Checked == true) {
-                    Ativos.Add(row.text.Text, row.swit.Checked);
+
+            row.check.Click += (sender, e) => {
+                int getposition = (int)row.check.Tag;
+                items[getposition].setSelected(row.check.Checked);
+                if (items[getposition].isSelected() == true) {
                     row.swit.Visibility = ViewStates.Visible;
                 } else {
-                    Ativos.Remove(row.text.Text);
                     row.swit.Visibility = ViewStates.Invisible;
                 }
-			};
-            row.swit.CheckedChange += (sender, e) => {
-                if (row.swit.Checked == true) {
-                    Ativos[row.text.Text] = true;
-                } else {
-                    Ativos[row.text.Text] = false;
-                }
             };
+            row.swit.Click += (sender, e) => {
+				int getposition = (int)row.swit.Tag;
+                items[getposition].setCostume(row.swit.Checked);
+			};
+
+			row.text.Text = items[position].getName();
+            row.check.Tag = position;
+            row.check.Checked = items[position].isSelected();
+            row.swit.Tag = position;
+            row.swit.Checked = items[position].isCostume();
+            if (items[position].isSelected() == true) {
+                row.swit.Visibility = ViewStates.Visible;
+            } else {
+                row.swit.Visibility = ViewStates.Invisible;
+            }
+            
 			return convertView;
         }
 
-        public void AdicionarItem(Ingrediente i) {
-            items.Add(i.Designacao);
+        public void AdicionarItem(string i) {
+            Model2 m = new Model2(i);
+            m.setSelected(true);
+            m.setCostume(false);
+            items.Add(m);
             NotifyDataSetChanged();
         }
 

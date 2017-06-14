@@ -30,14 +30,11 @@ namespace PickaPrato.Presentation {
 
         private Button cancelarButton;
         private Button inserirButton;
-        private ShareDialog sharedialog;
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
 
-            var view = inflater.Inflate(Resource.Layout.AdicionarComentario, container, true);
-
-            sharedialog = new ShareDialog(this);
+            var view = inflater.Inflate(Resource.Layout.AdicionarIngrediente, container, true);
 
             cancelarButton = view.FindViewById<Button>(Resource.Id.cancelar);
             cancelarButton.Click += (sender, e) => {
@@ -48,9 +45,9 @@ namespace PickaPrato.Presentation {
 
             inserirButton = view.FindViewById<Button>(Resource.Id.adicionar);
             inserirButton.Click += (sender, e) => {
-                Ingrediente i = Facade.AdicionarIngrediente(descricao.Text);
-                //InserirIngredientesPrato.adapter.AdicionarItem(i);
-                //InserirIngredientesPrato.adapter.NotifyDataSetChanged();
+                Facade.AdicionarIngrediente(descricao.Text);
+                IngredientesPratoAdapter adapter = (IngredientesPratoAdapter)InserirIngredientesPrato.listview.Adapter;
+                adapter.AdicionarItem(descricao.Text);
                 Dismiss();
             };
 

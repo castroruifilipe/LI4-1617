@@ -11,6 +11,10 @@
     <include
         p1:id="@+id/toolbar"
         layout="@layout/toolbar" />
+    <Space
+        p1:layout_width="match_parent"
+        p1:layout_height="12.0dp"
+        p1:id="@+id/space3" />
     <android.support.design.widget.TextInputLayout
         p1:id="@+id/designacao_layout"
         p1:layout_gravity="center"
