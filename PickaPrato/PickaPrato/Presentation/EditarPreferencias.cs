@@ -46,17 +46,13 @@ namespace PickaPrato.Presentation {
             Button guardarButtom = FindViewById<Button>(Resource.Id.guardar);
             HomeScreenAdapter adapter = (HomeScreenAdapter)listview.Adapter;
             guardarButtom.Click += (sender, e) => {
-                /*for (int i = 0; i < listaIngr.Count; i++) {
-                    var t = adapter.GetView(i, null, listview);
-                    string text = t.FindViewById<TextView>(Resource.Id.descricao).Text;
-                    bool check = t.FindViewById<CheckBox>(Resource.Id.checkBox).Checked;
-                    if (check == true) {
-						Console.WriteLine("\n\n\n" + text);
-                        selecionados.Add(text);
+                foreach (Model m in adapter.items) {
+                    if (m.isSelected()) {
+                        selecionados.Add(m.getName());
                     }
-                }*/
+                }
 
-                Facade.EditarPreferencias(adapter.Ativos);
+                Facade.EditarPreferencias(selecionados);
                 this.Finish();
             };
 		}
@@ -67,26 +63,50 @@ namespace PickaPrato.Presentation {
 		}
     }
 
-	public class HomeScreenAdapter : BaseAdapter<string> {
+    public class Model {
+    
+	    private string name;
+	    private bool selected;
+	    
+	    public Model(string name) {
+	        this.name = name;
+	    }
+	    
+	    public string getName() {
+	        return name;
+	    }
+	    
+	    public bool isSelected() {
+	        return selected;
+	    }
+	    
+	    public void setSelected(bool selected) {
+	        this.selected = selected;
+	    }
+	} 
+
+	public class HomeScreenAdapter : BaseAdapter<Model> {
 		
-        public List<string> items;
-        public List<string> Ativos { get; }
+        public List<Model> items;
 		public Activity context;
 
         public HomeScreenAdapter(Activity context, List<string> items, List<string> PreAtivos) : base() {
 			this.context = context;
-			this.items = items;
-            this.Ativos = new List<string>();
-            /*foreach (string s in PreAtivos) {
-                this.Ativos.Add(s);
-            }*/
+            this.items = new List<Model>();
+            foreach (string s in items) {
+                Model m = new Model(s);
+                if (PreAtivos.Contains(s)) {
+                    m.setSelected(true);
+                }
+                this.items.Add(m);
+            }
 		}
 
 		public override long GetItemId(int position) {
 			return position;
 		}
 
-		public override string this[int position] {
+		public override Model this[int position] {
 			get { return items[position]; }
 		}
 		
@@ -100,23 +120,18 @@ namespace PickaPrato.Presentation {
             if (convertView == null) {
                 convertView = context.LayoutInflater.Inflate(Resource.Layout.ListItemChekbox, null);
             }
+
 			row.text = convertView.FindViewById<TextView>(Resource.Id.descricao);
-			row.text.Text = items[position];
             row.check = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
+
             row.check.Click += (sender, e) => {
-                if (row.check.Checked == true && Ativos.Contains(row.text.Text) == false) {
-                    this.Ativos.Add(row.text.Text);
-                } else if (row.check.Checked == false && Ativos.Contains(row.text.Text) == true) {
-                    this.Ativos.Remove(row.text.Text);
-                }
+                int getposition = (int)row.check.Tag;
+                items[getposition].setSelected(row.check.Checked);
             };
 
-            /*if (Ativos.Contains(items[position])) {
-                row.check.Checked = true;
-            } else {
-                row.check.Checked = false;
-            }*/
-
+			row.check.Tag = position;
+            row.check.Checked = items[position].isSelected();
+            row.text.Text = items[position].getName();
 			return convertView;
         }
 

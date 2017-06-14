@@ -52,13 +52,18 @@ namespace PickaPrato.Presentation {
                                               DescricaoPrato.pratosel.IdPrato);
 
                 if (partilhar.Checked == true) {
-	                ShareLinkContent content = new ShareLinkContent.Builder()
-	                                                               .SetContentTitle("Partilha de experiência")
-                                                                   .SetContentDescription("Comi " + DescricaoPrato.pratosel.Designacao + " no " + DescricaoPrato.pratosel.Restaurante.Nome + " e: " + comentario.Text)
-	                                                               .SetContentUrl(Android.Net.Uri.Parse("https://www.facebook.com/Picka-Prato-1900012193554780/"))
-	                                                               .JavaCast<ShareLinkContent.Builder>()
-	                                                               .Build();
-	                sharedialog.Show(content);
+					byte[] a = Convert.FromBase64String(DescricaoPrato.pratosel.Fotografia);
+					Bitmap image = BitmapFactory.DecodeByteArray(a, 0, a.Length);
+					SharePhoto photo = new SharePhoto.Builder()
+													 .SetBitmap(image)
+													 .Build()
+													 .JavaCast<SharePhoto>();
+
+					SharePhotoContent content = new SharePhotoContent.Builder()
+																	  .AddPhoto(photo)
+																	  .JavaCast<SharePhotoContent.Builder>()
+																	  .Build();
+                    sharedialog.Show(content);
                 }
 
 				Dismiss();

@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -14,12 +14,16 @@ using Java.Security;
 using Xamarin.Facebook;
 using Xamarin.Facebook.Login.Widget;
 using Xamarin.Facebook.Login;
+using Android.Speech.Tts;
+
+using System.Linq;
+using Android.Runtime;
 
 namespace PickaPrato.Presentation {
     
     [Activity(Label = "PagInicCliente")]
 
-    public class PagInicCliente : Activity, IFacebookCallback {
+    public class PagInicCliente : Activity, IFacebookCallback, TextToSpeech.IOnInitListener {
 
         string[] historico;
 
@@ -28,11 +32,15 @@ namespace PickaPrato.Presentation {
 		private readonly int VOICE = 10;
 		private string resultado;
         private ICallbackManager mCallBackManager;
+        private TextToSpeech textToSpeech;
+        Java.Util.Locale locale;
 
 
         protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
 			FacebookSdk.SdkInitialize(this.ApplicationContext);
+            textToSpeech = new TextToSpeech(this, this);
+            locale = new Java.Util.Locale("pt", "BR");
 
             SetContentView(Resource.Layout.PagInicCliente);
 
@@ -55,7 +63,6 @@ namespace PickaPrato.Presentation {
                 string keyhash = Convert.ToBase64String(md.Digest());
                 Console.WriteLine("KeyHash: " + keyhash);
             }
-            ///////////////////////
 
 			var imageuser = FindViewById<ImageView>(Resource.Id.foto);
 			byte[] a = Convert.FromBase64String(Facade.atualUserC.Foto);
@@ -93,11 +100,7 @@ namespace PickaPrato.Presentation {
 	                    pratos = Facade.PesquisaPrato(textView.Text, false);
 	                }
                     if (pratos.Count == 0) {
-						new AlertDialog.Builder(this).
-							SetPositiveButton("OK", (senderAlert, args) => { }).
-							SetMessage("Não encontramos o que procura :(").
-							SetTitle("Sem resultados").
-							Show();
+                        textToSpeech.Speak("Não encontrei " + textView.Text, QueueMode.Flush, null, null);
                     } else {
 						ListaPratos.pratoList = pratos;
 						ListaPratos.pesquisa = textView.Text;
@@ -161,6 +164,13 @@ namespace PickaPrato.Presentation {
                 mCallBackManager.OnActivityResult(requestCode, (int)resultVal, data);
             }
 		}
+
+        public void OnInit([GeneratedEnum] OperationResult status) {
+			if (status == OperationResult.Error)
+				textToSpeech.SetLanguage(Java.Util.Locale.Default);
+			if (status == OperationResult.Success)
+				textToSpeech.SetLanguage(locale);
+        }
     }
 
 }
