@@ -148,6 +148,7 @@ namespace PickaPratoServer.Data
                 id = (int)result2["id"];
             }
             connection.Close();
+            Debug.Print("o id do prato é:"+id);
             return id;
         }
 

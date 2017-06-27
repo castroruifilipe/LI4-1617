@@ -66,7 +66,7 @@ namespace PickaPrato.Presentation {
                 for (int i = 0; i < nImagens; i++) {
 					Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
 					var stream = new MemoryStream();
-					mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+					mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 60, stream);
 					var bytes = stream.ToArray();
 					var foto = Convert.ToBase64String(bytes);
                     fotos.Add(foto);

@@ -27,6 +27,7 @@ namespace PickaPratoServer.Controllers
         // POST: api/Ingrediente
         public void Post([FromBody]string value)
         {
+            ingredientes.Put(value);
         }
 
         // PUT: api/Ingrediente/5

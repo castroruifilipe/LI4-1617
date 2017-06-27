@@ -54,8 +54,16 @@ namespace PickaPratoServer.Data
             ";
             command.Parameters.Add(new SqlParameter("@username", c.Username));
             command.Parameters.Add(new SqlParameter("@password", c.Password));
-            if(c.Foto==null) command.Parameters.Add(new SqlParameter("@foto", vazia));
-            else command.Parameters.Add(new SqlParameter("@foto", c.Foto));
+            if (c.Foto == null)
+            {
+                Debug.Print("sem foto");
+                command.Parameters.Add(new SqlParameter("@foto", vazia));
+            }
+            else
+            {
+                Debug.Print("FOTO");
+                command.Parameters.Add(new SqlParameter("@foto", c.Foto));
+            }
             var result = command.ExecuteNonQuery();
         }
     }

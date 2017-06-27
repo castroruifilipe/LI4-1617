@@ -64,9 +64,11 @@ namespace PickaPratoServer.Controllers
         // POST: api/Prato
         public void Post([FromBody]Prato value)
         {
+            Debug.Print("Entrei aqui");
             int id=pratos.Put(value);
-            foreach(Ingrediente i in value.Ingredientes)
-            {
+            Debug.Print("Lista de ingredientes");
+            foreach(Ingrediente i in value.Ingredientes){
+                Debug.Print(i.Designacao);
                 pratos.PutIngrediente(id, i);
             }
             

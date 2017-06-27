@@ -155,7 +155,6 @@
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\layout\CardView.xml" />
     <AndroidResource Include="Resources\layout\ListaPratos.axml" />
-    <AndroidResource Include="Resources\drawable\Francesinha1.png" />
     <AndroidResource Include="Resources\layout\PagInicCliente.axml" />
     <AndroidResource Include="Resources\layout\ListItem.xml" />
     <AndroidResource Include="Resources\drawable\micro.png" />
@@ -165,7 +164,6 @@
     <AndroidResource Include="Resources\layout\RegistarRestaurante.axml" />
     <AndroidResource Include="Resources\layout\ListItemChekboxWithSwitch.xml" />
     <AndroidResource Include="Resources\layout\AdicionarPrato.axml" />
-    <AndroidResource Include="Resources\layout\IngredientesPrato.axml" />
     <AndroidResource Include="Resources\layout\EscolherIngredientes.axml" />
     <AndroidResource Include="Resources\drawable\search.png" />
     <AndroidResource Include="Resources\layout\DescricaoPrato.axml" />
@@ -173,6 +171,7 @@
     <AndroidResource Include="Resources\layout\ListItemComentario.xml" />
     <AndroidResource Include="Resources\layout\AdicionarComentario.axml" />
     <AndroidResource Include="Resources\layout\AdicionarIngrediente.axml" />
+    <AndroidResource Include="Resources\drawable\rsz_imagem1.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

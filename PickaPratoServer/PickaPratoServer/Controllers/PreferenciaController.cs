@@ -31,6 +31,10 @@ namespace PickaPratoServer.Controllers
         // POST: api/Preferencia
         public void Post(List<string> value)
         {
+            foreach(string s in value)
+            {
+                Debug.Print(s+"\n");
+            }
             preferencias.Put(value);
         }
 

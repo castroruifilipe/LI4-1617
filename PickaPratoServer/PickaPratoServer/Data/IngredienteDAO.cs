@@ -31,6 +31,25 @@ namespace PickaPratoServer.Data
             return lista;
         }
 
+        public void Put (String ing)
+        {
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = @"
+                INSERT INTO Ingrediente
+                ([designacao])
+                VALUES
+                (@ingrediente)
+                ";
+            command.Parameters.Add(new SqlParameter("@ingrediente", ing));
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
         public bool TestaIngredientes(int idPrato,List<String> prefs)
         {
             bool r = true;
@@ -62,7 +81,6 @@ namespace PickaPratoServer.Data
             connection.Close();
             return r;
         }
-
 
         public bool PesquisaPratoNoIng(int idPrato, String ing)
         {

@@ -58,7 +58,7 @@ namespace PickaPrato.Presentation {
                 if (imagem == true) {
                     Bitmap mBitmap = MediaStore.Images.Media.GetBitmap(this.ContentResolver, uri);
                     var stream = new MemoryStream();
-                    mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
+                    mBitmap.Compress(Bitmap.CompressFormat.Jpeg, 60, stream);
                     var bytes = stream.ToArray();
                     var foto = Convert.ToBase64String(bytes);
                     r = Facade.RegistarCliente(user.Text, pass.Text, foto);
