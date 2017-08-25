@@ -1,2 +1,2 @@
 # LI4-1617
-Trabalho prático da UC Laboratórios de Informática IV (MiEI)
+Trabalho prático realizado no âmbito da UC Laboratórios de Informática IV do Mestrado Integrado em Engenharia Informática
